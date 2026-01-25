@@ -215,15 +215,10 @@ GBM_BACKEND=nvidia-drm
 內容如下：
 ```bash
 # Vulkan 影片加速配置
-# NVIDIA + Wayland 硬體加速最佳化
+# NVIDIA 硬體加速最佳化
 
---enable-features=VulkanVideoDecoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan
---ozone-platform=x11
---use-vulkan=native
---enable-zero-copy
---enable-gpu-rasterization
---ignore-gpu-blocklist
---enable-native-gpu-memory-buffers
+--enable-features=Vulkan,DefaultANGLEVulkan,VulkanFromANGLE
+--enable-unsafe-webgpu
 ```
 
 **3. 應用配置**
