@@ -9,7 +9,7 @@ links:
     url: "https://www.instagram.com/zakk.au/"
   - name: "telegram"
     url: "https://t.me/ethcnm"
-weight: 9906
+weight: 9904
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -19,4 +19,4 @@ showViews: false
 layoutBackgroundHeaderSpace: false
 ---
 
-94 次提交
+96 次提交
