@@ -219,7 +219,15 @@ GBM_BACKEND=nvidia-drm
 
 --enable-features=Vulkan,DefaultANGLEVulkan,VulkanFromANGLE
 --enable-unsafe-webgpu
+--ozone-platform=x11
 ```
+
+> **注意**：如果遇到以下錯誤：
+> ```
+> '--ozone-platform=wayland' is not compatible with Vulkan.
+> Consider switching to '--ozone-platform=x11' or disabling Vulkan
+> ```
+> 請確保使用 `--ozone-platform=x11`，因為 Wayland 目前不兼容 Vulkan 硬體加速。
 
 **3. 應用配置**
 重新登入。
