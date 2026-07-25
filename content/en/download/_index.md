@@ -18,6 +18,7 @@ A **KDE Plasma 6 desktop Live ISO** put together by the Gentoo-zh Community — 
 - **Hardware requirements**: a 64-bit x86 CPU with AVX2 support (roughly post-2013 processors; older CPUs can't boot).
 - **Update cadence**: recompiled and uploaded automatically every week, so it's always a fairly recent snapshot of the system; the download site only keeps the last few releases, so go by the actual filename on the site (`gig-os-DATE.iso`).
 - **New-release alerts**: follow the Telegram channel <https://t.me/gentoomirror> for an automatic announcement whenever a weekly build goes live.
+- **Hit a problem?**: file it at [Live-ISO issues](https://github.com/gentoo-zh/Live-ISO/issues), ask on the [community forum](https://forum.gentoozh.org/) or in the [Telegram group](https://t.me/gentoo_zh), or email liveos@gentoozh.org.
 
 {{< callout type="warning" >}}
 **Running in a VM?** The image is built for `x86-64-v3` and needs AVX2. **VirtualBox usually can't pass AVX2 through, so the image won't boot** — use **KVM (`-cpu host`), native Hyper-V, or VMware** instead, and confirm with `grep -o avx2 /proc/cpuinfo` inside the guest.
