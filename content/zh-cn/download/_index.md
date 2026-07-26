@@ -12,7 +12,7 @@ title: "下载"
 
 中文社区定制的 **KDE Plasma 6 桌面 Live ISO**——默认带有三语言可选（简 / 正體 / 英）、中文输入法（fcitx5 + rime），适合新手体验中文 Gentoo 桌面。
 
-- **下载**：<https://mirror.gentoozh.org/>（下载节点由 Cloudflare R2 提供，全球边缘节点、不限流量）
+- **下载**：<https://iso.gentoozh.org/>（下载节点由 Cloudflare R2 提供，全球边缘节点、不限流量）
 - **仓库**：<https://github.com/Gentoo-zh/Live-ISO>（包含构建脚本与相关定制）
 - **登录凭据**：用户 {{< copy "live" >}} / 密码 {{< copy "live" >}} / root 密码 {{< copy "live" >}}
 - **硬件要求**：64 位 x86 CPU，需支持 AVX2（约 2013 年后的处理器，更老的 CPU 无法启动）。
@@ -34,7 +34,7 @@ title: "下载"
 - **ZFS 根 + 原生加密 + ZBM 引导（进阶）** — 安装器分区页文件系统可选 **ZFS**；勾选「加密」即启用 **ZFS 原生加密**（aes-256-gcm、口令解锁），并由 **ZFSBootMenu** 原生引导（GRUB 读不了带新特性 / 原生加密的 ZFS 池，故 ZFS 根改用 ZBM）。默认文件系统为 btrfs，在分区页面可选择 xfs / ext4 / ZFS 文件系统。
 - **按机优化** — 装好系统后，编译参数 `CPU_FLAGS_X86` 将按你的 CPU 自动生成。
 
-完整功能与配置说明见 **[镜像站「使用说明」页](https://mirror.gentoozh.org/about.html)**。
+完整功能与配置说明见 **[镜像站「使用说明」页](https://iso.gentoozh.org/about.html)**。
 
 {{% /details %}}
 

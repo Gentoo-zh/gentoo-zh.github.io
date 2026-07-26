@@ -11,6 +11,7 @@ slug: "changelog"
 
 ## 2026 年 7 月
 
+- **Live ISO 下載站改用 [iso.gentoozh.org](https://iso.gentoozh.org/)**：站點服務的是 Live ISO 下載，不是 Gentoo 的 portage / distfiles 鏡像（那些在[鏡像列表](/zh-tw/mirrorlist/)頁），原來的 mirror 名字容易誤解；舊地址 mirror.gentoozh.org 繼續可用，書籤和已有連結不失效
 - **社群 Pastebin [paste.gentoozh.org](https://paste.gentoozh.org) 上線**（基於 [wastebin](https://github.com/matze/wastebin)）：貼程式碼 / 日誌用，支援網頁、指令列（curl）與 raw 連結；頂欄「基礎設施」選單和 [Pastebin 使用說明](/paste/) 已加入口
 - [關於頁](/about/)補上社群在 **Gentoo Wiki** 的頁面連結（[User:Gentoo-zh](https://wiki.gentoo.org/wiki/User:Gentoo-zh)），並加入結構化資料 `sameAs`
 - 網站維護與 CI：加固 CI、升級依賴，GitHub Actions 升到最新大版本（checkout v7、setup-node/go/python v6，仍按 SHA 釘版），並做了一輪網站核對清理
@@ -29,8 +30,8 @@ slug: "changelog"
 - 新增公告 **[中文社群近期更新：Live ISO、官網、下載站與測速](/posts/2026-06-09-live-iso-improvements/)**：客製 KDE Live ISO、Calamares 安裝器、自動建置流水線、官網 Hextra 遷移與英文國際化、下載站與測速站的整體進展
 - 新增公告 **[Python 3.14 成為預設版本](/posts/2026-06-01-python-314-default/)**（2026-06-01）：Gentoo 系統預設 Python 從 3.13 換成 3.14，手動控制升級節奏或遇到 USE / 依賴報錯的用法說明
 - 新增轉載文章 **[Gentoo Linux with ZFS](/posts/2026-06-18-gentoo-linux-with-zfs/)**（原作者 [Locez](https://github.com/locez)，經授權按 CC BY-NC-SA 4.0 轉載）：在雙 NVMe 鏡像上安裝 ZFS 根 + ZFS 原生加密的實錄；本站補充了 SLOG 配置勘誤、分割區要點，以及各安裝步驟對應的官方中文手冊連結
-- Live ISO 圖形安裝器支援 **ZFS 根檔案系統**：可把 ZFS 裝成根，勾選加密即 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引導（btrfs / ext4 / xfs / ZFS 均可在分割區頁選）。[下載頁](/download/#live-iso)與[使用說明](https://mirror.gentoozh.org/about.html)已補充說明
-- 下載站上雲：Live ISO 下載遷到 **Cloudflare R2**（[r2.gentoozh.org](https://r2.gentoozh.org/)，零出口流量、全球邊緣），落地頁 [mirror.gentoozh.org](https://mirror.gentoozh.org/) 改成 **Cloudflare Worker**（邊緣即時讀 R2，列出最新鏡像 + 全部歷史版本）；測速改用 [Cloudflare 官方測速](https://speed.cloudflare.com/)；自建的美國下載 / 測速伺服器隨之下線
+- Live ISO 圖形安裝器支援 **ZFS 根檔案系統**：可把 ZFS 裝成根，勾選加密即 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引導（btrfs / ext4 / xfs / ZFS 均可在分割區頁選）。[下載頁](/download/#live-iso)與[使用說明](https://iso.gentoozh.org/about.html)已補充說明
+- 下載站上雲：Live ISO 下載遷到 **Cloudflare R2**（[r2.gentoozh.org](https://r2.gentoozh.org/)，零出口流量、全球邊緣），落地頁 [mirror.gentoozh.org](https://iso.gentoozh.org/) 改成 **Cloudflare Worker**（邊緣即時讀 R2，列出最新鏡像 + 全部歷史版本）；測速改用 [Cloudflare 官方測速](https://speed.cloudflare.com/)；自建的美國下載 / 測速伺服器隨之下線
 - 公共頁面新增英文（English）國際化：關於、下載、鏡像列表、貢獻指南等公共頁面可在簡體 / 正體 / 英文之間切換，方便用 gentoo-zh overlay 的海外使用者。技術文章不一定都有英文，目前只做了公共頁面；英文借翻譯軟體初譯、再經 AI 校對，難免有錯漏，歡迎到 [GitHub](https://github.com/Gentoo-zh/gentoo-zh.github.io) 指正
 
 ## 2026 年 5 月

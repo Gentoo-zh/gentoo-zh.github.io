@@ -42,7 +42,7 @@ Live ISO 建置所需的包來自 [Gentoo-zh/gig](https://github.com/Gentoo-zh/g
 
 ## 下載站
 
-下載站 [mirror.gentoozh.org](https://mirror.gentoozh.org/)（原始碼 [Zakkaus/gentoozh-mirror](https://github.com/Zakkaus/gentoozh-mirror)）**遷到了 Cloudflare，不再用自建伺服器**：ISO 存 **Cloudflare R2**（`r2.gentoozh.org`，零出口流量、全球邊緣、可快取），落地頁改成 **Cloudflare Worker**——在邊緣即時讀 R2，列出最新鏡像和**全部歷史版本**，永遠反映當前內容。頁面保留簡 / 繁 / 英三語與淺 / 深色。
+下載站 [mirror.gentoozh.org](https://iso.gentoozh.org/)（原始碼 [Zakkaus/gentoozh-mirror](https://github.com/Zakkaus/gentoozh-mirror)）**遷到了 Cloudflare，不再用自建伺服器**：ISO 存 **Cloudflare R2**（`r2.gentoozh.org`，零出口流量、全球邊緣、可快取），落地頁改成 **Cloudflare Worker**——在邊緣即時讀 R2，列出最新鏡像和**全部歷史版本**，永遠反映當前內容。頁面保留簡 / 繁 / 英三語與淺 / 深色。
 
 ## 測速站
 

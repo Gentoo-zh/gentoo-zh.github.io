@@ -12,7 +12,7 @@ Before you install Gentoo, get your installation media sorted. The least hassle 
 
 A **KDE Plasma 6 desktop Live ISO** put together by the Gentoo-zh Community — Chinese-ready out of the box, three languages to pick from (Simplified / Traditional / English), Chinese input methods (fcitx5 + rime). A good way to get a feel for a Chinese Gentoo desktop first.
 
-- **Download site**: <https://mirror.gentoozh.org/> (served from Cloudflare R2 — global edge, no bandwidth limits)
+- **Download site**: <https://iso.gentoozh.org/> (served from Cloudflare R2 — global edge, no bandwidth limits)
 - **Repo**: <https://github.com/Gentoo-zh/Live-ISO> (build scripts and customizations)
 - **Login credentials**: user {{< copy "live" >}} / password {{< copy "live" >}} / root password {{< copy "live" >}}
 - **Hardware requirements**: a 64-bit x86 CPU with AVX2 support (roughly post-2013 processors; older CPUs can't boot).
@@ -34,7 +34,7 @@ A **KDE Plasma 6 desktop Live ISO** put together by the Gentoo-zh Community — 
 - **ZFS root + native encryption + ZBM boot (advanced)** — on the installer's partitioning page you can choose **ZFS** as the filesystem; tick "Encrypt" to enable **ZFS native encryption** (aes-256-gcm, passphrase-unlocked), booted by **ZFSBootMenu** (GRUB can't read ZFS pools that use newer features / native encryption, so a ZFS root uses ZBM instead). The default filesystem is btrfs; xfs / ext4 / ZFS are all selectable on the partitioning page.
 - **Per-machine tuning** — once the system is installed, the `CPU_FLAGS_X86` compile flags are generated automatically based on your CPU.
 
-For the full feature list and configuration notes, see the **[mirror site's "About" page](https://mirror.gentoozh.org/about.html)**.
+For the full feature list and configuration notes, see the **[mirror site's "About" page](https://iso.gentoozh.org/about.html)**.
 
 {{% /details %}}
 

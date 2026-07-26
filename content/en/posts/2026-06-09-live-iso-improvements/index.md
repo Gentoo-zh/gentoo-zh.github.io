@@ -42,7 +42,7 @@ The website, [gentoozh.org](https://gentoozh.org/) (source: [gentoo-zh.github.io
 
 ## Download site
 
-The download site, [mirror.gentoozh.org](https://mirror.gentoozh.org/) (source: [Zakkaus/gentoozh-mirror](https://github.com/Zakkaus/gentoozh-mirror)), **moved to Cloudflare — no more self-hosted server**: ISOs live on **Cloudflare R2** (`r2.gentoozh.org`, zero egress, global edge, cacheable), and the landing page is now a **Cloudflare Worker** that reads R2 at the edge to list the latest image plus **all past builds**, always reflecting current contents. The page keeps Simplified / Traditional / English and light / dark mode.
+The download site, [mirror.gentoozh.org](https://iso.gentoozh.org/) (source: [Zakkaus/gentoozh-mirror](https://github.com/Zakkaus/gentoozh-mirror)), **moved to Cloudflare — no more self-hosted server**: ISOs live on **Cloudflare R2** (`r2.gentoozh.org`, zero egress, global edge, cacheable), and the landing page is now a **Cloudflare Worker** that reads R2 at the edge to list the latest image plus **all past builds**, always reflecting current contents. The page keeps Simplified / Traditional / English and light / dark mode.
 
 ## Speedtest site
 
