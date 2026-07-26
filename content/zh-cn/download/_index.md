@@ -18,7 +18,7 @@ title: "下载"
 - **硬件要求**：64 位 x86 CPU，需支持 AVX2（约 2013 年后的处理器，更老的 CPU 无法启动）。
 - **更新频率**：每周自动编译并上传，始终是较新的系统快照；下载站只保留最近几个版本，请以站上实际文件名（`gig-os-日期.iso`）为准。
 - **新版通知**：关注 Telegram 频道 <https://t.me/gentoomirror>，每周构建上线时将会自动播报。
-- **问题反馈**：缺陷与改进建议提交到 [Live-ISO issues](https://github.com/gentoo-zh/Live-ISO/issues)；使用问题与讨论见[社区论坛](https://forum.gentoozh.org/)、[Telegram 群](https://t.me/gentoo_zh)；邮件 liveos@gentoozh.org。
+- **问题反馈**：缺陷与改进建议提交到 [Live-ISO issues](https://github.com/Gig-OS/Live-ISO/issues)；使用问题与讨论见[社区论坛](https://forum.gentoozh.org/)、[Telegram 群](https://t.me/gentoo_zh)；邮件 liveos@gentoozh.org。
 
 {{< callout type="warning" >}}
 **需要在虚拟机里运行？** 镜像按 `x86-64-v3` 编译，必须要有 AVX2。而 **VirtualBox 多半透传不了 AVX2，这将会导致镜像无法启动**——建议换用 **KVM（`-cpu host`）、原生 Hyper-V 或 VMware**；具体是否支持 AVX2 以 guest 里 `grep -o avx2 /proc/cpuinfo` 为准。
