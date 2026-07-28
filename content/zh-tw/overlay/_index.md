@@ -8,7 +8,7 @@ Overlay 是官方 Portage 樹之外的軟體來源——疊加上去，就能裝
 overlay 倉庫已遷移到組織倉庫 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay)，舊的 `microcai/gentoo-zh` 個人倉庫會 301 到新倉庫，建議在方便時更新到新 URL，詳見[公告與執行記錄](/posts/2026-07-02-gentoo-zh-repo-migration/)。
 {{< /callout >}}
 
-至今為止 gentoo-zh 已收錄了 450 多個軟體套件，可大致分為：
+至今為止 gentoo-zh 已收錄了 490 個左右的軟體套件（準確數量以[倉庫](https://github.com/gentoo-zh/overlay)為準），可大致分為：
 
 - **中文 / CJK**：fcitx 輸入法和一大堆外掛、碼表（rime、chinese-addons 等），搜狗 / 萌娘 / zhwiki 拼音詞庫，中文字型，以及一些軟體的 CJK 修補
 - **網路、開發工具等**：畢竟是 Gentoo 使用者，誰手裡沒幾個自己維護的包
@@ -66,7 +66,7 @@ auto-sync = yes
 ```bash
 sudo emerge -aq dev-vcs/git          # 沒裝 git 先裝
 rm -rf /var/db/repos/gentoo-zh       # 同步過的話先清掉舊的
-eselect repository add gentoo-zh git https://mirrors.cqu.edu.cn/git/gentoo-zh.git
+eselect repository add gentoo-zh git https://mirror.nju.edu.cn/git/gentoo-zh.git
 emerge --sync gentoo-zh
 ```
 
@@ -74,18 +74,30 @@ emerge --sync gentoo-zh
 
 ### distfiles 快取
 
-加速軟體套件原始碼下載。源站 <https://distfiles.gentoozh.org/>，可用鏡像：
+加速軟體套件原始碼下載。這裡只有 overlay 的原始碼，不能替代官方源，因此是**追加**而非替換。源站 <https://distfiles.gentoozh.org/>，可用鏡像：
 
 - 南京大學：`https://mirror.nju.edu.cn/gentoo-zh`
 
 在 `/etc/portage/make.conf` 的 `GENTOO_MIRRORS` 裡，官方源之後追加：
 
 ```bash
-GENTOO_MIRRORS="${GENTOO_MIRRORS} https://distfiles.gentoozh.org"
+GENTOO_MIRRORS="${GENTOO_MIRRORS} https://mirror.nju.edu.cn/gentoo-zh https://distfiles.gentoozh.org"
 ```
+
+`GENTOO_MIRRORS` 是按順序嘗試的列表，兩個都列上，南京大學取不到時會落到源站。地址不寫 `distfiles/`，portage 會自己補上。可直接複製的配置塊，以及當前的檔案數量與同步時間，都在 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/)。
 
 {{< callout type="info" >}}
 不想 mirror 某些 distfiles（版權等原因）時，在對應 ebuild 裡加 `RESTRICT="mirror"`。
+{{< /callout >}}
+
+## 二進位包（binhost）
+
+社群現在也提供 gentoo-zh 的**二進位包**，裝 overlay 裡的包不用每個都自己編。目前只有 x86-64，也不是每個包都有，與上面的 distfiles 相互獨立、按需分別配置。
+
+配置分三步：匯入簽名公鑰、在 `/etc/portage/binrepos.conf/` 裡新增倉庫、在 `FEATURES` 裡追加 `getbinpkg`。
+
+{{< callout type="info" >}}
+每一步可直接複製的指令與配置塊、源站與南京大學兩個地址、簽名公鑰，以及當前覆蓋的包數量與同步時間，都在 **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)**，照著配即可。
 {{< /callout >}}
 
 ## 用 overlay 裡的包
