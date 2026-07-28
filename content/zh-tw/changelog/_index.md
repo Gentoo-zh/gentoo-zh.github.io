@@ -25,8 +25,6 @@ slug: "changelog"
 ## 2026 年 6 月
 
 - 新增文章 **[如何參與 Gentoo Wiki 的翻譯工作](/posts/2026-06-30-gentoo-wiki-translation/)**：面向中文譯者的翻譯入門，涵蓋帳號與權限申請、翻譯介面用法、翻譯規範與中英文排版約定，以及 Gentoo 理事會 AI 政策對翻譯的具體影響（作者 YangMame）
-- 新增安全文章 **[Linux 頁快取寫入型提權漏洞梳理](/posts/2026-06-27-linux-page-cache-lpe/)**：梳理 2026 年 Copy Fail、DirtyFrag、Fragnesia 與 DirtyClone 的共同利用模型、不同根因與修復關係
-- 新增安全公告 **[Linux 核心 DirtyClone 本地提權漏洞：Gentoo 更新建議](/posts/2026-06-27-dirtyclone-kernel-lpe/)**（CVE-2026-43503，CVSS 8.8）：Gentoo 受支援核心已有修復，使用者應更新並重啟
 - 新增公告 **[中文社群近期更新：Live ISO、官網、下載站與測速](/posts/2026-06-09-live-iso-improvements/)**：客製 KDE Live ISO、Calamares 安裝器、自動建置流水線、官網 Hextra 遷移與英文國際化、下載站與測速站的整體進展
 - 新增公告 **[Python 3.14 成為預設版本](/posts/2026-06-01-python-314-default/)**（2026-06-01）：Gentoo 系統預設 Python 從 3.13 換成 3.14，手動控制升級節奏或遇到 USE / 依賴報錯的用法說明
 - 新增轉載文章 **[Gentoo Linux with ZFS](/posts/2026-06-18-gentoo-linux-with-zfs/)**（原作者 [Locez](https://github.com/locez)，經授權按 CC BY-NC-SA 4.0 轉載）：在雙 NVMe 鏡像上安裝 ZFS 根 + ZFS 原生加密的實錄；本站補充了 SLOG 配置勘誤、分割區要點，以及各安裝步驟對應的官方中文手冊連結
