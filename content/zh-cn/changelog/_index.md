@@ -11,6 +11,7 @@ slug: "changelog"
 
 ## 2026 年 7 月
 
+- 新增公告 **[Overlay 软件包清理、改名与批量更新](/posts/2026-07-29-overlay-package-cleanup/)**：过去一个月升级 162 个包、新增 60 个、移除 38 个、改名或换分类 5 个，overlay 从 468 个包变成 490 个；文中列出改名清单、移除清单与各自的处理办法
 - **Live ISO 下载站改用 [iso.gentoozh.org](https://iso.gentoozh.org/)**：站点服务的是 Live ISO 下载，不是 Gentoo 的 portage / distfiles 镜像（那些在[镜像列表](/mirrorlist/)页），原来的 mirror 名字容易误解；旧地址 mirror.gentoozh.org 继续可用，书签和已有链接不失效
 - **社区 Pastebin [paste.gentoozh.org](https://paste.gentoozh.org) 上线**（基于 [wastebin](https://github.com/matze/wastebin)）：贴代码 / 日志用，支持网页、命令行（curl）与 raw 链接；顶栏「基础设施」菜单和 [Pastebin 使用说明](/paste/) 已加入口
 - [关于页](/about/)补上社区在 **Gentoo Wiki** 的页面链接（[User:Gentoo-zh](https://wiki.gentoo.org/wiki/User:Gentoo-zh)），并加入结构化数据 `sameAs`
