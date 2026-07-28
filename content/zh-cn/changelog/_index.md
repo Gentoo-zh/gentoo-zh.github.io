@@ -11,6 +11,7 @@ slug: "changelog"
 
 ## 2026 年 7 月
 
+- [Overlay 页](/overlay/)新增**二进制包（binhost）**一节：说明目前只有 x86-64、并非每个包都有，配置的三步与可复制的命令、地址、签名公钥和实时的包数量统一引到 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/)；distfiles 一节的 `GENTOO_MIRRORS` 改成同时列出镜像与源站，并修正 git 换源示例里残留的旧镜像地址
 - **Live ISO 下载站改用 [iso.gentoozh.org](https://iso.gentoozh.org/)**：站点服务的是 Live ISO 下载，不是 Gentoo 的 portage / distfiles 镜像（那些在[镜像列表](/mirrorlist/)页），原来的 mirror 名字容易误解；旧地址 mirror.gentoozh.org 继续可用，书签和已有链接不失效
 - **社区 Pastebin [paste.gentoozh.org](https://paste.gentoozh.org) 上线**（基于 [wastebin](https://github.com/matze/wastebin)）：贴代码 / 日志用，支持网页、命令行（curl）与 raw 链接；顶栏「基础设施」菜单和 [Pastebin 使用说明](/paste/) 已加入口
 - [关于页](/about/)补上社区在 **Gentoo Wiki** 的页面链接（[User:Gentoo-zh](https://wiki.gentoo.org/wiki/User:Gentoo-zh)），并加入结构化数据 `sameAs`

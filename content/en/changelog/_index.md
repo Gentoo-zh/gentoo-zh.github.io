@@ -11,6 +11,7 @@ This page tracks the major updates to the site's content, so readers can follow 
 
 ## July 2026
 
+- The [Overlay page](/overlay/) has a new **binary packages (binhost)** section: x86-64 only for now and not every package is covered, with the three setup steps outlined and the copy-paste commands, addresses, signing key and live package count all linked at [distfiles.gentoozh.org](https://distfiles.gentoozh.org/). The distfiles section's `GENTOO_MIRRORS` now lists both the mirror and the origin, and a stale mirror address in the git sync example has been fixed
 - **The Live ISO download site is now [iso.gentoozh.org](https://iso.gentoozh.org/)**: it serves Live ISO downloads, not Gentoo's portage / distfiles mirrors (those are on the [mirror list](/en/mirrorlist/) page), so the old `mirror` name was misleading. The old address mirror.gentoozh.org still works, so bookmarks and existing links keep working
 - **The community Pastebin [paste.gentoozh.org](https://paste.gentoozh.org) is live** (built on [wastebin](https://github.com/matze/wastebin)): for sharing code and logs, with a web UI, command line (curl), and raw links. Entry points have been added in the top-bar "Infrastructure" menu and the [Pastebin guide](/paste/)
 - The [About page](/about/) now links to the community's page on the **Gentoo Wiki** ([Gentoo-zh](https://wiki.gentoo.org/wiki/Gentoo-zh)), with structured-data `sameAs`

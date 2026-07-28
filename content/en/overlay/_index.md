@@ -8,7 +8,7 @@ An overlay is a source of software outside the official Portage tree—layer it 
 The overlay repo has moved to the organization repo [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay). The old personal repo `microcai/gentoo-zh` now redirects (301) to the new one; update to the new URL when you get a chance. See the [announcement and record](/posts/2026-07-02-gentoo-zh-repo-migration/) for details.
 {{< /callout >}}
 
-By now gentoo-zh carries over 450 packages, roughly in these categories:
+By now gentoo-zh carries around 490 packages (the [repository](https://github.com/gentoo-zh/overlay) has the exact count), roughly in these categories:
 
 - **Chinese / CJK**: the fcitx input methods plus a whole pile of plugins and input tables (rime, chinese-addons, etc.), Sogou / Moegirl / zhwiki pinyin dictionaries, Chinese fonts, and CJK patches for various software
 - **Networking, dev tools, and the like**: we're Gentoo users, after all, and who doesn't have a few packages of their own to maintain
@@ -66,7 +66,7 @@ Adding it for the first time (install git first):
 ```bash
 sudo emerge -aq dev-vcs/git          # install git if you don't have it
 rm -rf /var/db/repos/gentoo-zh       # clear out the old one if you've synced before
-eselect repository add gentoo-zh git https://mirrors.cqu.edu.cn/git/gentoo-zh.git
+eselect repository add gentoo-zh git https://mirror.nju.edu.cn/git/gentoo-zh.git
 emerge --sync gentoo-zh
 ```
 
@@ -74,18 +74,30 @@ If you've already added it, just change the `sync-uri` in `/etc/portage/repos.co
 
 ### distfiles cache
 
-Speeds up downloading package source code. The origin is <https://distfiles.gentoozh.org/>; available mirrors:
+Speeds up downloading package source code. It only carries the overlay's own source code, so it can't replace the official mirrors — **append** it, don't substitute it. The origin is <https://distfiles.gentoozh.org/>; available mirrors:
 
 - Nanjing University: `https://mirror.nju.edu.cn/gentoo-zh`
 
 In `GENTOO_MIRRORS` in `/etc/portage/make.conf`, append after the official mirrors:
 
 ```bash
-GENTOO_MIRRORS="${GENTOO_MIRRORS} https://distfiles.gentoozh.org"
+GENTOO_MIRRORS="${GENTOO_MIRRORS} https://mirror.nju.edu.cn/gentoo-zh https://distfiles.gentoozh.org"
 ```
+
+`GENTOO_MIRRORS` is a list tried in order, so list both: if Nanjing University doesn't have a file, it falls back to the origin. Don't put `distfiles/` in the address, Portage appends it itself. Copy-paste-ready config, along with the current file count and sync time, is on [distfiles.gentoozh.org](https://distfiles.gentoozh.org/).
 
 {{< callout type="info" >}}
 If you don't want certain distfiles to be mirrored (for copyright reasons, etc.), add `RESTRICT="mirror"` to the relevant ebuild.
+{{< /callout >}}
+
+## Binary packages (binhost)
+
+The community now also provides **binary packages** for gentoo-zh, so you don't have to compile every overlay package yourself. It's x86-64 only for now, not every package is covered, and it's independent of the distfiles mirror above — set up whichever you need.
+
+Setup is three steps: import the signing key, add the repo under `/etc/portage/binrepos.conf/`, and append `getbinpkg` to `FEATURES`.
+
+{{< callout type="info" >}}
+Copy-paste-ready commands and config for each step, both the origin and the Nanjing University address, the signing key, and the current package count and sync time are all on **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)** — just follow it there.
 {{< /callout >}}
 
 ## Using packages from the overlay
