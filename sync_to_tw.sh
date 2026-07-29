@@ -263,6 +263,7 @@ convert_one() {
     -e 's/二進位制/二進位/g' \
     -e 's/全域性/全域/g' \
     -e 's/驗籤/驗簽/g' \
+    -e 's/字首/前綴/g' \
     -e 's/質量/品質/g' \
     -e 's/擴充套件閱讀/擴展閱讀/g' \
     -e 's/隻是/只是/g' -e 's/隻有/只有/g' -e 's/隻要/只要/g' -e 's/隻能/只能/g' -e 's/隻會/只會/g' -e 's/隻認/只認/g' \
@@ -287,6 +288,17 @@ convert_one() {
     -e 's|GENTOO_MIRRORS="https://mirrors\.bfsu\.edu\.cn/gentoo/"|GENTOO_MIRRORS="http://ftp.twaren.net/Linux/Gentoo/"|g' \
     -e 's|sync-uri = https://mirrors\.bfsu\.edu\.cn/git/gentoo-portage\.git|sync-uri = https://github.com/gentoo-mirror/gentoo.git|g' \
     -e 's|以 BFSU 鏡像站|以 TWAREN 鏡像站|g' \
+    "$TARGET_FILE"
+
+  # Step 4a: gentoo-zh 自家的 binhost / distfiles 源，繁体版以源站为主。
+  # 简体版默认南京大学镜像（中国大陆更快），台湾读者直连源站更合适，所以对调优先级；
+  # 两边的包与签名是同一份，换地址不影响验签。
+  sed "${SEDI[@]}" \
+    -e 's|sync-uri = https://mirror\.nju\.edu\.cn/gentoo-zh/binpkgs/x86-64|sync-uri = https://distfiles.gentoozh.org/binpkgs/x86-64|g' \
+    -e 's|GENTOO_MIRRORS="${GENTOO_MIRRORS} https://mirror\.nju\.edu\.cn/gentoo-zh https://distfiles\.gentoozh\.org"|GENTOO_MIRRORS="${GENTOO_MIRRORS} https://distfiles.gentoozh.org https://mirror.nju.edu.cn/gentoo-zh"|g' \
+    -e 's|在中國大陸建議使用南京大學鏡像，下載會更快，源站是 <https://distfiles\.gentoozh\.org/binpkgs/x86-64>（位於美國）。|這裡填的是源站（位於美國）；在中國大陸可改用南京大學鏡像 <https://mirror.nju.edu.cn/gentoo-zh/binpkgs/x86-64>，下載會更快。|g' \
+    -e 's|南京大學取不到時會落到源站。|源站取不到時會落到南京大學鏡像。|g' \
+    -e 's|由 distfiles.gentoozh.org 與南京大學鏡像分發|由 distfiles.gentoozh.org 與南京大學鏡像分發|g' \
     "$TARGET_FILE"
 
   # Step 4b: Terminology localization for Taiwan readers.
