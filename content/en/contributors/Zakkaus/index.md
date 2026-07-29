@@ -6,7 +6,7 @@ externalUrl: "https://github.com/Zakkaus"
 links:
   - name: "blog"
     url: "https://zakk.au"
-weight: 9894
+weight: 9556
 ---
 
 Site & Matrix server maintainer

@@ -6,7 +6,7 @@ externalUrl: "https://github.com/locez"
 links:
   - name: "blog"
     url: "https://locez.com"
-weight: 9988
+weight: 9964
 ---
 
-12 commits
+36 commits
