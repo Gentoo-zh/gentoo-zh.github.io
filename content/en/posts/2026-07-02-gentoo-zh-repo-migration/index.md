@@ -179,7 +179,7 @@ In the organization repository settings, rename `Gentoo-zh/gentoo-zh` to **[`Gen
 Settings -> General -> Repository name -> overlay
 ```
 
-### 8. Update in-repo maintenance entry points ([PR #10744](https://github.com/Gentoo-zh/overlay/pull/10744))
+### 8. Update in-repo maintenance entry points ([PR #10744](https://github.com/gentoo-zh/overlay/pull/10744))
 
 After the rename, one PR updated every in-repo entry point that pointed at an old address to `gentoo-zh/overlay`, across 7 files:
 
@@ -206,7 +206,7 @@ The exact changes (click to expand):
 +      <email>overlay@gentoozh.org</email>
        <name>gentoo-zh</name>
      </owner>
--    <source type="git">https://github.com/Gentoo-zh/gentoo-zh.git</source>
+-    <source type="git">https://github.com/gentoo-zh/gentoo-zh.git</source>
 +    <source type="git">https://github.com/gentoo-zh/overlay.git</source>
    </repo>
  </repositories>
@@ -422,7 +422,7 @@ The overlay registry in `gentoo/api-gentoo-org` was submitted through [api-gento
 
 ## Wrap-up and confirmation
 
-The overlay's internal metadata, README, and installation notes were updated in [PR #10744](https://github.com/Gentoo-zh/overlay/pull/10744) (step 8); the official Gentoo registry was merged in [api-gentoo-org#829](https://github.com/gentoo/api-gentoo-org/pull/829) (step 10).
+The overlay's internal metadata, README, and installation notes were updated in [PR #10744](https://github.com/gentoo-zh/overlay/pull/10744) (step 8); the official Gentoo registry was merged in [api-gentoo-org#829](https://github.com/gentoo/api-gentoo-org/pull/829) (step 10).
 
 Simulating the user switch hands-on: with `gentoo-zh` enabled straight from Gentoo's official repository list, `emerge --sync` pulls from the new overlay address (see the last line):
 
@@ -445,11 +445,11 @@ $ sudo emaint sync -r gentoo-zh
 $ UA="Mozilla/5.0"
 $ curl -sIL -A "$UA" https://github.com/microcai/gentoo-zh  | grep -iE '^HTTP/|^location:'
 HTTP/2 301
-location: https://github.com/Gentoo-zh/overlay
+location: https://github.com/gentoo-zh/overlay
 HTTP/2 200
 $ curl -sIL -A "$UA" https://github.com/gentoo-zh/gentoo-zh | grep -iE '^HTTP/|^location:'
 HTTP/2 301
-location: https://github.com/Gentoo-zh/overlay
+location: https://github.com/gentoo-zh/overlay
 HTTP/2 200
 ```
 

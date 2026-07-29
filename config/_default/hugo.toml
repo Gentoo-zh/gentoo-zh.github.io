@@ -36,7 +36,7 @@ buildFuture = true
 
 [module]
   [[module.imports]]
-    path = "github.com/Gentoo-zh/gentoozh-theme"
+    path = "github.com/gentoo-zh/gentoozh-theme"
 
 [markup]
   [markup.highlight]
