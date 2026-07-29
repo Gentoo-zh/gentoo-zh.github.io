@@ -72,33 +72,19 @@ emerge --sync gentoo-zh
 
 已经添加过的，把 `/etc/portage/repos.conf/gentoo-zh.conf` 里的 `sync-uri` 改成上面的地址即可。
 
-### distfiles 缓存
+## distfiles 与二进制包
 
-加速软件包源码下载。这里只有 overlay 的源码，不能替代官方源，因此是**追加**而非替换。源站 <https://distfiles.gentoozh.org/>，可用镜像：
+除了 ebuild，社区还为 overlay 运行了两个服务，互不依赖，按需分别配置。
 
-- 南京大学：`https://mirror.nju.edu.cn/gentoo-zh`
+**distfiles 镜像**：因为 overlay 的 distfiles 不在 `distfiles.gentoo.org` 上，所以 `SRC_URI` 只能直连上游，慢或者取不到。把镜像追加到 `/etc/portage/make.conf` 的 `GENTOO_MIRRORS` 之后即可生效；它只存 overlay 里包的源码，不能替代官方源。
 
-在 `/etc/portage/make.conf` 的 `GENTOO_MIRRORS` 里，官方源之后追加：
-
-```bash
-GENTOO_MIRRORS="${GENTOO_MIRRORS} https://mirror.nju.edu.cn/gentoo-zh https://distfiles.gentoozh.org"
-```
-
-`GENTOO_MIRRORS` 是按顺序尝试的列表，两个都列上，南京大学取不到时会落到源站。地址不写 `distfiles/`，portage 会自己补上。可直接复制的配置块，以及当前的文件数量与同步时间，都在 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/)。
+**二进制包（binhost）**：`emerge` 优先取编好的包，省掉本地编译。因为包带签名，所以除了在 `/etc/portage/binrepos.conf/` 里添加仓库、在 `FEATURES` 里追加 `getbinpkg`，还要先导入社区的签名公钥。目前只有 x86-64，也不是每个包都有。
 
 {{< callout type="info" >}}
-不想 mirror 某些 distfiles（版权等原因）时，在对应 ebuild 里加 `RESTRICT="mirror"`。
+两者的配置步骤、镜像与源站地址、签名公钥，以及当前的包数量与同步时间，都写在 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) 首页。
 {{< /callout >}}
 
-## 二进制包（binhost）
-
-社区现在也提供 gentoo-zh 的**二进制包**，装 overlay 里的包不用每个都自己编。目前只有 x86-64，也不是每个包都有，与上面的 distfiles 相互独立、按需分别配置。
-
-配置分三步：导入签名公钥、在 `/etc/portage/binrepos.conf/` 里添加仓库、在 `FEATURES` 里追加 `getbinpkg`。
-
-{{< callout type="info" >}}
-每一步可直接复制的命令与配置块、源站与南京大学两个地址、签名公钥，以及当前覆盖的包数量与同步时间，都在 **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)**，照着配即可。
-{{< /callout >}}
+打包者：因为版权等原因不希望某个包被镜像时，在它的 ebuild 里加 `RESTRICT="mirror"`，同步工具会跳过。
 
 ## 用 overlay 里的包
 

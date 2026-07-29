@@ -72,33 +72,19 @@ emerge --sync gentoo-zh
 
 If you've already added it, just change the `sync-uri` in `/etc/portage/repos.conf/gentoo-zh.conf` to the address above.
 
-### distfiles cache
+## distfiles and binary packages
 
-Speeds up downloading package source code. It only carries the overlay's own source code, so it can't replace the official mirrors — **append** it, don't substitute it. The origin is <https://distfiles.gentoozh.org/>; available mirrors:
+Besides the ebuilds, the community runs two services for the overlay. They're independent of each other, so set up whichever you need.
 
-- Nanjing University: `https://mirror.nju.edu.cn/gentoo-zh`
+**distfiles mirror**: the overlay's distfiles are not on `distfiles.gentoo.org`, so `SRC_URI` fetches straight from upstream, which is slow or fails outright. Appending the mirror to `GENTOO_MIRRORS` in `/etc/portage/make.conf` is all it takes; it only holds source code for the overlay's own packages, so it cannot replace the official mirrors.
 
-In `GENTOO_MIRRORS` in `/etc/portage/make.conf`, append after the official mirrors:
-
-```bash
-GENTOO_MIRRORS="${GENTOO_MIRRORS} https://mirror.nju.edu.cn/gentoo-zh https://distfiles.gentoozh.org"
-```
-
-`GENTOO_MIRRORS` is a list tried in order, so list both: if Nanjing University doesn't have a file, it falls back to the origin. Don't put `distfiles/` in the address, Portage appends it itself. Copy-paste-ready config, along with the current file count and sync time, is on [distfiles.gentoozh.org](https://distfiles.gentoozh.org/).
+**Binary packages (binhost)**: `emerge` takes a prebuilt package instead of compiling locally. The packages are signed, so besides adding the repo under `/etc/portage/binrepos.conf/` and appending `getbinpkg` to `FEATURES`, you first import the community signing key. It's x86-64 only for now, and not every package is covered.
 
 {{< callout type="info" >}}
-If you don't want certain distfiles to be mirrored (for copyright reasons, etc.), add `RESTRICT="mirror"` to the relevant ebuild.
+The setup steps for both, the mirror and origin addresses, the signing key, and the current package count and sync time are all documented on the [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) home page.
 {{< /callout >}}
 
-## Binary packages (binhost)
-
-The community now also provides **binary packages** for gentoo-zh, so you don't have to compile every overlay package yourself. It's x86-64 only for now, not every package is covered, and it's independent of the distfiles mirror above — set up whichever you need.
-
-Setup is three steps: import the signing key, add the repo under `/etc/portage/binrepos.conf/`, and append `getbinpkg` to `FEATURES`.
-
-{{< callout type="info" >}}
-Copy-paste-ready commands and config for each step, both the origin and the Nanjing University address, the signing key, and the current package count and sync time are all on **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)** — just follow it there.
-{{< /callout >}}
+For packagers: if a package should not be mirrored, for copyright or similar reasons, add `RESTRICT="mirror"` to its ebuild and the sync tool skips it.
 
 ## Using packages from the overlay
 
