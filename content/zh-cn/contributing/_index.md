@@ -6,8 +6,8 @@ description: "如何为 Gentoo-zh Overlay 与 Gentoo 中文社区网站做出贡
 欢迎参与 Gentoo 中文社区！
 贡献分为：
 
-- **Gentoo-zh Overlay 贡献**（软件包 / ebuild）——社区主线，也是[贡献者墙](https://gentoozh.org/contributors/)的来源（脚本每月抓取 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay) 提交 5 次以上者）。详见下方「Gentoo-zh Overlay 贡献指南」
-- **社区网站贡献**（文章 / 翻译 / 修正）——在 [gentoo-zh.github.io](https://github.com/gentoo-zh/gentoo-zh.github.io) 仓库，详见本页后半「社区网站贡献指南」
+- **Gentoo-zh Overlay 贡献**（软件包 / ebuild）——社区主线，也是[贡献者墙](https://gentoozh.org/contributors/)的来源（脚本每月抓取 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay) 提交 5 次以上者）。详见下方的 Gentoo-zh Overlay 贡献指南一节
+- **社区网站贡献**（文章 / 翻译 / 修正）——在 [gentoo-zh.github.io](https://github.com/gentoo-zh/gentoo-zh.github.io) 仓库，详见本页后半的社区网站贡献指南一节
 - **官方 Gentoo Wiki 翻译**（中文译者）——见[如何参与 Gentoo Wiki 的翻译工作](https://gentoozh.org/posts/2026-06-30-gentoo-wiki-translation/)
 
 ## Gentoo-zh Overlay 贡献指南
@@ -189,7 +189,7 @@ $category/$package: add $new_version, drop $old_version
 
 ### git 配置、签名与 rebase
 
-PR 的细节以官方文档为准（见下方「官方规范与参考」）；这里列出几条最常用的：
+PR 的细节以官方文档为准（见下方的官方规范与参考一节）；这里列出几条最常用的：
 
 - **身份**：先配好真实姓名与邮箱，提交署名时需要使用：
 
@@ -265,7 +265,7 @@ PR 的细节以官方文档为准（见下方「官方规范与参考」）；�
 
 ### 多语言支持
 
-- 界面字串翻译主要在 **gentoozh-theme 补丁包**的 `i18n/` 里（表现层）；本仓库的 `i18n/` 只放少量站点专属字串（如贡献者角色名）
+- 界面字符串翻译主要在 **gentoozh-theme 补丁包**的 `i18n/` 里（表现层）；本仓库的 `i18n/` 只放少量站点专属字符串（如贡献者角色名）
 - 默认语言为简体中文，位于站点根路径 `/`；正体中文位于 `/zh-tw/`；英文位于 `/en/`
 - 简繁转换由仓库内的 `sync_to_tw.sh` 脚本完成（见下文）
 
@@ -273,8 +273,8 @@ PR 的细节以官方文档为准（见下方「官方规范与参考」）；�
 
 表现层拆成了独立的补丁包模块 **[gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme)**（在 Hextra 之上叠加，仍跟随上游更新），本仓库不再放模板/样式源码：
 
-- 模板（`layouts/`，含首页 `home-bento`、贡献者页等）、站点样式（`assets/css/custom.css`，Gentoo 品牌紫等）、界面字串（`i18n/`）都在 gentoozh-theme 里
-- 站点通过 `config/_default/hugo.toml` 的 `[[module.imports]]` 引入它，并在 `go.mod` pin 版本
+- 模板（`layouts/`，含首页 `home-bento`、贡献者页等）、站点样式（`assets/css/custom.css`，Gentoo 品牌紫等）、界面字符串（`i18n/`）都在 gentoozh-theme 里
+- 站点通过 `config/_default/hugo.toml` 的 `[[module.imports]]` 引入它，并在 `go.mod` 固定版本
 - `static/`（`CNAME`、favicon、logo、og 图等）仍在本仓库
 - **改模板 / 样式 → 去 [gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme) 仓库；改内容 → 在本仓库**
 
@@ -291,7 +291,7 @@ emerge --ask www-apps/hugo dev-lang/go
 brew install hugo go
 ```
 
-> 注：Hugo 内置的 SCSS 转译器（LibSass）自 v0.153.0 起已弃用、未来会移除；届时需改用外部 [Dart Sass](https://gohugo.io/functions/css/sass/)（与 edition 无关、标准版也能用）。目前 extended 的内置转译器仍可用。
+> 注：Hugo 内置的 SCSS 转译器（LibSass）自 v0.153.0 起已弃用、未来会移除；届时需改用外部 [Dart Sass](https://gohugo.io/functions/css/sass/)（与是否 extended 无关，标准版也能用）。目前 extended 的内置转译器仍可用。
 
 Fork 并 clone 仓库（**无需** `git submodule`，模块会在构建时自动拉取）：
 
@@ -332,7 +332,7 @@ tags: ["tutorial"]
 
 可选的标签（`tags`，显示在文章列表与文章页的 `#标签`、链接到 `/tags/` 聚合页，首页文章卡片也会显示首个标签）：`tutorial`（教程）、`news`（新闻）、`announcement`（公告）、`website`（站务）。
 
-首页「最新文章」默认让教程类排前、公告类靠后；重大公告可在 front matter 加 `featured: true` 置顶到首页最前，事件过去后删掉即可。
+首页的最新文章列表默认让教程类排前、公告类靠后；重大公告可在 front matter 加 `featured: true` 置顶到首页最前，事件过去后删掉即可。
 
 写完简体版后，用脚本生成正体中文版（见下一节），正体版放在对应的 `content/zh-tw/posts/.../index.md`。
 
@@ -360,7 +360,7 @@ sudo apt install opencc        # Debian/Ubuntu
 
 ### 3. 文章署名与头像
 
-在文章 front matter 的 `authors` 用「映射」形式写明作者，Hextra 会在署名处显示头像 + 姓名 + 链接：
+在文章 front matter 的 `authors` 用映射形式写明作者，Hextra 会在署名处显示头像 + 姓名 + 链接：
 
 ```yaml
 authors:
@@ -373,7 +373,7 @@ authors:
 
 ### 4. 改进现有内容 / 技术改进
 
-错别字、过时信息、使用技巧、缺失的正体中文、英文翻译，看到了都欢迎随手修正。模板、样式、性能、功能等技术层面，也欢迎提改进。
+错别字、过时信息、使用技巧、缺失的正体中文、英文翻译，看到了都欢迎提交修正。模板、样式、性能、功能等技术层面，也欢迎提改进。
 
 > **贡献者列表（`content/*/contributors/`）由脚本自动维护**，抓取 [Gentoo-zh Overlay](https://github.com/gentoo-zh/overlay) 中提交 5 次以上者，显示提交次数并按提交量排序，每月自动更新（`scripts/update-contributors.py` + GitHub Actions）。**请勿手动编辑该目录**；首页贡献者展示也随之自动更新。
 
@@ -417,7 +417,7 @@ git commit -am "bump hextra"
 git tag vX.Y.Z          # 打个新版本
 ```
 
-然后回到**本站**仓库，把补丁包 pin 到新版本：
+然后回到**本站**仓库，把补丁包固定到新版本：
 
 ```bash
 hugo mod get github.com/gentoo-zh/gentoozh-theme@vX.Y.Z

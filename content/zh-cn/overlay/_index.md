@@ -14,7 +14,7 @@ overlay 仓库已迁移到组织仓库 [gentoo-zh/overlay](https://github.com/ge
 - **网络、开发工具等**：毕竟是 Gentoo 用户，谁手里没几个自己维护的包
 - **打好补丁的桌面 / 性能向内核**：cachyos-sources、xanmod、liquorix 这些
 
-还有部分是官方源暂时没人管的包，这边接着出新版。以及一些错误修复，开发者踩到 Bug，解决后第一时间把补丁推回源里。
+还有部分是官方源暂时没人管的包，这边接着出新版。以及一些错误修复，开发者踩到 Bug，解决后把补丁推回源里。
 
 只有一条规则：别弄坏别人的系统。每个 ebuild 在进源之前都得在它支持的架构上测过。
 
@@ -70,7 +70,7 @@ eselect repository add gentoo-zh git https://mirror.nju.edu.cn/git/gentoo-zh.git
 emerge --sync gentoo-zh
 ```
 
-已经添加过的，把 `/etc/portage/repos.conf/gentoo-zh.conf` 里的 `sync-uri` 改成上面任一地址即可。
+已经添加过的，把 `/etc/portage/repos.conf/gentoo-zh.conf` 里的 `sync-uri` 改成上面的地址即可。
 
 ### distfiles 缓存
 
@@ -102,7 +102,7 @@ GENTOO_MIRRORS="${GENTOO_MIRRORS} https://mirror.nju.edu.cn/gentoo-zh https://di
 
 ## 用 overlay 里的包
 
-gentoo-zh 的包**都是 `~arch`（测试）关键字、不收 stable**。已经在跑 `~amd64`（测试分支）的系统直接 `emerge` 即可；**稳定分支**的系统安装前要先为这些包接受测试关键字。
+gentoo-zh 的包**都是 `~arch`（测试）关键字、没有稳定关键字**。已经在跑 `~amd64`（测试分支）的系统直接 `emerge` 即可；**稳定分支**的系统安装前要先为这些包接受测试关键字。
 
 按需放行你要装的包（推荐，只接受用到的）：
 
@@ -111,7 +111,7 @@ echo "app-foo/bar ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
 emerge --ask app-foo/bar
 ```
 
-或放行整个 overlay（省事，但会一并引入更多测试包，自行取舍）：
+或放行整个 overlay（只需写一条，但会一并引入更多测试包，自行取舍）：
 
 ```bash
 echo "*/*::gentoo-zh ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh

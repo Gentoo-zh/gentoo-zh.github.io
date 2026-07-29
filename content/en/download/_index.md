@@ -2,7 +2,7 @@
 title: "Download"
 ---
 
-Before you install Gentoo, get your installation media sorted. The least hassle for newcomers is the Gentoo-zh Community's Live ISO; if you'd rather use the official media, pick the nearest mirror from the list below.
+Before you install Gentoo, prepare your installation media. For newcomers we recommend the Live ISO built by the Gentoo-zh Community; if you'd rather use the official media, pick the nearest mirror from the list below.
 
 {{< callout type="info" >}}
 **Apple Silicon Macs (M1 / M2)** can't use the standard amd64 images listed on this page — see [Installing Gentoo Linux on an Apple Silicon Mac](/posts/2025-10-02-gentoo-m-series-mac/).
@@ -10,7 +10,7 @@ Before you install Gentoo, get your installation media sorted. The least hassle 
 
 ## Gentoo-zh Community Live ISO {#live-iso}
 
-A **KDE Plasma 6 desktop Live ISO** put together by the Gentoo-zh Community — Chinese-ready out of the box, three languages to pick from (Simplified / Traditional / English), Chinese input methods (fcitx5 + rime). A good way to get a feel for a Chinese Gentoo desktop first.
+A **KDE Plasma 6 desktop Live ISO** put together by the Gentoo-zh Community — three languages to pick from (Simplified / Traditional / English) and Chinese input methods (fcitx5 + rime) by default. A good starting point for newcomers who want to try a Chinese Gentoo desktop.
 
 - **Download site**: <https://iso.gentoozh.org/> (served from Cloudflare R2 — global edge, no bandwidth limits)
 - **Repo**: <https://github.com/Gig-OS/Live-ISO> (build scripts and customizations)
@@ -29,10 +29,10 @@ A **KDE Plasma 6 desktop Live ISO** put together by the Gentoo-zh Community — 
 - **Boots in three languages** — pick Simplified / Traditional / English from the GRUB menu, and the desktop, Firefox, and input method all switch along with it.
 - **Multiple boot modes** — besides the normal boot, there's "copy to RAM" (loads the whole disk into memory and runs from there, so you can pull the USB stick and it runs faster) and a "safe graphics mode" fallback, all available in three languages.
 - **Chinese input methods: fcitx5 + rime** — Luna Pinyin (朙月拼音) by default; **right-click the input-method tray icon -> "Schema"** to switch to Zhuyin / Wubi86 / Cangjie / Cantonese Pinyin, and more.
-- **Open-source / proprietary GPU drivers** — nouveau works plug-and-play by default; for newer cards (RTX 20/30/40/50) that need hardware acceleration, pick the "proprietary NVIDIA" boot entry, but **disable Secure Boot in the BIOS first** (the driver is unsigned and won't load otherwise). For stubborn cards that won't light up, fall back to "safe graphics mode".
+- **Open-source / proprietary GPU drivers** — nouveau works plug-and-play by default; for newer cards (RTX 20/30/40/50) that need hardware acceleration, pick the "proprietary NVIDIA" boot entry, but **disable Secure Boot in UEFI first** (the driver is unsigned and won't load otherwise). For stubborn cards that won't light up, fall back to "safe graphics mode".
 - **Graphical installer (optional)** — double-clicking the "Install System" icon launches the Calamares graphical installer (it follows your chosen language) and clears up the live leftovers (boot-time autologin, etc.) after installing; for a proper install where you actually get to know the system, the official handbook is still the recommended route (see the notes below).
 - **ZFS root + native encryption + ZBM boot (advanced)** — on the installer's partitioning page you can choose **ZFS** as the filesystem; tick "Encrypt" to enable **ZFS native encryption** (aes-256-gcm, passphrase-unlocked), booted by **ZFSBootMenu** (GRUB can't read ZFS pools that use newer features / native encryption, so a ZFS root uses ZBM instead). The default filesystem is btrfs; xfs / ext4 / ZFS are all selectable on the partitioning page.
-- **Per-machine tuning** — once the system is installed, the `CPU_FLAGS_X86` compile flags are generated automatically based on your CPU.
+- **CPU_FLAGS_X86** — once the system is installed, these compile flags are generated automatically from your CPU.
 
 For the full feature list and configuration notes, see the **[mirror site's "About" page](https://iso.gentoozh.org/about.html)**.
 

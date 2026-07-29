@@ -7,15 +7,15 @@ Gentoo 换源分为两部分：
 - **Portage 树**：软件包的 ebuild 与元数据，推荐用 git 同步，也可以用 rsync 同步
 - **Distfiles**：软件包源码，走 HTTP，由 `make.conf` 的 `GENTOO_MIRRORS` 指定
 
-下面是各镜像站的**实测汇总表**，每个镜像站支持什么一目了然；具体配置方法见下方的配置教程。
+下面是各镜像站的**实测汇总表**，列出每个镜像站的 distfiles 地址和支持的同步方式；具体配置方法见下方的配置教程。
 
 {{< callout type="info" >}}
-**推荐组合**：用 **git** 同步 Portage 树（增量更新、快又稳）+ 就近的 **distfiles** 源。不确定填哪个，照表里离你近的地区选即可。
+**推荐组合**：用 **git** 同步 Portage 树（增量更新）+ 就近的 **distfiles** 源。不确定填哪个，照表里离你近的地区选即可。
 {{< /callout >}}
 
 ## 镜像总览
 
-所有节点均逐项实测，✓ = 实测可用。`distfiles 地址`即 `GENTOO_MIRRORS` 要填的值；git / rsync 的具体同步地址见下方教程。
+所有节点均逐项实测，✓ = 实测可用。distfiles 地址即 `GENTOO_MIRRORS` 要填的值；git / rsync 的具体同步地址见下方教程。
 
 | 镜像 | 地区 | distfiles 地址 | git | rsync |
 | --- | --- | --- | :-: | :-: |
@@ -90,7 +90,7 @@ emerge --sync
 {{% details title="使用 rsync 同步 Portage 树" %}}
 
 {{< callout type="warning" >}}
-多数镜像只提供 git / distfiles，并不提供 rsync 同步。下面这些是实测能列出 `gentoo-portage` 模块的镜像，可放心使用。
+多数镜像只提供 git / distfiles，并不提供 rsync 同步。下面这些镜像实测能列出 `gentoo-portage` 模块。
 {{< /callout >}}
 
 | 镜像 | 同步地址 |
@@ -117,7 +117,7 @@ auto-sync = yes
 
 {{% details title="Distfiles 配置（GENTOO_MIRRORS）" %}}
 
-在 `/etc/portage/make.conf` 中填入总览表里的 `distfiles 地址`，可填多个（Portage 按顺序尝试，前面的优先）：
+在 `/etc/portage/make.conf` 中填入总览表里的 distfiles 地址，可填多个（Portage 按顺序尝试，前面的优先）：
 
 ```bash
 GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo https://mirrors.tuna.tsinghua.edu.cn/gentoo https://mirrors.ustc.edu.cn/gentoo"
@@ -127,4 +127,4 @@ GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo https://mirrors.tuna.tsinghua
 
 {{% /details %}}
 
-官方完整列表见 [下载镜像](https://www.gentoo.org/downloads/mirrors/) 与 [rsync 镜像](https://www.gentoo.org/support/rsync-mirrors/)。社区 overlay 的换源见 [Overlay 页的「镜像加速」](/overlay/#国内镜像加速)。
+官方完整列表见 [下载镜像](https://www.gentoo.org/downloads/mirrors/) 与 [rsync 镜像](https://www.gentoo.org/support/rsync-mirrors/)。社区 overlay 的换源见 [Overlay 页的国内镜像加速一节](/overlay/#国内镜像加速)。
