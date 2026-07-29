@@ -13,7 +13,7 @@ Per the [official Gentoo news item](https://www.gentoo.org/support/news-items/20
 
 ## What this means
 
-- `eselect repository`, `layman` and friends keep working as usual
+- `eselect repository`, `layman` and similar tools keep working as usual
 - Gentoo no longer mirrors third-party repos; they now sync straight from upstream (GitHub)
 - Official repos (`::gentoo`, `::guru`, `::kde`, `::science`) are unaffected and still go through the mirrors
 

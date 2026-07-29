@@ -1,6 +1,6 @@
 ---
 title: "网站从 Jekyll 迁移至 Hugo"
-description: "2025 年接手维护后，把站点从 Jekyll 搬到了 Hugo——构建更快、部署更省心。这篇记一下为什么换、迁了哪些东西。"
+description: "2025 年接手维护后，把站点从 Jekyll 迁移到 Hugo——构建更快、部署更简单。这篇记录为什么换、迁了哪些内容。"
 date: 2025-11-18
 tags: ["announcement"]
 authors:
@@ -21,9 +21,9 @@ Jekyll 依赖 Ruby 环境，构建较慢，主题生态也不如以往活跃。H
 - Front matter 从 YAML 改为 TOML
 - 简繁双语并存（zh-CN / zh-TW）
 - 作者数据集中到 `data/authors/`
-- 部署改走 GitHub Actions，定期自动更新贡献者列表
+- 部署改用 GitHub Actions，定期自动更新贡献者列表
 
-> 注：以上是当年 Jekyll → Hugo 迁移时的结构。2026 年本站[迁移到 Hextra](/posts/2026-05-29-migrate-to-hextra/) 后已调整：front matter 统一为 YAML，内容按语言分目录（`content/zh-cn/`、`content/zh-tw/`，文件名均为 `index.md`），作者署名改用 front matter 的 map-form（不再使用 `data/authors/`）。
+> 注：以上是当年 Jekyll → Hugo 迁移时的结构。2026 年本站[迁移到 Hextra](/posts/2026-05-29-migrate-to-hextra/) 后已调整：front matter 统一为 YAML，内容按语言分目录（`content/zh-cn/`、`content/zh-tw/`，文件名均为 `index.md`），作者署名改用 front matter 中的 map 形式（不再使用 `data/authors/`）。
 
 ## 反馈
 

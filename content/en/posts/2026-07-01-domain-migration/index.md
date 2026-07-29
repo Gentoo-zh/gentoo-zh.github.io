@@ -32,7 +32,7 @@ The domain is the most important piece. Things have moved quickly these last two
 
 ## Why gentoozh.org
 
-The old domains came with compliance requirements. Standing up services like a forum, Matrix, or a download site meant going through a process that is hard for a volunteer project like ours to complete. gentoozh.org is an international domain, without that restriction, and has always been in our hands. This time [@zakkaus](https://github.com/zakkaus) will hand out management access for the domain and related services to the people responsible for each, so control doesn't get lost again.
+Because the old domains came with compliance requirements, standing up services like a forum, Matrix, or a download site meant going through a process that is hard for a volunteer project like ours to complete. gentoozh.org is an international domain, without that restriction, and has always been in our hands. This time [@zakkaus](https://github.com/zakkaus) will hand out management access for the domain and related services to the people responsible for each, so control doesn't get lost again.
 
 The zh in the domain comes from ISO 639, the code for the Chinese language. It identifies a language, not a country or any particular region. The cn, by contrast, is an ISO 3166 country code, and its scope is actually narrower. On top of that, gentoo-zh came from the old gentoo-tw and gentoo-china [when the two communities merged](https://code.google.com/archive/p/gentoo-taiwan/issues/2). archlinuxcn actually calls itself the "Arch Linux Chinese community" too; the cn there is just a name left over from history. People there have suggested switching to zh, but it's too big to change now. We don't carry that kind of baggage, so since we're changing it, we'll do it right.
 
@@ -40,9 +40,9 @@ The zh in the domain comes from ISO 639, the code for the Chinese language. It i
 
 By the way, the site has moved from GitHub Pages to Cloudflare Workers (static asset hosting), on the Workers Paid plan.
 
-- Static asset requests on Cloudflare are free and unlimited, which is easy on a community site.
+- Static asset requests on Cloudflare are free and unlimited.
 - GitHub Pages has a set of [soft limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits) (repo and site size, monthly bandwidth, build frequency, and so on), and once the site grows a bit they start to pinch.
-- Speed is about the same as GitHub Pages, but Workers Paid is more flexible: we control caching and response headers ourselves, and adding edge logic later is easy. Overall it works better and fits where the community is heading.
+- Speed is about the same as GitHub Pages, but Workers Paid is more flexible: we control caching and response headers ourselves, and adding edge logic later is easy.
 
 For site maintenance or bug reports, open an issue on [GitHub](https://github.com/Gentoo-zh/gentoo-zh.github.io), or email zakk@gentoozh.org.
 

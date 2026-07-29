@@ -1,6 +1,6 @@
 ---
 title: "網站從 Jekyll 遷移至 Hugo"
-description: "2025 年接手維護後，把網站從 Jekyll 搬到了 Hugo——建置更快、部署更省事。這篇記一下為什麼換、遷了哪些東西。"
+description: "2025 年接手維護後，把網站從 Jekyll 遷移到 Hugo——建置更快、部署更簡單。這篇記錄為什麼換、遷了哪些內容。"
 date: 2025-11-18
 tags: ["announcement"]
 authors:
@@ -13,7 +13,7 @@ authors:
 
 ## 為什麼換 Hugo
 
-Jekyll 依賴 Ruby 環境，建置較慢，主題生態也不如以往活躍。Hugo 是單一 Go 二進位制，建置速度快、部署簡單，原生支援多語言。主題選用 [Blowfish](https://blowfish.page/)。
+Jekyll 依賴 Ruby 環境，建置較慢，主題生態也不如以往活躍。Hugo 是單一 Go 二進位，建置速度快、部署簡單，原生支援多語言。主題選用 [Blowfish](https://blowfish.page/)。
 
 ## 遷移內容
 
@@ -21,9 +21,9 @@ Jekyll 依賴 Ruby 環境，建置較慢，主題生態也不如以往活躍。H
 - Front matter 從 YAML 改為 TOML
 - 簡繁雙語並存（zh-CN / zh-TW）
 - 作者資料集中到 `data/authors/`
-- 部署改走 GitHub Actions，定期自動更新貢獻者列表
+- 部署改用 GitHub Actions，定期自動更新貢獻者列表
 
-> 注：以上是當年 Jekyll → Hugo 遷移時的結構。2026 年本站[遷移到 Hextra](/posts/2026-05-29-migrate-to-hextra/) 後已調整：front matter 統一為 YAML，內容按語言分目錄（`content/zh-cn/`、`content/zh-tw/`，檔名均為 `index.md`），作者署名改用 front matter 的 map-form（不再使用 `data/authors/`）。
+> 注：以上是當年 Jekyll → Hugo 遷移時的結構。2026 年本站[遷移到 Hextra](/posts/2026-05-29-migrate-to-hextra/) 後已調整：front matter 統一為 YAML，內容按語言分目錄（`content/zh-cn/`、`content/zh-tw/`，檔名均為 `index.md`），作者署名改用 front matter 中的 map 形式（不再使用 `data/authors/`）。
 
 ## 反饋
 
