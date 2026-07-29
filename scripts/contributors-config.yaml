@@ -14,6 +14,9 @@ blocklist:
   - aieu
   # 自動化 bot，不計入貢獻者
   - dependabot[bot]
+  - gentoo-zh-bot
+  # 依維護者決定移除
+  - vitaly-zdanevich
 
 # 最小提交次數（默認值）
 min_commits: 5
