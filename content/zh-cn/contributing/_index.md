@@ -271,12 +271,12 @@ PR 的细节以官方文档为准（见下方的官方规范与参考一节）�
 
 ### 主题与资源
 
-表现层拆成了独立的补丁包模块 **[gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme)**（在 Hextra 之上叠加，仍跟随上游更新），本仓库不再放模板/样式源码：
+表现层拆成了独立的补丁包模块 **[gentoozh-theme](https://github.com/gentoo-zh/gentoozh-theme)**（在 Hextra 之上叠加，仍跟随上游更新），本仓库不再放模板/样式源码：
 
 - 模板（`layouts/`，含首页 `home-bento`、贡献者页等）、站点样式（`assets/css/custom.css`，Gentoo 品牌紫等）、界面字符串（`i18n/`）都在 gentoozh-theme 里
 - 站点通过 `config/_default/hugo.toml` 的 `[[module.imports]]` 引入它，并在 `go.mod` 固定版本
 - `static/`（`CNAME`、favicon、logo、og 图等）仍在本仓库
-- **改模板 / 样式 → 去 [gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme) 仓库；改内容 → 在本仓库**
+- **改模板 / 样式 → 去 [gentoozh-theme](https://github.com/gentoo-zh/gentoozh-theme) 仓库；改内容 → 在本仓库**
 
 ## 环境准备
 
