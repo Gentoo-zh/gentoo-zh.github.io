@@ -8,13 +8,13 @@ Overlay 是官方 Portage 樹之外的軟體來源——疊加上去，就能裝
 overlay 倉庫已遷移到組織倉庫 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay)，舊的 `microcai/gentoo-zh` 個人倉庫會 301 到新倉庫，建議在方便時更新到新 URL，詳見[公告與執行記錄](/posts/2026-07-02-gentoo-zh-repo-migration/)。
 {{< /callout >}}
 
-至今為止 gentoo-zh 已收錄了 490 個左右的軟體套件（準確數量以[倉庫](https://github.com/gentoo-zh/overlay)為準），可大致分為：
+這裡收錄的是中文使用者常用的軟體，490 多個包裡有 460 多個官方樹沒有（準確數量以[倉庫](https://github.com/gentoo-zh/overlay)為準）：
 
-- **中文 / CJK**：fcitx 輸入法和一大堆外掛、碼表（rime、chinese-addons 等），搜狗 / 萌娘 / zhwiki 拼音詞庫，中文字型，以及一些軟體的 CJK 修補
-- **網路、開發工具等**：畢竟是 Gentoo 使用者，誰手裡沒幾個自己維護的包
-- **打好修補的桌面 / 效能向核心**：cachyos-sources、xanmod、liquorix 這些
-
-還有部分是官方源暫時沒人管的包，這邊接著出新版。以及一些錯誤修復，開發者踩到 Bug，解決後把修補推回源裡。
+- **中文輸入與字型**：fcitx 輸入法、拼音詞庫、中文字型
+- **中國內陸常用應用**：微信、QQ、釘釘、WPS、飛書、網易雲音樂
+- **網路與代理工具**
+- **打好修補的桌面 / 效能向核心**：cachyos-sources、xanmod、liquorix
+- **開發與日常工具**：官方樹沒有、或者版本跟不上的包
 
 只有一條規則：別弄壞別人的系統。每個 ebuild 在進源之前都得在它支援的架構上測過。
 
