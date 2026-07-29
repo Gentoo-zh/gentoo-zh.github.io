@@ -9,11 +9,7 @@ authors:
     link: https://github.com/zakkaus
 ---
 
-过去一个月：162 个包升级到上游新版本，新增 60 个包，移除 38 个，5 个改名或换了分类。overlay 从 468 个包变成 490 个。
-
-{{< callout type="info" >}}
-同样的内容也作为 overlay 的新闻条目发布，`emerge --sync` 之后可以用 `eselect news read` 阅读。
-{{< /callout >}}
+过去一个月：162 个包出了新版本，新增 60 个包，移除 38 个，5 个改名或换了分类。overlay 从 468 个包变成 490 个。
 
 ## 改名与换分类
 
