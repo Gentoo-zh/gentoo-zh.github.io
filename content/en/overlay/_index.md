@@ -8,13 +8,13 @@ An overlay is a source of software outside the official Portage tree—layer it 
 The overlay repo has moved to the organization repo [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay). The old personal repo `microcai/gentoo-zh` now redirects (301) to the new one; update to the new URL when you get a chance. See the [announcement and record](/posts/2026-07-02-gentoo-zh-repo-migration/) for details.
 {{< /callout >}}
 
-By now gentoo-zh carries around 490 packages (the [repository](https://github.com/gentoo-zh/overlay) has the exact count), roughly in these categories:
+What it collects is software Chinese-speaking users need day to day. Of the 490-odd packages, more than 460 do not exist in the official tree at all (the [repository](https://github.com/gentoo-zh/overlay) has the exact count):
 
-- **Chinese / CJK**: the fcitx input methods plus a whole pile of plugins and input tables (rime, chinese-addons, etc.), Sogou / Moegirl / zhwiki pinyin dictionaries, Chinese fonts, and CJK patches for various software
-- **Networking, dev tools, and the like**: we're Gentoo users, after all, and who doesn't have a few packages of their own to maintain
-- **Patched desktop / performance kernels**: cachyos-sources, xanmod, liquorix, and friends
-
-Some are packages the official repos have nobody looking after right now, so we keep shipping new versions here. There are also bug fixes: when a developer hits a bug, the fix gets pushed straight back into the repo.
+- **Chinese input methods and fonts**: fcitx, pinyin dictionaries, Chinese fonts
+- **Applications popular in China**: WeChat, QQ, DingTalk, WPS Office, Feishu, NetEase Cloud Music
+- **Networking and proxy tools**
+- **Patched desktop / performance kernels**: cachyos-sources, xanmod, liquorix
+- **Development and everyday tools**: packages the official tree lacks or has fallen behind on
 
 One rule: don't break other people's systems. Every ebuild gets tested on the arches it supports before it goes in.
 
