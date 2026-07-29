@@ -10,7 +10,7 @@ title: "Pastebin"
 
 ## 网页
 
-打开 [paste.gentoozh.org](https://paste.gentoozh.org),粘贴或把文件拖进去,选好高亮和保留时间,提交拿链接。
+打开 [paste.gentoozh.org](https://paste.gentoozh.org),粘贴或把文件拖进去,选好高亮和保留时间,提交后得到链接。
 
 ## 命令行
 
@@ -20,7 +20,7 @@ title: "Pastebin"
 mkdir -p ~/.local/bin && curl -fsSL https://gentoozh.org/gzpaste.sh -o ~/.local/bin/gzpaste && chmod +x ~/.local/bin/gzpaste
 ```
 
-贴命令输出(管道进去):
+贴命令输出(通过管道):
 
 ```bash
 emerge --info | gzpaste                    # 系统信息,求助必贴
@@ -35,7 +35,7 @@ gzpaste /etc/portage/package.use/00-desktop                     # USE 设置
 gzpaste /var/tmp/portage/app-text/gzpaste-0.1.3/temp/build.log  # 构建失败的日志
 ```
 
-Gentoo 也可以走 overlay:先加 [gentoo-zh overlay](/overlay/),再:
+Gentoo 也可以用 overlay:先加 [gentoo-zh overlay](/overlay/),再:
 
 ```bash
 emerge app-text/gzpaste
@@ -45,25 +45,25 @@ emerge app-text/gzpaste
 
 | 选项 | 作用 |
 | --- | --- |
-| `-e, --ext EXT` | 语法高亮语言,扩展名或文件名(见下);不给就不高亮 |
+| `-e, --ext EXT` | 语法高亮语言,扩展名或文件名(见下);不指定则不高亮 |
 | `-x, --expires 秒` | 多少秒后过期 |
 | `-b, --burn` | 阅后即焚,第一次打开后删除 |
 | `-p, --password 密码` | 加密,读取时带 `wastebin-password` 头 |
 | `-r, --raw` | 输出 `/raw/` 纯文本链接 |
 | `-m, --md` | 输出 `/md/` Markdown 渲染链接 |
 | `-o, --owner` | 连 owner 一起输出(之后删除要用) |
-| `-v, --verbose` | 进度打到 stderr(URL 仍在 stdout) |
+| `-v, --verbose` | 进度输出到 stderr(URL 仍在 stdout) |
 | `-h, --help` | 显示帮助 |
 | `-V, --version` | 显示版本 |
 | `del <id> <owner>` | 删除一份 paste |
 
-`gzpaste -h` 也一样。
+`gzpaste -h` 输出的内容相同。
 
 {{% /details %}}
 
 {{% details closed="true" title="高亮语言(178 种)" %}}
 
-`-e` 的值是扩展名或文件名,网页表单里也能下拉选:
+`-e` 的值是扩展名或文件名,网页表单的下拉列表里也能选:
 
 ```text
 adb                haml               rails
@@ -148,7 +148,7 @@ curl -fsSL https://gentoozh.org/gzpaste.sh | sh -s -- 文件
 
 {{% details closed="true" title="不装 gzpaste?原始 curl" %}}
 
-gzpaste 本身只要 curl。手搓的话,需要安装 [jq](https://github.com/jqlang/jq/wiki/Installation):
+gzpaste 本身只要 curl。手动实现则需要安装 [jq](https://github.com/jqlang/jq/wiki/Installation):
 
 ```bash
 echo "内容" | jq -Rs '{text: .}' \

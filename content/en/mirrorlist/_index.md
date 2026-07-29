@@ -7,15 +7,15 @@ Switching Gentoo's sources happens in two parts:
 - **Portage tree**: the ebuilds and metadata for packages. Sync with git (recommended), or use rsync.
 - **Distfiles**: the package source tarballs, served over HTTP and set by `GENTOO_MIRRORS` in `make.conf`.
 
-Below is a **tested summary table** showing at a glance what each mirror supports; the per-method config is in the collapsible tutorials further down.
+Below is a **tested summary table** listing each mirror's distfiles URL and the sync methods it supports; the per-method config is in the collapsible tutorials further down.
 
 {{< callout type="info" >}}
-**Recommended combo**: sync the Portage tree over **git** (incremental updates, fast and stable) plus a nearby **distfiles** mirror. If you're not sure what to put, just pick whichever region in the table is closest to you.
+**Recommended setup**: sync the Portage tree over **git** (incremental updates) plus a nearby **distfiles** mirror. If you're not sure what to put, just pick whichever region in the table is closest to you.
 {{< /callout >}}
 
 ## Overview
 
-Every node has been individually tested; ✓ = verified working. The `distfiles URL` is the value you put in `GENTOO_MIRRORS`; the exact git / rsync sync URLs are in the tutorials below.
+Every node has been individually tested; ✓ = verified working. The distfiles URL is the value you put in `GENTOO_MIRRORS`; the exact git / rsync sync URLs are in the tutorials below.
 
 | Mirror | Region | distfiles URL | git | rsync |
 | --- | --- | --- | :-: | :-: |
@@ -90,7 +90,7 @@ emerge --sync
 {{% details title="Sync the Portage tree with rsync" %}}
 
 {{< callout type="warning" >}}
-Most mirrors only offer git / distfiles, not rsync sync. The ones below are tested to list the `gentoo-portage` module, so they're safe to use.
+Most mirrors only offer git / distfiles, not rsync sync. The mirrors below are tested and do list the `gentoo-portage` module.
 {{< /callout >}}
 
 | Mirror | Sync URL |
@@ -117,7 +117,7 @@ Then run `emerge --sync`.
 
 {{% details title="Distfiles (GENTOO_MIRRORS)" %}}
 
-In `/etc/portage/make.conf`, fill in the `distfiles URL` from the overview table. You can list several (Portage tries them in order, with the earlier ones taking priority):
+In `/etc/portage/make.conf`, fill in the distfiles URL from the overview table. You can list several (Portage tries them in order, with the earlier ones taking priority):
 
 ```bash
 GENTOO_MIRRORS="https://mirrors.bfsu.edu.cn/gentoo https://mirrors.tuna.tsinghua.edu.cn/gentoo https://mirrors.ustc.edu.cn/gentoo"
@@ -127,4 +127,4 @@ Once both Portage and Distfiles are set up, run `emerge --sync` to update.
 
 {{% /details %}}
 
-For the full official lists, see [Download mirrors](https://www.gentoo.org/downloads/mirrors/) and [rsync mirrors](https://www.gentoo.org/support/rsync-mirrors/). For switching the community overlay's source, see ["Mirror acceleration" on the Overlay page](/overlay/#mirrors-for-mainland-china).
+For the full official lists, see [Download mirrors](https://www.gentoo.org/downloads/mirrors/) and [rsync mirrors](https://www.gentoo.org/support/rsync-mirrors/). For switching the community overlay's source, see [Mirrors for mainland China on the Overlay page](/overlay/#mirrors-for-mainland-china).

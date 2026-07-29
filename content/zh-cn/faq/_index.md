@@ -7,15 +7,15 @@ description: "Gentoo 中文社区新手常见问题：从哪开始、Overlay 与
 
 {{% details closed="true" title="我是新手，该从哪开始？用官方 Gentoo 还是社区 Live ISO？" %}}
 
-- **想从零装一套、彻底搞懂**：跟着 [Gentoo 官方 Handbook（中文）](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/zh-cn) 走最稳。
-- **想快速上手、图省事**：用社区定制的 [KDE 桌面 Live ISO](/download/#live-iso)，开箱即用、自带中文环境。
+- **想从零装一套、彻底搞懂**：照 [Gentoo 官方 Handbook（中文）](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/zh-cn) 一步步装。
+- **想快速上手、少花时间配置**：用社区定制的 [KDE 桌面 Live ISO](/download/#live-iso)，开箱即用、自带中文环境。
 - 装好系统后再 [添加 gentoo-zh Overlay](/overlay/)，就能装到官方源里没有的中文 / CJK 等软件包。
 
 {{% /details %}}
 
 {{% details closed="true" title="gentoo-zh Overlay 和官方 Portage 源是什么关系？" %}}
 
-Overlay 是叠加在官方 Portage 树之上的额外软件来源，官方源没有的包（中文输入法、字体、词库，以及跟进新版、打了补丁的包）都放在这里。注意 gentoo-zh 的包都是 `~arch`（测试）关键字、不收 stable，稳定系统上不能直接装，怎么接受测试关键字再安装见 [Overlay 页](/overlay/)。
+Overlay 是叠加在官方 Portage 树之上的额外软件来源，官方源没有的包（中文输入法、字体、词库，以及跟进新版、打了补丁的包）都放在这里。注意 gentoo-zh 的包只有 `~arch`（测试）关键字，没有 stable 关键字，所以稳定系统上不能直接装；接受测试关键字后再安装的方法见 [Overlay 页](/overlay/)。
 
 {{% /details %}}
 

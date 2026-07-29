@@ -14,12 +14,12 @@ slug: "changelog"
 - [Overlay 页](/overlay/)新增**二进制包（binhost）**一节：说明目前只有 x86-64、并非每个包都有，配置的三步与可复制的命令、地址、签名公钥和实时的包数量统一引到 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/)；distfiles 一节的 `GENTOO_MIRRORS` 改成同时列出镜像与源站，并修正 git 换源示例里残留的旧镜像地址
 - 新增公告 **[Overlay 软件包清理、改名与批量更新](/posts/2026-07-29-overlay-package-cleanup/)**：过去一个月升级 162 个包、新增 60 个、移除 38 个、改名或换分类 5 个，overlay 从 468 个包变成 490 个；文中列出改名清单、移除清单与各自的处理办法
 - **Live ISO 下载站改用 [iso.gentoozh.org](https://iso.gentoozh.org/)**：站点服务的是 Live ISO 下载，不是 Gentoo 的 portage / distfiles 镜像（那些在[镜像列表](/mirrorlist/)页），原来的 mirror 名字容易误解；旧地址 mirror.gentoozh.org 继续可用，书签和已有链接不失效
-- **社区 Pastebin [paste.gentoozh.org](https://paste.gentoozh.org) 上线**（基于 [wastebin](https://github.com/matze/wastebin)）：贴代码 / 日志用，支持网页、命令行（curl）与 raw 链接；顶栏「基础设施」菜单和 [Pastebin 使用说明](/paste/) 已加入口
-- [关于页](/about/)补上社区在 **Gentoo Wiki** 的页面链接（[User:Gentoo-zh](https://wiki.gentoo.org/wiki/User:Gentoo-zh)），并加入结构化数据 `sameAs`
+- **社区 Pastebin [paste.gentoozh.org](https://paste.gentoozh.org) 上线**（基于 [wastebin](https://github.com/matze/wastebin)）：贴代码 / 日志用，支持网页、命令行（curl）与 raw 链接；顶栏的基础设施菜单和 [Pastebin 使用说明](/paste/) 已加入口
+- [关于页](/about/)补上社区在 **Gentoo Wiki** 的页面链接（[Gentoo-zh](https://wiki.gentoo.org/wiki/Gentoo-zh/zh-cn)），并加入结构化数据 `sameAs`
 - 站点维护与 CI：加固 CI、升级依赖，GitHub Actions 升到最新大版本（checkout v7、setup-node/go/python v6，仍按 SHA 钉版），并做了一轮站点核对清理
 - **社区主域名迁往 [gentoozh.org](https://gentoozh.org/)**：旧域名（gentoo.org.cn、gentoocn.org）全部 301 永久跳转，书签与已有链接不失效，建议尽快更新；详见[迁移公告](/posts/2026-07-01-domain-migration/)
 - **gentoo-zh overlay 仓库迁到组织仓库 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay)**：旧的 `microcai/gentoo-zh` 会 301 到新仓库，已添加的用户请把同步源更新到新 URL，详见[仓库迁移公告与执行记录](/posts/2026-07-02-gentoo-zh-repo-migration/)
-- **社区论坛 [forum.gentoozh.org](https://forum.gentoozh.org/) 上线**（Discourse，简繁双语）：适合发帖、提问和长期讨论；首页「加入社区」与[关于页](/about/)已加入口
+- **社区论坛 [forum.gentoozh.org](https://forum.gentoozh.org/) 上线**（Discourse，简繁双语）：适合发帖、提问和长期讨论；首页的加入社区一节与[关于页](/about/)已加入口
 - **官网托管迁到 Cloudflare Workers**：从 GitHub Pages 迁到 Workers 静态资源托管（免费不限量、全球边缘节点），见[迁移文的补充说明](/posts/2026-07-01-domain-migration/)
 - [下载页](/download/#live-iso)与 [Overlay 页](/overlay/)文案更新：下载页整理登录凭据、虚拟机 AVX2 提示与镜像站清单；Overlay 页重排软件包分类、把两种添加方式收进折叠块、补上国内 git / distfiles 换源地址
 - 英文界面站名统一为 **Gentoo-zh Community**
@@ -36,14 +36,14 @@ slug: "changelog"
 
 ## 2026 年 5 月
 
-- 项目结构调整：把表现层（主题）抽成独立的 Hextra 补丁包 [gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme)，本仓库只留内容与配置，更清爽、也便于跟随上游 Hextra 更新
-- 首页改版：重新梳理视觉主次（大标题做锚点、主操作更突出），主色统一为 Gentoo 品牌紫，「最新文章」改为优先展示技术内容
-- 贡献指南重写「为 gentoo-zh Overlay 贡献」一节：依官方 Gentoo ebuild 仓库规范梳理完整提交流程（EAPI、`metadata.xml`、thin Manifest、`~arch` 测试、`pkgdev`/`pkgcheck`、PR 与 CI），并补 nvchecker 版本跟进；区分 Overlay 贡献（计入贡献者墙）与网站贡献，页面排版改用原生 callout / 折叠块，顶栏新增「贡献指南」入口
+- 项目结构调整：把表现层（主题）抽成独立的 Hextra 补丁包 [gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme)，本仓库只留内容与配置，便于跟随上游 Hextra 更新
+- 首页改版：重新梳理视觉主次（大标题做锚点、主操作更突出），主色统一为 Gentoo 品牌紫，最新文章一栏改为优先展示技术内容
+- 贡献指南重写 gentoo-zh Overlay 贡献一节：依官方 Gentoo ebuild 仓库规范梳理完整提交流程（EAPI、`metadata.xml`、thin Manifest、`~arch` 测试、`pkgdev`/`pkgcheck`、PR 与 CI），并补 nvchecker 版本跟进；区分 Overlay 贡献（计入贡献者墙）与网站贡献，页面排版改用原生 callout / 折叠块，顶栏新增贡献指南入口
 - 下载站接入 mirror.gentoozh.org，替代已下线的 iso.gig-os.org；下载 / 镜像列表 / Overlay 三页重写，Live ISO 登录凭据支持点击复制
 - 镜像同步源说明：Gentoo 官方自 2025-10-30 起停止为第三方仓库（含 gentoo-zh）提供缓存镜像，overlay 已改为直连 GitHub 上游同步；之前添加过的用户需更新同步源，详见[公告](/posts/2025-10-07-thirdparty-repo-mirror-removal/)
 - **网站主题从 Blowfish 迁移到 Hextra**（v0.12.3，基于 Hugo 0.162.1）：重做首页 bento 布局、整理顶栏导航、文章改用原生 `tags` 分类，新增首页 RSS 订阅按钮与社交分享图；详见[迁移公告](/posts/2026-05-29-migrate-to-hextra/)
-- 下载页突出「中文社区定制 KDE 桌面 Live ISO」，方便新手快速上手
-- 加载优化：贡献者头像按显示尺寸自动缩放（首页图片体积大幅下降），动画尊重「减少动态效果」偏好
+- 下载页突出中文社区定制的 KDE 桌面 Live ISO，方便新手快速上手
+- 加载优化：贡献者头像按显示尺寸自动缩放（首页图片体积大幅下降），动画尊重减少动态效果的偏好设置
 - 贡献者自动更新改为每月一次，并在更新时清理已下线贡献者与旧头像，控制仓库体积
 - 全站清理与贡献者自动更新脚本的稳定性强化
 

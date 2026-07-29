@@ -7,8 +7,8 @@ The questions newcomers ask most.
 
 {{% details closed="true" title="I'm new here. Where do I start? Official Gentoo or the community Live ISO?" %}}
 
-- **Want to build everything from scratch and really understand it**: following the [official Gentoo Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation) is the safest bet.
-- **Want to get going fast and skip the hassle**: grab the community's [KDE desktop Live ISO](/download/#live-iso) — out-of-the-box, with a Chinese environment already set up.
+- **Want to build everything from scratch and really understand it**: work through the [official Gentoo Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation) step by step.
+- **Want to get going fast, with less configuration**: grab the community's [KDE desktop Live ISO](/download/#live-iso) — out-of-the-box, with a Chinese environment already set up.
 - Once your system is up, [add the gentoo-zh overlay](/overlay/) to pull in packages the official tree doesn't carry, like Chinese / CJK software.
 
 {{% /details %}}

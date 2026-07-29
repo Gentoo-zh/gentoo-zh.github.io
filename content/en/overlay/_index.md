@@ -70,7 +70,7 @@ eselect repository add gentoo-zh git https://mirror.nju.edu.cn/git/gentoo-zh.git
 emerge --sync gentoo-zh
 ```
 
-If you've already added it, just change the `sync-uri` in `/etc/portage/repos.conf/gentoo-zh.conf` to either address above.
+If you've already added it, just change the `sync-uri` in `/etc/portage/repos.conf/gentoo-zh.conf` to the address above.
 
 ### distfiles cache
 
@@ -111,7 +111,7 @@ echo "app-foo/bar ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
 emerge --ask app-foo/bar
 ```
 
-Or allow the whole overlay (convenient, but it pulls in a lot more testing packages along the way, so it's your call):
+Or allow the whole overlay (convenient, but it pulls in a lot more testing packages, so it's your call):
 
 ```bash
 echo "*/*::gentoo-zh ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh

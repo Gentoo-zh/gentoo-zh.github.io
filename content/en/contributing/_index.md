@@ -3,7 +3,7 @@ title: "Contributing Guide"
 description: "How to contribute to the Gentoo-zh Overlay and the Gentoo-zh Community website"
 ---
 
-Welcome to the Gentoo-zh Community! Contributions come in a few flavours:
+Welcome to the Gentoo-zh Community! There are a few ways to contribute:
 
 - **Contribute to the Gentoo-zh Overlay** (packages / ebuilds) — the main community track, and the source of the [contributor wall](/contributors/) (a script pulls everyone with 5+ commits to [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay) every month). See "Gentoo-zh Overlay Contributing Guide" below.
 - **Contribute to the community website** (articles / translations / fixes) — lives in the [gentoo-zh.github.io](https://github.com/gentoo-zh/gentoo-zh.github.io) repo. See "Community Website Contributing Guide" in the second half of this page.
@@ -186,7 +186,7 @@ $category/$package: add $new_version, drop $old_version
 
 ### Keeping up with upstream releases (nvchecker)
 
-The repo uses [nvchecker](https://github.com/lilydjwg/nvchecker) to check each package against its upstream version every day (configured in `.github/workflows/overlay.toml`). When a new release shows up, it automatically opens or updates a [GitHub issue](https://github.com/gentoo-zh/overlay/issues) for it — **if you don't know where to start, grabbing a version-bump issue is the easiest way in.** When you add a new package, add an nvchecker rule for it in `overlay.toml` too (spelling out where its upstream version comes from), so it gets tracked as well.
+The repo uses [nvchecker](https://github.com/lilydjwg/nvchecker) to check each package against its upstream version every day (configured in `.github/workflows/overlay.toml`). When a new release shows up, it automatically opens or updates a [GitHub issue](https://github.com/gentoo-zh/overlay/issues) for it — **if you don't know where to start, picking up a version-bump issue is a good way in.** When you add a new package, add an nvchecker rule for it in `overlay.toml` too (spelling out where its upstream version comes from), so it gets tracked as well.
 
 ### git config, signing and rebase
 
@@ -374,7 +374,7 @@ authors:
 
 ### 4. Improving existing content / technical improvements
 
-Typos, outdated info, usage tips, missing Traditional Chinese, English translations — spot any and fix them on the spot. Improvements on the technical side — templates, styles, performance, features — are welcome too.
+Typos, outdated info, usage tips, missing Traditional Chinese, English translations — spot any and send a fix. Improvements on the technical side — templates, styles, performance, features — are welcome too.
 
 > **The contributor lists (`content/*/contributors/`) are maintained automatically by a script.** It pulls everyone with 5+ commits to the [Gentoo-zh Overlay](https://github.com/gentoo-zh/overlay), shows their commit counts, sorts by commit volume, and updates monthly (`scripts/update-contributors.py` + GitHub Actions). **Do not edit that directory by hand**; the homepage contributor showcase updates along with it automatically.
 

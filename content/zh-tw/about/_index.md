@@ -15,7 +15,7 @@ title: "關於"
 
 社群**論壇**在 [forum.gentoozh.org](https://forum.gentoozh.org/)，適合發帖、提問和長期討論。
 
-社群在 Gentoo Wiki 上的頁面：[User:Gentoo-zh](https://wiki.gentoo.org/wiki/User:Gentoo-zh)。
+社群在 Gentoo Wiki 上的頁面：[Gentoo-zh](https://wiki.gentoo.org/wiki/Gentoo-zh/zh-cn)。
 
 加入**主群**後，下面其他群全部免去驗證：
 
@@ -43,7 +43,7 @@ title: "關於"
 
 ## 本社群網站目標
 
-對各種相關資源進行整合，把 Gentoo 使用者引導到一起交流，給新手解決問題的途徑，讓老手交流相關技術，降低 Gentoo 入門門檻。
+整合各種相關資源，把 Gentoo 使用者引導到一起交流，給新手解決問題的途徑，讓老手交流相關技術，降低 Gentoo 入門門檻。
 
 ## 關於網站語言
 
@@ -53,7 +53,7 @@ title: "關於"
 
 ### 為什麼叫 zh
 
-名字裡的 zh 來自 ISO 639，是中文這門語言的代碼，認的是語言，而不是國家或某個特定地區。而 cn 是 ISO 3166 的國家代碼，範圍反而更窄。況且 gentoo-zh 就是當年的 gentoo-tw 和 gentoo-china [兩岸社群合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)來的。archlinuxcn 其實也自稱「Arch Linux 中文社群」，cn 只是歷史留下來的叫法，社群裡也有人提過換成 zh，只是體量太大改不動。
+名字裡的 zh 來自 ISO 639，是中文這門語言的代碼，認的是語言，而不是國家或某個特定地區。而 cn 是 ISO 3166 的國家代碼，範圍反而更窄。況且 gentoo-zh 就是當年的 gentoo-tw 和 gentoo-china [兩岸社群合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)來的。archlinuxcn 其實也自稱 Arch Linux 中文社群，cn 只是歷史留下來的叫法，社群裡也有人提過換成 zh，只是體量太大改不動。
 
 ### 英文
 

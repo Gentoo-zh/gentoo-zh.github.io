@@ -6,8 +6,8 @@ description: "如何為 Gentoo-zh Overlay 與 Gentoo 中文社群網站做出貢
 歡迎參與 Gentoo 中文社群！
 貢獻分為：
 
-- **Gentoo-zh Overlay 貢獻**（軟體套件 / ebuild）——社群主線，也是[貢獻者牆](https://gentoozh.org/contributors/)的來源（指令碼每月抓取 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay) 提交 5 次以上者）。詳見下方「Gentoo-zh Overlay 貢獻指南」
-- **社群網站貢獻**（文章 / 翻譯 / 修正）——在 [gentoo-zh.github.io](https://github.com/gentoo-zh/gentoo-zh.github.io) 倉庫，詳見本頁後半「社群網站貢獻指南」
+- **Gentoo-zh Overlay 貢獻**（軟體套件 / ebuild）——社群主線，也是[貢獻者牆](https://gentoozh.org/contributors/)的來源（指令碼每月抓取 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay) 提交 5 次以上者）。詳見下方的 Gentoo-zh Overlay 貢獻指南一節
+- **社群網站貢獻**（文章 / 翻譯 / 修正）——在 [gentoo-zh.github.io](https://github.com/gentoo-zh/gentoo-zh.github.io) 倉庫，詳見本頁後半的社群網站貢獻指南一節
 - **官方 Gentoo Wiki 翻譯**（中文譯者）——見[如何參與 Gentoo Wiki 的翻譯工作](https://gentoozh.org/posts/2026-06-30-gentoo-wiki-translation/)
 
 ## Gentoo-zh Overlay 貢獻指南
@@ -54,7 +54,7 @@ cd gentoo-zh
 1. **放對位置**：`<category>/<package>/<package>-<version>.ebuild`。`category` 取官方分類（繼承自 `::gentoo` 的 `profiles/categories`，如 `app-misc`、`dev-libs`、`net-im`），目錄名、檔名、版本號按官方命名規則。
 2. **寫 ebuild**：用現行的 **`EAPI=9`**（EAPI=8 是上一代，樹裡老包多數還是 8，但新包請直接上 9；與 8 的差異見下方摺疊）。標準兩行版權頭用範圍式年份，與官方樹一致：`# Copyright 1999-2026 Gentoo Authors` + GPL-2 宣告。填好 `DESCRIPTION`、`HOMEPAGE`、`SRC_URI`、`LICENSE`、`SLOT`、`IUSE`，並按用途分清依賴：`DEPEND`（編譯期標頭檔案 / 庫）、`RDEPEND`（執行期）、`BDEPEND`（在**建置主機**上跑的工具，如 pkgconfig、gettext）、`IDEPEND`（僅安裝階段 `pkg_*` 用到的工具）。
 3. **KEYWORDS 只用測試關鍵字**（`~amd64`、`~arm64` 等）——**本倉庫不收 stable 關鍵字**；只支援特定架構的包用 `-* ~amd64` 這種寫法排除其餘。
-4. **寫 `metadata.xml`**：每個包都要有，宣告維護者，並給每個**區域性 USE 旗標**寫用途說明（全域性旗標已在中央 `use.desc` 描述、無需重複；官方規範要求，`pkgcheck` 會查）。
+4. **寫 `metadata.xml`**：每個包都要有，宣告維護者，並給每個**區域性 USE 旗標**寫用途說明（全域旗標已在中央 `use.desc` 描述、無需重複；官方規範要求，`pkgcheck` 會查）。
 5. **生成 Manifest**：`pkgdev manifest`。本倉庫用 thin manifest（`thin-manifests = true`），`Manifest` 只記 distfile 校驗（BLAKE2B/SHA512），ebuild 完整性交給 git。
 6. **本地測試建置**：`ebuild <檔案> clean install` 或 `emerge`，並在它 `KEYWORDS` 宣告的**每個架構上都實測**——沒測過就別宣告支援。
 7. **QA 自查**：`pkgcheck scan --commits --net`（`--commits` 只查你這幾個提交改動的內容，`--net` 允許聯網檢查如 `SRC_URI` 是否還能下；CI 也會另跑 `pkgcheck`）。
@@ -108,7 +108,7 @@ src_install() {
 }
 ```
 
-`app-misc/foo/metadata.xml`（`nls` 是全域性旗標不必寫，`examples` 是區域性旗標必須寫說明）：
+`app-misc/foo/metadata.xml`（`nls` 是全域旗標不必寫，`examples` 是區域性旗標必須寫說明）：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -189,7 +189,7 @@ $category/$package: add $new_version, drop $old_version
 
 ### git 配置、簽名與 rebase
 
-PR 的細節以官方文件為準（見下方「官方規範與參考」）；這裡列出幾條最常用的：
+PR 的細節以官方文件為準（見下方的官方規範與參考一節）；這裡列出幾條最常用的：
 
 - **身份**：先配好真實姓名與信箱，提交署名時需要使用：
 
@@ -274,7 +274,7 @@ PR 的細節以官方文件為準（見下方「官方規範與參考」）；�
 表現層拆成了獨立的修補包模組 **[gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme)**（在 Hextra 之上疊加，仍跟隨上游更新），本倉庫不再放模板/樣式原始碼：
 
 - 模板（`layouts/`，含首頁 `home-bento`、貢獻者頁等）、網站樣式（`assets/css/custom.css`，Gentoo 品牌紫等）、介面字串（`i18n/`）都在 gentoozh-theme 裡
-- 網站透過 `config/_default/hugo.toml` 的 `[[module.imports]]` 引入它，並在 `go.mod` pin 版本
+- 網站透過 `config/_default/hugo.toml` 的 `[[module.imports]]` 引入它，並在 `go.mod` 固定版本
 - `static/`（`CNAME`、favicon、logo、og 圖等）仍在本倉庫
 - **改模板 / 樣式 → 去 [gentoozh-theme](https://github.com/Gentoo-zh/gentoozh-theme) 倉庫；改內容 → 在本倉庫**
 
@@ -291,7 +291,7 @@ emerge --ask www-apps/hugo dev-lang/go
 brew install hugo go
 ```
 
-> 注：Hugo 內建的 SCSS 轉譯器（LibSass）自 v0.153.0 起已棄用、未來會移除；屆時需改用外部 [Dart Sass](https://gohugo.io/functions/css/sass/)（與 edition 無關、標準版也能用）。目前 extended 的內建轉譯器仍可用。
+> 注：Hugo 內建的 SCSS 轉譯器（LibSass）自 v0.153.0 起已棄用、未來會移除；屆時需改用外部 [Dart Sass](https://gohugo.io/functions/css/sass/)（與是否 extended 無關，標準版也能用）。目前 extended 的內建轉譯器仍可用。
 
 Fork 並 clone 倉庫（**無需** `git submodule`，模組會在建置時自動拉取）：
 
@@ -332,7 +332,7 @@ tags: ["tutorial"]
 
 可選的標籤（`tags`，顯示在文章列表與文章頁的 `#標籤`、連結到 `/tags/` 聚合頁，首頁文章卡片也會顯示首個標籤）：`tutorial`（教學）、`news`（新聞）、`announcement`（公告）、`website`（站務）。
 
-首頁「最新文章」預設讓教學類排前、公告類靠後；重大公告可在 front matter 加 `featured: true` 置頂到首頁最前，事件過去後刪掉即可。
+首頁的最新文章列表預設讓教學類排前、公告類靠後；重大公告可在 front matter 加 `featured: true` 置頂到首頁最前，事件過去後刪掉即可。
 
 寫完簡體版後，用指令碼生成正體中文版（見下一節），正體版放在對應的 `content/zh-tw/posts/.../index.md`。
 
@@ -360,7 +360,7 @@ sudo apt install opencc        # Debian/Ubuntu
 
 ### 3. 文章署名與頭像
 
-在文章 front matter 的 `authors` 用「對映」形式寫明作者，Hextra 會在署名處顯示頭像 + 姓名 + 連結：
+在文章 front matter 的 `authors` 用對映形式寫明作者，Hextra 會在署名處顯示頭像 + 姓名 + 連結：
 
 ```yaml
 authors:
@@ -373,7 +373,7 @@ authors:
 
 ### 4. 改進現有內容 / 技術改進
 
-錯別字、過時資訊、使用技巧、缺失的正體中文、英文翻譯，看到了都歡迎隨手修正。模板、樣式、效能、功能等技術層面，也歡迎提改進。
+錯別字、過時資訊、使用技巧、缺失的正體中文、英文翻譯，看到了都歡迎提交修正。模板、樣式、效能、功能等技術層面，也歡迎提改進。
 
 > **貢獻者列表（`content/*/contributors/`）由指令碼自動維護**，抓取 [Gentoo-zh Overlay](https://github.com/gentoo-zh/overlay) 中提交 5 次以上者，顯示提交次數並按提交量排序，每月自動更新（`scripts/update-contributors.py` + GitHub Actions）。**請勿手動編輯該目錄**；首頁貢獻者展示也隨之自動更新。
 
@@ -417,7 +417,7 @@ git commit -am "bump hextra"
 git tag vX.Y.Z          # 打個新版本
 ```
 
-然後回到**本站**倉庫，把修補包 pin 到新版本：
+然後回到**本站**倉庫，把修補包固定到新版本：
 
 ```bash
 hugo mod get github.com/gentoo-zh/gentoozh-theme@vX.Y.Z
