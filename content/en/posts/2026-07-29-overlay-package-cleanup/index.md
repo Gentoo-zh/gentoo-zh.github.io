@@ -9,11 +9,7 @@ authors:
     link: https://github.com/zakkaus
 ---
 
-Over the past month 162 packages were updated to a newer upstream release, 60 packages were added, 38 were removed and 5 were renamed or moved to another category. The overlay went from 468 to 490 packages.
-
-{{< callout type="info" >}}
-The same text also ships as an overlay news item — after `emerge --sync` you can read it with `eselect news read`.
-{{< /callout >}}
+Over the past month 162 packages got a new version, 60 packages were added, 38 were removed and 5 were renamed or moved to another category. The overlay went from 468 to 490 packages.
 
 ## Renamed or Moved
 
