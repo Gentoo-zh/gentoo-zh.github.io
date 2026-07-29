@@ -31,16 +31,22 @@
   weight = 55
 
 [[main]]
+  name = "distfiles 与 binpkg"
+  url = "https://distfiles.gentoozh.org/"
+  parent = "infra"
+  weight = 1
+
+[[main]]
   name = "Pastebin"
   pageRef = "/paste"
   parent = "infra"
-  weight = 1
+  weight = 2
 
 [[main]]
   name = "服务状态"
   url = "https://status.gentoozh.org/"
   parent = "infra"
-  weight = 2
+  weight = 3
 
 # 更多 ▾（可展开收起）
 [[main]]
