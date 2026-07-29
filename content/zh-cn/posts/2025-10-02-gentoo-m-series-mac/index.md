@@ -7,7 +7,7 @@ authors:
     image: /contributors/zakkaus/feature.webp
     link: https://github.com/zakkaus
 summary: "在 Apple Silicon Mac（M1/M2）上安装 Gentoo Linux 的完整流程，基于 Asahi Linux 官方支持。"
-description: "在 M1/M2 MacBook 上装 Gentoo 的完整流程，基于 Asahi Linux：Live USB、分区、内核到桌面都有。"
+description: "在 M1/M2 MacBook 上装 Gentoo 的完整流程，基于 Asahi Linux：从 Live USB、分区、内核到桌面。"
 ---
 
 ![Gentoo on Apple Silicon Mac](gentoo-asahi-mac.webp)
@@ -52,7 +52,7 @@ description: "在 M1/M2 MacBook 上装 Gentoo 的完整流程，基于 Asahi Lin
 
 ### 已知工作情况
 
-可用：CPU、内存、存储、Wi-Fi、键盘、触控板、电池管理、内建与外接显示、USB-C / Thunderbolt。
+可用：CPU、内存、存储、Wi-Fi、键盘、触控板、电池管理、内置与外接显示、USB-C / Thunderbolt。
 
 部分支持：GPU 加速（OpenGL 部分支持）。
 
@@ -308,7 +308,7 @@ passwd root
 
 ## 6. 安装 Asahi 支持套件
 
-本节取代官方 Handbook 的「安装内核」章节。
+本节取代官方 Handbook 的安装内核章节。
 
 ### 6.1 方法 A：自动化脚本（推荐）
 
@@ -682,7 +682,7 @@ update-m1n1
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-记得保留可用内核作为备援。
+记得保留可用内核作为备用。
 
 多内核切换：
 

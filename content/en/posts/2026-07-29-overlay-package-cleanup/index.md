@@ -17,7 +17,7 @@ The same text also ships as an overlay news item — after `emerge --sync` you c
 
 ## Renamed or Moved
 
-The five packages below were renamed or moved. Portage applies this on `emerge --sync`, nothing has to be done by hand:
+The five packages below were renamed or moved. Portage applies this on `emerge --sync`, so nothing has to be done by hand:
 
 | Old name | New name |
 | --- | --- |
@@ -29,7 +29,7 @@ The five packages below were renamed or moved. Portage applies this on `emerge -
 
 ## Now Provided by ::gentoo
 
-::gentoo carries the same or a newer version of the seven packages below, so this overlay no longer keeps a second copy. After syncing they come from ::gentoo, installed copies need no action and upgrades follow ::gentoo from now on:
+::gentoo carries the same or a newer version of the seven packages below, so this overlay no longer keeps a second copy. After syncing they come from ::gentoo. Installed copies need no action, and upgrades follow ::gentoo from now on:
 
 - `dev-libs/libdatrie`
 - `dev-libs/libthai`
@@ -41,7 +41,7 @@ The five packages below were renamed or moved. Portage applies this on `emerge -
 
 ## Removed: Upstream Gone or Unmaintained
 
-These ten were removed because upstream disappeared, archived the project or nobody maintains them any more:
+These ten were removed because upstream disappeared or archived the project, or because nobody maintains them any more:
 
 - `app-containers/distrobox-boost`
 - `dev-db/dbeaver-bin`

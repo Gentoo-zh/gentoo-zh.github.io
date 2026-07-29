@@ -31,4 +31,4 @@ Jekyll needs a Ruby environment, builds are on the slow side, and its theme scen
 - Telegram channel: [@gentoocn](https://t.me/gentoocn)
 - File an Issue / PR: [GitHub](https://github.com/Gentoo-zh/gentoo-zh.github.io)
 
-Thanks to [@biergaizi](https://github.com/biergaizi) and [@zhcj](https://github.com/zhcj) for founding and long maintaining the Gentoo Chinese Community, and to the developers of the Blowfish theme.
+Thanks to [@biergaizi](https://github.com/biergaizi) and [@zhcj](https://github.com/zhcj) for founding the Gentoo Chinese Community and maintaining it over the years, and to the developers of the Blowfish theme.

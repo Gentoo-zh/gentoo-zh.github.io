@@ -32,7 +32,7 @@ The original repository owner carried out this migration via a GitHub repository
 
 ## Background
 
-Moving the gentoo-zh overlay to a GitHub organization repo lets the community maintenance team manage maintenance permissions, CI configuration, issue/PR management, and the release process in one place, and makes long-term maintenance less dependent on any single account.
+Moving the gentoo-zh overlay to a GitHub organization repo lets the community maintenance team manage maintenance permissions, CI configuration, issues and pull requests, and the release process in one place, and makes long-term maintenance less dependent on any single account.
 
 The migration used GitHub's official repository transfer. The results:
 

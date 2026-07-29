@@ -81,7 +81,7 @@ A couple more words on the "auto-decrypt" and monitoring we added. Full-disk LUK
 
 Monitoring also went from a single-box probe to **two off-site Prometheus/Alertmanager stacks watching each other with cluster dedup** — if either one (along with its datacenter) goes down, the other still fires alerts, so you never get "monitoring and service going silent together." Hosts, the uptime of all four sites, and SSL expiry are all watched; alerts hit Telegram in real time, and status is mirrored publicly at [status.gentoozh.org](https://status.gentoozh.org).
 
-And to answer the question we'll definitely get: a forum for the Gentoo community that doesn't run Gentoo itself? For now the scale is just too small, and this VPS is pretty ordinary, so for convenience we went with Debian. It's a tradeoff: get the forum running solid first, and if we grow later we'd like to migrate it over. ~~The other reason is that I don't like using binpkgs.~~
+And to answer the question we'll definitely get: a forum for the Gentoo community that doesn't run Gentoo itself? For now the scale is just too small, and this VPS is pretty ordinary, so for convenience — and to get the forum running solidly first — we went with Debian. It's a tradeoff, and if we grow later we'd like to migrate it over. ~~The other reason is that I don't like using binpkgs.~~
 
 We'll keep tidying up the boards and the bridging so it feels nicer to use. And as we get bigger, we'll beef up the hardware, failover, and backups bit by bit.
 

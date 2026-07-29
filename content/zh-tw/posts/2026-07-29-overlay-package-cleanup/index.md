@@ -17,7 +17,7 @@ authors:
 
 ## 改名與換分類
 
-下面五個包已改名或換分類。`emerge --sync` 之後 portage 會自動遷移，無需手動處理：
+下面五個包已改名或換分類。`emerge --sync` 之後 Portage 會自動遷移，無需手動處理：
 
 | 原套件名 | 現套件名 |
 | --- | --- |
@@ -29,7 +29,7 @@ authors:
 
 ## 改由 ::gentoo 提供
 
-下面七個包 ::gentoo 已經有同版本或更新的一份，本 overlay 不再維護第二份。同步後改由 ::gentoo 提供，已安裝的無需處理，後續升級來自 ::gentoo：
+因為下面七個包 ::gentoo 已經有同版本或更新的一份，所以本 overlay 不再維護第二份。同步後改由 ::gentoo 提供，已安裝的無需處理，後續升級來自 ::gentoo：
 
 - `dev-libs/libdatrie`
 - `dev-libs/libthai`

@@ -18,9 +18,9 @@ The Chinese community's custom KDE Plasma 6 desktop Live ISO ([Gentoo-zh/Live-IS
 - **Three languages out of the box**: the boot menu offers Simplified / Traditional / English, and the whole live environment follows your choice; the installed system also keeps whatever language you picked in the installer.
 - **Chinese input methods preinstalled**: fcitx5 + rime, ready to type out of the box, with Luna Pinyin, Zhuyin, Wubi86, Cangjie, and Cantonese Pinyin built in.
 - **Proprietary NVIDIA, optional**: pick the NVIDIA entry in the boot menu to load the proprietary driver normally (disable Secure Boot first); otherwise it uses open-source nouveau.
-- **Handy live-only desktop switches**: the desktop has a few one-click toggles meant just for the live session, there when you need them — temporarily turn off auto-sleep / lock (so a long session or install isn't interrupted), enable passwordless sudo, and start SSH (handy for a remote install or debugging).
+- **Live-only desktop switches**: the desktop has a few icons meant just for the live session; click one when you need it — temporarily turn off auto-sleep / lock (so a long session or install isn't interrupted), enable passwordless sudo, and start SSH (handy for a remote install or debugging).
 - **The installed system is clean**: those live conveniences (along with the default passwordless SDDM autologin) only exist in the live session; the installer resets / clears them on install, so the installed system goes back to KDE's normal defaults — login needs a password, sudo needs authorization, and sleep/lock behave normally.
-- **Out-of-the-box details**: PipeWire audio, networking connects on boot, and MAKEOPTS / CPU instruction sets adapt to your machine.
+- **Configured by default**: PipeWire audio, networking connects on boot, and MAKEOPTS / CPU instruction sets adapt to your machine.
 
 For actually installing a system, following the [Gentoo Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64) step by step is the more solid route; the live ISO also ships a graphical installer (Calamares) if you want a quick install.
 

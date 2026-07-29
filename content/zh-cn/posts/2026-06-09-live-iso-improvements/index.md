@@ -18,9 +18,9 @@ authors:
 - **三语言开箱即用**：引导菜单分简体 / 繁体 / 英文三档，整套 live 环境跟着所选语言走；装好的系统也沿用你在安装器里选的语言。
 - **预置中文输入法**：fcitx5 + rime，开箱即可输入，内置朙月拼音、注音、五笔86、仓颉、粤拼。
 - **闭源 NVIDIA 可选**：引导菜单选 NVIDIA 项会常规加载闭源驱动（需先关 Secure Boot）；不选则用开源 nouveau。
-- **顺手的 live 桌面开关**：桌面放了几个仅 live 用的一键图标，需要时点一下即可——临时关闭自动休眠 / 锁屏（折腾或装机时不被打断）、开启免密 sudo、一键开启 SSH（方便远程装机或调试）。
+- **live 专用的桌面开关**：桌面放了几个仅 live 用的图标，需要时点一下即可——临时关闭自动休眠 / 锁屏（折腾或装机时不被打断）、开启免密 sudo、开启 SSH（方便远程装机或调试）。
 - **装好的系统是干净的**：上面这些 live 便利（连同默认的 SDDM 免密自动登录）都只在 live 里，安装器装机时会复位 / 清掉，装好的系统回到 KDE 正常默认：登录要密码、sudo 要授权、休眠锁屏照常。
-- **开箱即用的细节**：PipeWire 音频、网络开机自动连、MAKEOPTS 与 CPU 指令集按你的机器自适应。
+- **默认配置好的部分**：PipeWire 音频、网络开机自动连、MAKEOPTS 与 CPU 指令集按你的机器自适应。
 
 装系统推荐照 [Gentoo 官方手册](https://wiki.gentoo.org/wiki/Handbook:AMD64/zh-cn) 一步步来更稳妥；live 里也带了图形安装器（Calamares），想快速装也可以用。
 
@@ -34,7 +34,7 @@ Live ISO 构建所需的包来自 [Gentoo-zh/gig](https://github.com/Gentoo-zh/g
 
 ## 自动构建与发布
 
-构建流水线 [Zakkaus/gentoozh-liveiso-infra](https://github.com/Zakkaus/gentoozh-liveiso-infra)：Live ISO 每周一自动编译，编好后上传到 **Cloudflare R2**。流水线会逐字节核对「R2 上的 = 这次编出来的」、并确认下载页已反映新镜像，一致才算上线；也加了对滚动树过渡期 USE / 关键字变化的自适应处理（见 [Python 3.14 成为默认版本](/posts/2026-06-01-python-314-default/)）。
+构建流水线 [Zakkaus/gentoozh-liveiso-infra](https://github.com/Zakkaus/gentoozh-liveiso-infra)：Live ISO 每周一自动编译，编好后上传到 **Cloudflare R2**。流水线会逐字节核对 R2 上的镜像与这次编出来的镜像，并确认下载页已反映新镜像，一致才算上线；也加了对滚动树过渡期 USE / 关键字变化的自适应处理（见 [Python 3.14 成为默认版本](/posts/2026-06-01-python-314-default/)）。
 
 ## 官网
 

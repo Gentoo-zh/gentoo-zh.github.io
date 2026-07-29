@@ -155,7 +155,7 @@ https://github.com/gentoo-zh/gentoo-zh
 
 ### 5. 確認改名不破壞轉址（301 單跳）
 
-改名前先確認 GitHub 的 301 轉址在 transfer 加 rename 之後仍然可靠：網頁和 git 都會保留。這裡拿同樣經歷過「transfer + rename」的 Homebrew 實測：[`mxcl/homebrew`](https://github.com/mxcl/homebrew)（最初）和 [`Homebrew/homebrew`](https://github.com/Homebrew/homebrew)（中間名）都是一跳 301 直達最終的 [`Homebrew/legacy-homebrew`](https://github.com/Homebrew/legacy-homebrew)，不是二次轉址；`git ls-remote` 也照常工作。自己也能測：
+改名前先確認 GitHub 的 301 轉址在 transfer 加 rename 之後仍然可靠：網頁和 git 都會保留。這裡拿同樣經歷過 transfer 加 rename 的 Homebrew 實測：[`mxcl/homebrew`](https://github.com/mxcl/homebrew)（最初）和 [`Homebrew/homebrew`](https://github.com/Homebrew/homebrew)（中間名）都是一跳 301 直達最終的 [`Homebrew/legacy-homebrew`](https://github.com/Homebrew/legacy-homebrew)，不是二次跳轉；`git ls-remote` 也照常工作。自己也能測：
 
 ```bash
 UA="Mozilla/5.0"
@@ -280,7 +280,7 @@ See [MIGRATION.md](./MIGRATION.md) for details.
 
 ### 9. 新增 Gentoo repository news
 
-在 `metadata/news/` 中新增一個符合 GLEP 42 的 repository news item，標題「gentoo-zh overlay moved to gentoo-zh/overlay」，同時提供 `.en.txt` 和 `.zh.txt` 兩個檔案。使用者同步 overlay 後可透過 `eselect news read` 讀取。
+在 `metadata/news/` 中新增一個符合 GLEP 42 的 repository news item，標題為 gentoo-zh overlay moved to gentoo-zh/overlay，同時提供 `.en.txt` 和 `.zh.txt` 兩個檔案。使用者同步 overlay 後可透過 `eselect news read` 讀取。
 
 news item 目錄：
 

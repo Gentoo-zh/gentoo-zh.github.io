@@ -24,7 +24,7 @@ authors:
 ## 如果你在 make.conf 裡設過 Python 版本，先刪掉
 
 {{< callout type="warning" >}}
-如果你在 `make.conf` 裡寫過 `PYTHON_TARGETS` 或 `PYTHON_SINGLE_TARGET`，**先把它們刪掉**——官方不建議在 make.conf 裡設 Python 版本，它會蓋掉各個包自己該用的預設值。
+如果你在 `make.conf` 裡寫過 `PYTHON_TARGETS` 或 `PYTHON_SINGLE_TARGET`，**先把它們刪掉**——官方不建議在 make.conf 裡設 Python 版本，因為它會蓋掉各個包自己該用的預設值。
 
 下面要寫的配置，統一放到 **`/etc/portage/package.use/python`** 這個檔案裡（`package.use` 是個目錄，檔名隨便取，這裡就叫 `python`）。
 {{< /callout >}}
@@ -35,7 +35,7 @@ authors:
 
 **① 跟著預設走，自動升**
 
-什麼都不設，系統會自己處理。萬一中途卡住，手動跑一遍後面的「升級指令」。
+什麼都不設，系統會自己處理。萬一中途卡住，手動跑一遍後面的升級指令。
 
 **② 先不升，暫時留在 3.13**
 
@@ -57,13 +57,13 @@ authors:
 */* PYTHON_SINGLE_TARGET: -* python3_14
 ```
 
-然後跑後面的「升級指令」。等預設正式切過去之後，記得把這兩行**刪掉**——不然將來會擋住自動升到 3.15。
+然後跑後面的升級指令。等預設正式切過去之後，記得把這兩行**刪掉**——不然將來會擋住自動升到 3.15。
 
 **④ 更穩妥的分步升級**
 
 先讓 3.13、3.14 兩個版本並存，再慢慢撤掉 3.13。相關的包要編兩遍，更慢，但中途出問題的機率更低。
 
-第一步，往 `/etc/portage/package.use/python` 寫（兩版並存），跑一遍「升級指令」：
+第一步，往 `/etc/portage/package.use/python` 寫（兩版並存），跑一遍升級指令：
 
 ```
 */* PYTHON_TARGETS: -* python3_13 python3_14

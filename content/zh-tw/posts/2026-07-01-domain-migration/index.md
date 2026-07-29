@@ -17,12 +17,12 @@ Gentoo 中文社群官網今天正式遷往 **gentoozh.org**。論壇（forum.ge
 
 ## 不僅僅換個域名
 
-域名遷移是最近一系列整合的收尾。社群沉寂了十多年，積下來的東西不少：TG、QQ 群七八個、域名三四個、官網多年沒人動、gentoo-zh GitHub 組織的權限無法統一管理。群組分散導致社群割裂，交流變得十分困難。
+域名遷移是最近一系列整合的收尾。社群沉寂了十多年，積下來的東西不少：Telegram、QQ 群七八個、域名三四個、官網多年沒人動、gentoo-zh GitHub 組織的權限無法統一管理。群組分散導致社群割裂，交流變得十分困難。
 
 最近把這些整理了一下：
 
 - 官網重建
-- gentoo-zh 組織擁有了權限
+- 拿到了 gentoo-zh 組織的管理權限
 - IRC 和 Matrix 橋接好了
 - 各個群統一了
 - 域名的控制權集中了
@@ -32,17 +32,17 @@ Gentoo 中文社群官網今天正式遷往 **gentoozh.org**。論壇（forum.ge
 
 ## 為什麼選擇 gentoozh.org
 
-舊域名有合規方面的要求，架設論壇、Matrix、下載站這類服務需要走一套我們作為志願者專案難以完成的流程。gentoozh.org 是國際域名，沒有這層限制，一直在我們手裡。這次 [@zakkaus](https://github.com/zakkaus) 會把域名和相關服務的管理權限分配給對應的負責人，避免權限再次丟失。
+因為舊域名有合規方面的要求，所以架設論壇、Matrix、下載站這類服務需要走一套我們作為志願者專案難以完成的流程。gentoozh.org 是國際域名，沒有這層限制，一直在我們手裡。這次 [@zakkaus](https://github.com/zakkaus) 會把域名和相關服務的管理權限分配給對應的負責人，避免權限再次丟失。
 
-域名裡的 zh 來自 ISO 639，是中文這門語言的代碼，認的是語言，而不是國家或某個特定地區。而 cn 是 ISO 3166 的國家代碼，範圍反而更窄。況且 gentoo-zh 就是當年的 gentoo-tw 和 gentoo-china [兩岸社群合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)來的。archlinuxcn 其實也自稱「Arch Linux 中文社群」，cn 只是歷史留下來的叫法，社群裡也有人提過換成 zh，只是體量太大改不動。我們沒有那樣的歷史包袱，既然要動就做到位。
+域名裡的 zh 來自 ISO 639，是中文這門語言的代碼，認的是語言，而不是國家或某個特定地區。而 cn 是 ISO 3166 的國家代碼，範圍反而更窄。況且 gentoo-zh 就是當年的 gentoo-tw 和 gentoo-china [兩岸社群合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)來的。archlinuxcn 其實也自稱 Arch Linux 中文社群，cn 只是歷史留下來的叫法，社群裡也有人提過換成 zh，只是體量太大改不動。我們沒有那樣的歷史包袱，既然要動就做到位。
 
 ## 官網託管遷到 Cloudflare
 
 順帶一提，官網已從 GitHub Pages 遷到 Cloudflare Workers（靜態資源託管），用的是 Workers Paid 方案。
 
-- Cloudflare 的靜態資源請求免費、不限量，對社群站來說省事。
+- Cloudflare 的靜態資源請求免費、不限量。
 - GitHub Pages 有一套[軟性限制](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)（倉庫和網站體積、每月頻寬、建置頻率等），網站再大一點就不太夠用了。
-- 速度和 GitHub Pages 差不太多，但 Workers Paid 靈活性更高：自定義快取、響應頭都能自己控制，往後要接邊緣邏輯也方便，整體體驗更好，也更適合社群往後發展。
+- 速度和 GitHub Pages 差不太多，但 Workers Paid 靈活性更高：自定義快取、響應頭都能自己控制，往後要接邊緣邏輯也方便。
 
 網站的維護、報錯相關事宜，可到 [GitHub](https://github.com/Gentoo-zh/gentoo-zh.github.io) 開 issue，或透過郵件聯絡 zakk@gentoozh.org。
 
@@ -52,7 +52,7 @@ gentoo.org.cn 由一位老師長期持有，在社群沉寂的這十多年裡一
 
 同時也感謝[清風老師](/contributors/zhcj/)和[藍老師](https://packages.gentoo.org/maintainer/dlan@gentoo.org)的指點。這次域名整合的決定很大程度上來自清風老師的建議，他在 2014 年[建立了這個社群](/posts/2014-08-24-gentoo-zh-community-under-construction/)，沒有他就沒有 gentoo-zh 的起點。
 
-最後感謝 David K. Chau、[依雲](https://github.com/lilydjwg)、蝸牛、花火幾位菊苣對文章內容提出的意見，以及 Clover 的審校。
+最後感謝 David K. Chau、[依雲](https://github.com/lilydjwg)、蝸牛、花火幾位對文章內容提出的意見，以及 Clover 的審校。
 
 ## 影響
 
