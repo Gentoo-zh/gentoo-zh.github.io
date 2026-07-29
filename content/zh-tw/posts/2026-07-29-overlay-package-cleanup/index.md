@@ -2,6 +2,7 @@
 title: "Overlay 軟體套件清理、改名與批次更新"
 description: "過去一個月 gentoo-zh overlay 升級 162 個包、新增 60 個、移除 38 個、改名或換分類 5 個，包數從 468 變成 490。本文列出改名與移除清單，以及各自需要怎麼處理。"
 date: 2026-07-29
+featured: true
 tags: ["announcement", "overlay"]
 authors:
   - name: Zakk

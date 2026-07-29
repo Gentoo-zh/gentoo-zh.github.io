@@ -2,6 +2,7 @@
 title: "Package Cleanup, Renames and Mass Updates"
 description: "Over the past month the gentoo-zh overlay updated 162 packages, added 60, removed 38 and renamed or moved 5, going from 468 to 490 packages. Here are the rename and removal lists, and what each one needs from you."
 date: 2026-07-29
+featured: true
 tags: ["announcement", "overlay"]
 authors:
   - name: Zakk
