@@ -179,7 +179,7 @@ transfer 完成後倉庫落在 `gentoo-zh/gentoo-zh`（GitHub transfer 會保留
 Settings -> General -> Repository name -> overlay
 ```
 
-### 8. 更新倉庫內維護入口（[PR #10744](https://github.com/Gentoo-zh/overlay/pull/10744)）
+### 8. 更新倉庫內維護入口（[PR #10744](https://github.com/gentoo-zh/overlay/pull/10744)）
 
 改名後在一個 PR 裡把倉庫內所有指向舊網址的入口統一更新到 `gentoo-zh/overlay`，共 7 個檔案：
 
@@ -206,7 +206,7 @@ ebuild 註釋中指向原倉庫 issue 的歷史連結保留不變。舊 issue �
 +      <email>overlay@gentoozh.org</email>
        <name>gentoo-zh</name>
      </owner>
--    <source type="git">https://github.com/Gentoo-zh/gentoo-zh.git</source>
+-    <source type="git">https://github.com/gentoo-zh/gentoo-zh.git</source>
 +    <source type="git">https://github.com/gentoo-zh/overlay.git</source>
    </repo>
  </repositories>
@@ -422,7 +422,7 @@ auto-sync = yes
 
 ## 收尾與確認
 
-overlay 內部後設資料、README 與安裝說明在 [PR #10744](https://github.com/Gentoo-zh/overlay/pull/10744) 更新（第 8 步）；Gentoo 官方 registry 在 [api-gentoo-org#829](https://github.com/gentoo/api-gentoo-org/pull/829) 合併（第 10 步）。
+overlay 內部後設資料、README 與安裝說明在 [PR #10744](https://github.com/gentoo-zh/overlay/pull/10744) 更新（第 8 步）；Gentoo 官方 registry 在 [api-gentoo-org#829](https://github.com/gentoo/api-gentoo-org/pull/829) 合併（第 10 步）。
 
 模擬使用者實操了一遍：從 Gentoo 官方倉庫列表直接 `enable` gentoo-zh，`emerge --sync` 會從新的 overlay 網址拉取（看最後一行）：
 
@@ -445,11 +445,11 @@ $ sudo emaint sync -r gentoo-zh
 $ UA="Mozilla/5.0"
 $ curl -sIL -A "$UA" https://github.com/microcai/gentoo-zh  | grep -iE '^HTTP/|^location:'
 HTTP/2 301
-location: https://github.com/Gentoo-zh/overlay
+location: https://github.com/gentoo-zh/overlay
 HTTP/2 200
 $ curl -sIL -A "$UA" https://github.com/gentoo-zh/gentoo-zh | grep -iE '^HTTP/|^location:'
 HTTP/2 301
-location: https://github.com/Gentoo-zh/overlay
+location: https://github.com/gentoo-zh/overlay
 HTTP/2 200
 ```
 
