@@ -51,22 +51,24 @@ Edit the `sync-uri` in whichever file under `/etc/portage/repos.conf/` holds the
 
 ## Accept the testing keyword
 
-gentoo-zh packages are **`~arch` (testing) keyworded, with nothing marked stable**. Systems already running `~amd64` can skip this step; on a stable branch, accept the packages you actually want:
+gentoo-zh packages are **`~arch` (testing) keyworded, with nothing marked stable**. Systems already running `~amd64` can skip this step; on a stable branch you have to accept the keyword first.
 
-{{< gz-cmd path="shell" sudo="true" >}}
-echo "app-i18n/fcitx ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
-{{< /gz-cmd >}}
-
-Or accept the whole overlay in one line, at the cost of pulling in a lot more testing packages:
+The `::gentoo-zh` qualifier applies to this overlay only, and every package here is `~arch` anyway, so accepting the whole overlay is enough — packages from the official tree are unaffected:
 
 {{< gz-cmd path="shell" sudo="true" >}}
 echo "*/*::gentoo-zh ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
 {{< /gz-cmd >}}
 
+If you would rather keep a record of what you installed, list them one by one instead — the effect is the same:
+
+{{< gz-cmd path="shell" sudo="true" >}}
+echo "net-im/tencent-qq ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
+{{< /gz-cmd >}}
+
 ## Install a package
 
 {{< gz-cmd path="shell" sudo="true" >}}
-emerge --ask app-i18n/fcitx
+emerge --ask net-im/tencent-qq
 {{< /gz-cmd >}}
 
 To list what the overlay provides: `eix -RO gentoo-zh`.
