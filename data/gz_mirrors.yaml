@@ -1,0 +1,37 @@
+# gentoo-zh 自家的源。换源器（gz-mirror）与代码块（gz-cmd）都读这里，加镜像只改这一处。
+#
+# 两组分开写，因为路径结构不同：git 仓库在各校的 /git/ 下（教育网联合镜像站在根），
+# distfiles 与 binpkgs 都在 /gentoo-zh/ 下。
+#
+# label   i18n 里的键，界面语言不同时显示对应的名字
+# default 该镜像适合给哪些语言当默认（空格分隔），按 <html lang> 挑
+# origin  源站。GENTOO_MIRRORS 是按顺序尝试的列表，列表槽位把它兜在最后，
+#         选中的镜像取不到还能回退
+git:
+  - uri: https://github.com/gentoo-zh/overlay.git
+    label: gz_src_upstream
+    default: zh-tw en
+    origin: true
+  - uri: https://mirrors.cernet.edu.cn/gentoo-zh.git
+    label: gz_src_cernet
+    default: zh-cn
+  - uri: https://mirror.nju.edu.cn/git/gentoo-zh.git
+    label: gz_src_nju
+  - uri: https://mirror.nyist.edu.cn/git/gentoo-zh.git
+    label: gz_src_nyist
+  - uri: https://mirrors.ha.edu.cn/git/gentoo-zh.git
+    label: gz_src_hernet
+dist:
+  - uri: https://distfiles.gentoozh.org
+    label: gz_src_origin
+    default: zh-tw en
+    origin: true
+  - uri: https://mirrors.cernet.edu.cn/gentoo-zh
+    label: gz_src_cernet
+    default: zh-cn
+  - uri: https://mirror.nju.edu.cn/gentoo-zh
+    label: gz_src_nju
+  - uri: https://mirror.nyist.edu.cn/gentoo-zh
+    label: gz_src_nyist
+  - uri: https://mirrors.ha.edu.cn/gentoo-zh
+    label: gz_src_hernet

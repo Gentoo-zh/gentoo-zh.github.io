@@ -16,53 +16,8 @@ overlay 目前 490 个包，其中 194 个有预编译的二进制包，每晚�
 
 ## 配置
 
-配置需要三步：
-
-- 导入签名公钥
-- 添加仓库
-- 打开 `getbinpkg`
-
-### 导入签名公钥
-
-因为 Portage 的验签用的是它自己的 keyring（`/etc/portage/gnupg`），而那个目录要 `getuto` 先建出来，所以顺序不能颠倒：
-
-```shell
-emerge sec-keys/openpgp-keys-gentoozh
-getuto
-gpg --homedir /etc/portage/gnupg --import /usr/share/openpgp-keys/gentoozh.asc
-gpg --homedir /etc/portage/gnupg --batch --yes --pinentry-mode loopback \
-    --passphrase-file /etc/portage/gnupg/pass --lsign-key 6A0726AF1476A2F382C6AC6638A0234EC16AD42E
-gpg --homedir /etc/portage/gnupg --check-trustdb
-```
-
-`--lsign-key` 用指纹而不是邮箱，因为指纹唯一标识这把密钥，而 UID 是公钥文件里的一段可变文本。
-
-### 添加仓库
-
-将以下内容写进 `/etc/portage/binrepos.conf/gentoo-zh.conf`：
-
-```ini
-[gentoo-zh]
-sync-uri = https://mirror.nju.edu.cn/gentoo-zh/binpkgs/x86-64
-priority = 10
-verify-signature = true
-location = /var/cache/binhost/gentoo-zh
-```
-
-其中 `sync-uri` 只接受一个地址，在中国大陆建议使用南京大学镜像，下载会更快，源站是 <https://distfiles.gentoozh.org/binpkgs/x86-64>（位于美国）。两边的包与签名相同，切换地址不影响验签。因为镜像的同步有延迟，所以镜像上的包数可能比源站落后一轮构建。
-
-为什么用 `binrepos.conf` 而不是直接设 `PORTAGE_BINHOST`？因为 `PORTAGE_BINHOST` 产生的是隐式仓库，所以无法单独设置 `verify-signature`；若为使用本站的包而关闭验签，官方 binhost 的验签会一并关闭。
-
-### 打开 getbinpkg
-
-将以下内容写进 `/etc/portage/make.conf`：
-
-```ini
-FEATURES="${FEATURES} getbinpkg"
-```
-
-{{< callout type="warning" >}}
-验签由添加仓库时写入的 `verify-signature = true` 提供，只作用于本源。请不要使用 `FEATURES=binpkg-request-signature`：这是全局的，会覆盖前者，并且会要求本机 `FEATURES=buildpkg` 编出来的包也带签名，而那些包默认没有签名，于是每个本地构建都会在合并时报错 `GnuPG verification failed`。
+{{< callout type="info" >}}
+配置方法见 **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)**。
 {{< /callout >}}
 
 ## 哪些包不在其中
@@ -84,17 +39,7 @@ FEATURES="${FEATURES} getbinpkg"
 
 ## distfiles 镜像
 
-二进制包与 distfiles 两者互相独立，按需分别配置。distfiles 镜像是 overlay 里各包的源码，目前约 1200 个文件、33 GB。
-
-将以下内容写进 `/etc/portage/make.conf`：
-
-```ini
-GENTOO_MIRRORS="${GENTOO_MIRRORS} https://mirror.nju.edu.cn/gentoo-zh https://distfiles.gentoozh.org"
-```
-
-这里只有 overlay 的源码，不能替代官方源，所以是追加而不是替换。`GENTOO_MIRRORS` 是按顺序尝试的列表，南京大学取不到时会落到源站。地址不写 `distfiles/`，Portage 会自动补上。
-
-`::gentoo` 的部分请用[社区镜像列表](/mirrorlist/)里的节点。
+二进制包与 distfiles 两者互相独立，按需分别配置。distfiles 镜像是 overlay 里各包的源码，目前约 1200 个文件、33 GB；它只存 overlay 的源码，不能替代官方源，所以是追加到 `GENTOO_MIRRORS` 而不是替换。地址与可复制的配置同样在 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) 首页，`::gentoo` 的源另见[镜像列表](/mirrorlist/)。
 
 ## 构建与分发
 

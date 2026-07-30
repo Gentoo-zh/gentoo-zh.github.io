@@ -1,0 +1,8 @@
+{{- /* 取某一组镜像里适合当前语言的默认项。data/gz_mirrors.yaml 是唯一的清单。
+       入参 dict "set" "git|dist" "lang" 当前语言。 */ -}}
+{{- $set := index hugo.Data.gz_mirrors (.set | default "git") -}}
+{{- $lang := .lang -}}
+{{- $hit := "" -}}
+{{- range $set }}{{ if and (eq $hit "") (in (split (.default | default "") " ") $lang) }}{{ $hit = . }}{{ end }}{{ end -}}
+{{- if eq $hit "" }}{{ $hit = index $set 0 }}{{ end -}}
+{{- return $hit -}}

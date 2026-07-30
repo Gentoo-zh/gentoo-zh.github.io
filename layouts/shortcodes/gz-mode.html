@@ -1,0 +1,18 @@
+{{- /* 手动配置 / 快速配置 的切换按钮，配套 {{% gz-pane %}}。
+
+     同一件事两种写法：一步步改文件，或者贴一段命令做完。两种都摆出来是一坨，
+     读的人还得先判断哪份是自己要的，所以就地切换。
+
+     每处配置各自一个，用 name 关联到自己的 pane：distfiles 与二进制包是两段独立
+     的配置，一个人可能想照着改 make.conf、但二进制包那段直接贴命令。
+
+     用法：
+       {{< gz-mode name="dist" >}}
+       {{% gz-pane group="dist" name="manual" %}} … {{% /gz-pane %}}
+       {{% gz-pane group="dist" name="quick" %}} … {{% /gz-pane %}} */ -}}
+{{- partial "gz-config-assets.html" . -}}
+{{- $name := .Get "name" | default "cfg" -}}
+<div class="gz-mode-pick" data-gz-mode-pick="{{ $name }}">
+  <button type="button" class="gz-opt gz-mode" data-gz-mode="manual" aria-pressed="true">{{ i18n "gz_mode_manual" }}</button>
+  <button type="button" class="gz-opt gz-mode" data-gz-mode="quick" aria-pressed="false">{{ i18n "gz_mode_quick" }}</button>
+</div>

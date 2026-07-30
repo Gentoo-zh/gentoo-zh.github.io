@@ -16,53 +16,8 @@ The selection favours packages that take a long time to compile: Electron apps, 
 
 ## Setup
 
-Setup takes three steps:
-
-- Import the signing key
-- Add the repository
-- Enable `getbinpkg`
-
-### Import the signing key
-
-Portage verifies signatures against its own keyring (`/etc/portage/gnupg`), and that directory has to be created by `getuto` first, so the order matters:
-
-```shell
-emerge sec-keys/openpgp-keys-gentoozh
-getuto
-gpg --homedir /etc/portage/gnupg --import /usr/share/openpgp-keys/gentoozh.asc
-gpg --homedir /etc/portage/gnupg --batch --yes --pinentry-mode loopback \
-    --passphrase-file /etc/portage/gnupg/pass --lsign-key 6A0726AF1476A2F382C6AC6638A0234EC16AD42E
-gpg --homedir /etc/portage/gnupg --check-trustdb
-```
-
-`--lsign-key` takes the fingerprint rather than the email address, because the fingerprint identifies the key uniquely while the UID is just a piece of mutable text inside the public key file.
-
-### Add the repository
-
-Put the following in `/etc/portage/binrepos.conf/gentoo-zh.conf`:
-
-```ini
-[gentoo-zh]
-sync-uri = https://distfiles.gentoozh.org/binpkgs/x86-64
-priority = 10
-verify-signature = true
-location = /var/cache/binhost/gentoo-zh
-```
-
-`sync-uri` accepts only one address. The one above is the origin, hosted in the US; from mainland China the Nanjing University mirror at <https://mirror.nju.edu.cn/gentoo-zh/binpkgs/x86-64> downloads faster. Both carry the same packages with the same signatures, so switching between them does not affect verification. The mirror syncs on a delay, so its package count can trail the origin by one build round.
-
-Why `binrepos.conf` instead of setting `PORTAGE_BINHOST` directly? `PORTAGE_BINHOST` creates an implicit repository that cannot carry its own `verify-signature` setting, so turning verification off to use our packages would turn it off for the official binhost as well.
-
-### Enable getbinpkg
-
-Put the following in `/etc/portage/make.conf`:
-
-```ini
-FEATURES="${FEATURES} getbinpkg"
-```
-
-{{< callout type="warning" >}}
-Verification comes from the `verify-signature = true` you added with the repository, and applies to that repository only. Do not use `FEATURES=binpkg-request-signature`: it is global, it overrides the per-repository setting, and it also demands signatures on the packages your own `FEATURES=buildpkg` produces. Those are unsigned by default, so every local build then fails at merge time with `GnuPG verification failed`.
+{{< callout type="info" >}}
+For how to set it up, see **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)**.
 {{< /callout >}}
 
 ## Which packages are left out
@@ -84,17 +39,7 @@ Portage only takes a binary package when the USE flags match exactly, so package
 
 ## distfiles mirror
 
-The binary packages and the distfiles mirror are independent of each other, so set up whichever you need. The distfiles mirror holds the source code for the overlay's packages, currently around 1200 files and 33 GB.
-
-Put the following in `/etc/portage/make.conf`:
-
-```ini
-GENTOO_MIRRORS="${GENTOO_MIRRORS} https://distfiles.gentoozh.org https://mirror.nju.edu.cn/gentoo-zh"
-```
-
-It holds source code for the overlay only and cannot replace the official mirrors, so append it rather than substituting it. `GENTOO_MIRRORS` is a list tried in order: if the origin does not have a file, it falls back to the Nanjing University mirror. Don't put `distfiles/` in the address, Portage appends it itself.
-
-For `::gentoo` itself, use a node from the [community mirror list](/mirrorlist/).
+The binary packages and the distfiles mirror are independent of each other, so set up whichever you need. The mirror holds the source code for the overlay's packages, currently around 1200 files and 33 GB. It carries the overlay's source only and cannot replace the official mirrors, so it is appended to `GENTOO_MIRRORS` rather than substituted. The addresses and copy-paste config are on the [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) home page as well; for `::gentoo` itself see the [mirror list](/mirrorlist/).
 
 ## Building and distribution
 
