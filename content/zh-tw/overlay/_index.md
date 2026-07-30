@@ -51,22 +51,24 @@ auto-sync = yes
 
 ## 接受測試關鍵字
 
-gentoo-zh 的包**只有 `~arch`（測試）關鍵字，沒有 stable 關鍵字**。已經在跑 `~amd64` 的系統跳過這步；穩定分支的系統要先放行，按需一個個放：
+gentoo-zh 的包**只有 `~arch`（測試）關鍵字，沒有 stable 關鍵字**。已經在跑 `~amd64` 的系統跳過這步；穩定分支的系統要先放行。
 
-{{< gz-cmd path="shell" sudo="true" >}}
-echo "app-i18n/fcitx ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
-{{< /gz-cmd >}}
-
-或者放行整個 overlay，只寫一條，代價是會一併引入更多測試包：
+因為 `::gentoo-zh` 這個限定只作用於本 overlay，而這裡的包全都是 `~arch`，所以直接放行整個 overlay 即可，官方源的包不受影響：
 
 {{< gz-cmd path="shell" sudo="true" >}}
 echo "*/*::gentoo-zh ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
 {{< /gz-cmd >}}
 
+想逐個記錄裝了什麼的，也可以一個個寫，效果一樣：
+
+{{< gz-cmd path="shell" sudo="true" >}}
+echo "net-im/tencent-qq ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
+{{< /gz-cmd >}}
+
 ## 安裝軟體套件
 
 {{< gz-cmd path="shell" sudo="true" >}}
-emerge --ask app-i18n/fcitx
+emerge --ask net-im/tencent-qq
 {{< /gz-cmd >}}
 
 列出 overlay 提供的包：`eix -RO gentoo-zh`。
