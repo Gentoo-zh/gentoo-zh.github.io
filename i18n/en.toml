@@ -9,3 +9,36 @@ other = "Site contact:"
 
 [footer_contact_backup]
 other = "Email:"
+
+[gz_src_label]
+other = "Sync source"
+
+[gz_src_upstream]
+other = "GitHub upstream"
+
+[gz_src_cernet]
+other = "CERNET mirror"
+
+[gz_src_nju]
+other = "Nanjing University"
+
+[gz_src_nyist]
+other = "Nanyang Institute of Technology"
+
+[gz_copy]
+other = "Copy"
+
+[gz_copied]
+other = "Copied"
+
+[gz_src_hernet]
+other = "HERNET (Henan)"
+
+[gz_src_origin]
+other = "Origin"
+
+[gz_mode_manual]
+other = "Edit files"
+
+[gz_mode_quick]
+other = "One command"

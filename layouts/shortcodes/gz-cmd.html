@@ -1,0 +1,79 @@
+{{- /* 带工具条的代码块：标题栏写文件名或 shell，右边是 sudo 开关与复制。
+
+     用法：
+       {{< gz-cmd path="shell" sudo="true" >}}
+       eselect repository add gentoo-zh git @@SRC@@
+       emerge --sync gentoo-zh
+       {{< /gz-cmd >}}
+
+       {{< gz-cmd path="/etc/portage/make.conf" slot="dist" >}}
+       GENTOO_MIRRORS="${GENTOO_MIRRORS} @@LIST@@"
+       {{< /gz-cmd >}}
+
+     参数：
+       path   标题栏显示的文件路径，或 shell
+       sudo   true 时每行命令前加 sudo 开关与提示符；配置文件内容不要开
+       slot   跟哪个换源器联动，对应 {{< gz-mirror name="…" >}}，默认 git
+       suffix @@SRC@@ 的地址后要补的路径，例如 /binpkgs/x86-64
+
+     两种槽位，因为两处设置接受的东西不同：
+       @@SRC@@   只填选中的那一个地址。binrepos.conf 的 sync-uri 与 eselect 都只
+                 接受一个地址，读者必须选。
+       @@LIST@@  填一串：选中的排前面，源站兜在后面。GENTOO_MIRRORS 是按顺序尝试
+                 的列表，只写一个就丢掉了回退。
+
+     sudo="true" 时，凡是不以空格开头的非空行都算一条命令、自动加提示符与 sudo 位；
+     续行请以空格开头。 */ -}}
+{{- partial "gz-config-assets.html" . -}}
+{{- /* 槽位里先由服务端写好默认地址：JS 没跑（脚本被拦、文本浏览器、搜索索引）时
+       配置块也是完整可用的，脚本载入后再按读者的选择改写。 */ -}}
+{{- $path := .Get "path" | default "shell" -}}
+{{- $sudo := eq (.Get "sudo") "true" -}}
+{{- $slot := .Get "slot" | default "git" -}}
+{{- $suffix := .Get "suffix" | default "" -}}
+{{- /* 用哪一组镜像：slot="git" 用 git 那组，其余（dist / bin）都是 distfiles 那组。 */ -}}
+{{- $set := .Get "set" | default (cond (eq $slot "git") "git" "dist") -}}
+{{- $all := index hugo.Data.gz_mirrors $set -}}
+{{- $def := (partial "gz-mirrors.html" (dict "set" $set "lang" .Page.Language.Lang)).uri -}}
+{{- $sfx := cond (ne $suffix "") (printf " data-gz-suffix=\"%s\"" $suffix) "" -}}
+{{- /* 列表的默认顺序与脚本一致：默认源在前，其余镜像居中，源站兜最后。 */ -}}
+{{- $rest := slice -}}
+{{- $origin := "" -}}
+{{- range $all }}
+  {{- if .origin }}{{ $origin = .uri }}{{ else if ne .uri $def }}{{ $rest = $rest | append .uri }}{{ end -}}
+{{- end -}}
+{{- $order := slice $def -}}
+{{- range $rest }}{{ $order = $order | append . }}{{ end -}}
+{{- if and (ne $origin "") (ne $origin $def) }}{{ $order = $order | append $origin }}{{ end -}}
+{{- $listText := "" -}}
+{{- range $i, $u := $order }}{{ if $i }}{{ $listText = printf "%s " $listText }}{{ end }}{{ $listText = printf "%s%s%s" $listText $u $suffix }}{{ end -}}
+{{- $one := printf "<span class=\"gz-slot\" data-gz-slot=\"%s\"%s>%s%s</span>" $slot $sfx $def $suffix -}}
+{{- $list := printf "<span class=\"gz-slot\" data-gz-slot=\"%s\" data-gz-list=\"1\"%s>%s</span>" $slot $sfx $listText -}}
+{{- $body := trim .Inner "\n" | htmlEscape -}}
+{{- $lines := split $body "\n" -}}
+<div class="gz-code">
+  <div class="gz-code-head">
+    <span class="gz-path">{{ $path }}</span>
+    {{- if $sudo }}
+    <button type="button" class="gz-btn gz-sudo-btn" aria-pressed="false">sudo</button>
+    {{- end }}
+    <button type="button" class="gz-btn gz-copy-btn" data-gz-done="{{ i18n "gz_copied" }}">{{ i18n "gz_copy" }}</button>
+  </div>
+  {{- /* heredoc 里的行不是命令，不能加提示符与 sudo 位：碰到 <<'EOF' 就停，
+         遇到单独一行 EOF 再恢复。 */ -}}
+  {{- $st := newScratch -}}
+  <pre class="gz-pre">{{- range $i, $line := $lines -}}
+{{- if $i }}{{ printf "\n" | safeHTML }}{{ end -}}
+{{- $here := $st.Get "here" -}}
+{{- if $here -}}
+{{- if eq (trim $line " ") "EOF" }}{{ $st.Set "here" false }}{{ end -}}
+{{- else -}}
+{{- if and $sudo (and (ne $line "") (not (hasPrefix $line " "))) -}}
+<span class="gz-prompt"></span><span class="gz-sudo"></span>
+{{- end -}}
+{{- if in $line "&lt;&lt;&#39;EOF&#39;" }}{{ $st.Set "here" true }}{{ end -}}
+{{- end -}}
+{{- $out := replace $line "@@SRC@@" $one -}}
+{{- replace $out "@@LIST@@" $list | safeHTML -}}
+{{- end -}}</pre>
+</div>

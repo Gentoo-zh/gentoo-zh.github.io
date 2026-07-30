@@ -1,0 +1,19 @@
+{{- /* 换源器：一排按钮，点了之后同名的槽位跟着换。
+
+     用法（name 与 gz-cmd 的 slot 对应）：
+       {{< gz-mirror name="git" >}}              git 同步源
+       {{< gz-mirror name="dist" set="dist" >}}  distfiles / 二进制包的源
+
+     镜像清单在 data/gz_mirrors.yaml，加镜像只改那一处。 */ -}}
+{{- partial "gz-config-assets.html" . -}}
+{{- $name := .Get "name" | default "git" -}}
+{{- $set := .Get "set" | default "git" -}}
+{{- $mirrors := index hugo.Data.gz_mirrors $set -}}
+{{- $lang := .Page.Language.Lang -}}
+{{- $def := partial "gz-mirrors.html" (dict "set" $set "lang" $lang) -}}
+<div class="gz-pick" data-gz-pick="{{ $name }}">
+  <span class="gz-pick-label">{{ i18n "gz_src_label" }}</span>
+  {{- range $mirrors }}
+  <button type="button" class="gz-opt" data-gz-uri="{{ .uri }}"{{ with .default }} data-gz-default="{{ . }}"{{ end }}{{ if .origin }} data-gz-origin="1"{{ end }} aria-pressed="{{ if eq .uri $def.uri }}true{{ else }}false{{ end }}">{{ i18n .label }}</button>
+  {{- end }}
+</div>

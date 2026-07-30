@@ -9,3 +9,36 @@ other = "網站事宜"
 
 [footer_contact_backup]
 other = "信箱"
+
+[gz_src_label]
+other = "同步源"
+
+[gz_src_upstream]
+other = "GitHub 上游"
+
+[gz_src_cernet]
+other = "教育網聯合鏡像站"
+
+[gz_src_nju]
+other = "南京大學"
+
+[gz_src_nyist]
+other = "南陽理工學院"
+
+[gz_copy]
+other = "複製"
+
+[gz_copied]
+other = "已複製"
+
+[gz_src_hernet]
+other = "河南省教育科研網"
+
+[gz_src_origin]
+other = "源站"
+
+[gz_mode_manual]
+other = "手動配置"
+
+[gz_mode_quick]
+other = "快速配置"

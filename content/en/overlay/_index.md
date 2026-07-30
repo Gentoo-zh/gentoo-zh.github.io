@@ -2,109 +2,180 @@
 title: "Overlay"
 ---
 
-An overlay is a source of software outside the official Portage tree—layer it on top and you can install packages that aren't in the official repos. gentoo-zh is one of the long-standing ones: it grew out of gentoo-tw (started in 2003) and the later gentoo-china, when the two communities merged. The source lives on [GitHub](https://github.com/gentoo-zh/overlay).
+An overlay is a source of software outside the official Portage tree: layer it on top and you can install packages the official repos don't carry. gentoo-zh collects the software Chinese-speaking users need day to day; it came out of gentoo-tw and gentoo-china, [when the two communities merged](https://code.google.com/archive/p/gentoo-taiwan/issues/2).
 
 {{< callout type="info" >}}
-The overlay repo has moved to the organization repo [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay). The old personal repo `microcai/gentoo-zh` now redirects (301) to the new one; update to the new URL when you get a chance. See the [announcement and record](/posts/2026-07-02-gentoo-zh-repo-migration/) for details.
+**GitHub is served from CDN nodes outside mainland China and the origin server is in the US, so access from either can be slow there**: every piece of configuration below can point at a mirror instead — the git sync source, distfiles and the binary packages each have a row of mirror buttons, and clicking one rewrites the addresses in that block.
 {{< /callout >}}
-
-What it collects is software Chinese-speaking users need day to day. Of the 490-odd packages, more than 460 do not exist in the official tree at all (the [repository](https://github.com/gentoo-zh/overlay) has the exact count):
 
 - **Chinese input methods and fonts**: fcitx, pinyin dictionaries, Chinese fonts
 - **Applications popular in China**: WeChat, QQ, DingTalk, WPS Office, Feishu, NetEase Cloud Music
 - **Networking and proxy tools**
 - **Patched desktop / performance kernels**: cachyos-sources, xanmod, liquorix
-- **Development and everyday tools**: packages the official tree lacks or has fallen behind on
+- **Development and everyday tools**
 
-One rule: don't break other people's systems. Every ebuild gets tested on the arches it supports before it goes in.
+## Adding the overlay
 
-## Adding the gentoo-zh Overlay
+The sync source defaults to GitHub upstream. If that is slow for you, switch to one of the mirrors below — each is a full ebuild mirror of [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay), ebuilds only, no source code.
 
-{{% details title="Enable it with eselect repository" %}}
+{{< gz-mirror name="git" >}}
 
-Install `app-eselect/eselect-repository` first:
+Install `app-eselect/eselect-repository` and `dev-vcs/git` first.
 
-```bash
-eselect repository enable gentoo-zh
+{{< gz-cmd path="shell" sudo="true" >}}
+eselect repository add gentoo-zh git @@SRC@@
 emerge --sync gentoo-zh
-```
+{{< /gz-cmd >}}
 
-{{% /details %}}
-
-{{% details title="Manual setup (if you'd rather not use eselect)" %}}
+{{% details closed="true" title="Without eselect: write repos.conf yourself" %}}
 
 Create `gentoo-zh.conf` under `/etc/portage/repos.conf/`:
 
-```ini
+{{< gz-cmd path="/etc/portage/repos.conf/gentoo-zh.conf" >}}
 [gentoo-zh]
 location = /var/db/repos/gentoo-zh
 sync-type = git
-sync-uri = https://github.com/gentoo-zh/overlay.git
+sync-uri = @@SRC@@
 auto-sync = yes
-```
+{{< /gz-cmd >}}
 
-Then run `emerge --sync gentoo-zh`.
+Then run `emerge --sync gentoo-zh` as above.
 
 {{% /details %}}
 
-{{< callout type="info" >}}
-As of October 2025, the official project no longer provides cache mirrors for third-party repositories, so gentoo-zh now syncs directly from GitHub upstream. If you added it before, you'll need to update your sync source, see [this note](/posts/2025-10-07-thirdparty-repo-mirror-removal/).
-{{< /callout >}}
+{{% details closed="true" title="Already added, just switching sync source" %}}
 
-## Mirrors for mainland China
+Edit the `sync-uri` in whichever file under `/etc/portage/repos.conf/` holds the `[gentoo-zh]` section — `eselect-repo.conf` if you added it with eselect — set it to the address selected above, then run `emerge --sync gentoo-zh`.
 
-If connecting straight to GitHub or the official distfiles is slow, you can switch gentoo-zh over to a mainland China mirror. Collected from [peeweep](/contributors/peeweep/)'s [announcement](https://t.me/gentoocn/56), thanks!
+{{% /details %}}
 
-### git sync source
+## Accept the testing keyword
 
-Point the overlay's sync source at a mainland mirror (gentoo-zh is a full ebuild mirror of [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay): ebuilds only, no source code). Available sources:
+gentoo-zh packages are **`~arch` (testing) keyworded, with nothing marked stable**. Systems already running `~amd64` can skip this step; on a stable branch, accept the packages you actually want:
 
-- Nanjing University: `https://mirror.nju.edu.cn/git/gentoo-zh.git`
+{{< gz-cmd path="shell" sudo="true" >}}
+echo "app-i18n/fcitx ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
+{{< /gz-cmd >}}
 
-Adding it for the first time (install git first):
+Or accept the whole overlay in one line, at the cost of pulling in a lot more testing packages:
 
-```bash
-sudo emerge -aq dev-vcs/git          # install git if you don't have it
-rm -rf /var/db/repos/gentoo-zh       # clear out the old one if you've synced before
-eselect repository add gentoo-zh git https://mirror.nju.edu.cn/git/gentoo-zh.git
-emerge --sync gentoo-zh
-```
-
-If you've already added it, just change the `sync-uri` in `/etc/portage/repos.conf/gentoo-zh.conf` to the address above.
-
-## distfiles and binary packages
-
-Besides the ebuilds, the community runs two services for the overlay. They're independent of each other, so set up whichever you need.
-
-**distfiles mirror**: the overlay's distfiles are not on `distfiles.gentoo.org`, so `SRC_URI` fetches straight from upstream, which is slow or fails outright. Appending the mirror to `GENTOO_MIRRORS` in `/etc/portage/make.conf` is all it takes; it only holds source code for the overlay's own packages, so it cannot replace the official mirrors.
-
-**Binary packages (binhost)**: `emerge` takes a prebuilt package instead of compiling locally. The packages are signed, so besides adding the repo under `/etc/portage/binrepos.conf/` and appending `getbinpkg` to `FEATURES`, you first import the community signing key. It's x86-64 only for now, and not every package is covered.
-
-{{< callout type="info" >}}
-The setup steps for both, the mirror and origin addresses, the signing key, and the current package count and sync time are all documented on the [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) home page.
-{{< /callout >}}
-
-For packagers: if a package should not be mirrored, for copyright or similar reasons, add `RESTRICT="mirror"` to its ebuild and the sync tool skips it.
-
-## Using packages from the overlay
-
-All gentoo-zh packages are **`~arch` (testing) keyworded, with nothing marked stable**. Systems already running `~amd64` (the testing branch) can just `emerge` them directly; on a **stable branch** system you'll need to accept the testing keyword for these packages before installing.
-
-Allow individual packages as you need them (recommended, only accept what you actually use):
-
-```bash
-echo "app-foo/bar ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
-emerge --ask app-foo/bar
-```
-
-Or allow the whole overlay (convenient, but it pulls in a lot more testing packages, so it's your call):
-
-```bash
+{{< gz-cmd path="shell" sudo="true" >}}
 echo "*/*::gentoo-zh ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
-```
+{{< /gz-cmd >}}
 
-To see what packages the overlay offers: `eix -RO gentoo-zh`.
+## Install a package
+
+{{< gz-cmd path="shell" sudo="true" >}}
+emerge --ask app-i18n/fcitx
+{{< /gz-cmd >}}
+
+To list what the overlay provides: `eix -RO gentoo-zh`.
+
+## The distfiles mirror and binary packages
+
+The community runs two services for the overlay, independent of the ebuild sync above. Set up whichever you need; each takes its own source.
+
+### distfiles mirror
+
+The overlay's distfiles are not on `distfiles.gentoo.org`, so `SRC_URI` fetches straight from upstream, which is slow or fails outright. The [package list](https://distfiles.gentoozh.org/packages) shows which packages are mirrored. The mirror holds source code for the overlay's own packages only and cannot replace the official mirrors, so append it rather than substituting it:
+
+{{< gz-mirror name="dist" set="dist" >}}
+
+{{< gz-mode name="dist" >}}
+
+{{% gz-pane group="dist" name="manual" %}}
+{{< gz-cmd path="/etc/portage/make.conf" slot="dist" >}}
+GENTOO_MIRRORS="${GENTOO_MIRRORS} @@LIST@@"
+{{< /gz-cmd >}}
+{{% /gz-pane %}}
+
+{{% gz-pane group="dist" name="quick" %}}
+{{< gz-cmd path="shell" sudo="true" slot="dist" >}}
+tee -a /etc/portage/make.conf > /dev/null <<'EOF'
+GENTOO_MIRRORS="${GENTOO_MIRRORS} @@LIST@@"
+EOF
+{{< /gz-cmd >}}
+{{% /gz-pane %}}
+
+The one you pick goes first and the origin backs it up: `GENTOO_MIRRORS` is a list tried in order, so if the first has nothing, Portage falls through to the next. Don't put `distfiles/` in the address, Portage appends it itself.
+
+### Binary packages (binhost)
+
+`emerge` takes a prebuilt package instead of compiling locally. It's x86-64 only for now; the [package list](https://distfiles.gentoozh.org/packages) shows which packages have one.
+
+{{< gz-mirror name="bin" set="dist" >}}
+
+{{< gz-mode name="bin" >}}
+
+Import the signing key first. Portage verifies signatures against its own keyring (`/etc/portage/gnupg`), and that directory has to be created by `getuto`, so the order matters:
+
+{{< gz-cmd path="shell" sudo="true" >}}
+emerge sec-keys/openpgp-keys-gentoozh
+getuto
+gpg --homedir /etc/portage/gnupg --import /usr/share/openpgp-keys/gentoozh.asc
+gpg --homedir /etc/portage/gnupg --batch --yes --pinentry-mode loopback \
+    --passphrase-file /etc/portage/gnupg/pass --lsign-key 6A0726AF1476A2F382C6AC6638A0234EC16AD42E
+gpg --homedir /etc/portage/gnupg --check-trustdb
+{{< /gz-cmd >}}
+
+{{% gz-pane group="bin" name="manual" %}}
+Then add the repository:
+
+{{< gz-cmd path="/etc/portage/binrepos.conf/gentoo-zh.conf" slot="bin" suffix="/binpkgs/x86-64" >}}
+[gentoo-zh]
+sync-uri = @@SRC@@
+priority = 10
+verify-signature = true
+location = /var/cache/binhost/gentoo-zh
+{{< /gz-cmd >}}
+
+Finally enable `getbinpkg`:
+
+{{< gz-cmd path="/etc/portage/make.conf" >}}
+FEATURES="${FEATURES} getbinpkg"
+{{< /gz-cmd >}}
+{{% /gz-pane %}}
+
+{{% gz-pane group="bin" name="quick" %}}
+{{< gz-cmd path="shell" sudo="true" slot="bin" suffix="/binpkgs/x86-64" >}}
+mkdir -p /etc/portage/binrepos.conf
+tee /etc/portage/binrepos.conf/gentoo-zh.conf > /dev/null <<'EOF'
+[gentoo-zh]
+sync-uri = @@SRC@@
+priority = 10
+verify-signature = true
+location = /var/cache/binhost/gentoo-zh
+EOF
+
+tee -a /etc/portage/make.conf > /dev/null <<'EOF'
+FEATURES="${FEATURES} getbinpkg"
+EOF
+{{< /gz-cmd >}}
+{{% /gz-pane %}}
+
+{{< callout type="warning" >}}
+Verification comes from the `verify-signature = true` above and applies to this repository only. Do not use `FEATURES=binpkg-request-signature`: it is global, it overrides the per-repository setting, and it also demands signatures on the packages your own `FEATURES=buildpkg` produces. Those are unsigned by default, so every local build then fails at merge time with `GnuPG verification failed`.
+{{< /callout >}}
+
+{{< callout type="info" >}}
+For anything else, see **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)** — package counts, sync times and the [FAQ](https://distfiles.gentoozh.org/faq) all live there. For `::gentoo` itself, see the [mirror list](/mirrorlist/).
+{{< /callout >}}
+
+## Worth knowing
+
+{{< callout type="info" >}}
+As of October 2025 the official project no longer provides cache mirrors for third-party repositories, so gentoo-zh syncs directly from GitHub upstream. If you added it before then, update your sync source — see [this note](/posts/2025-10-07-thirdparty-repo-mirror-removal/).
+{{< /callout >}}
+
+- The repository is [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay). The old `microcai/gentoo-zh` redirects (301) to it; if you wrote the remote by hand, update it. See the [migration record](/posts/2026-07-02-gentoo-zh-repo-migration/)
+- The CERNET united mirror stores nothing itself: it forwards the request to a nearby member site, so git reports one redirect, which is expected
+- The mirrors are not always equally fresh; if one serves an older version of a package, switch to another and sync again
+- For packagers: if a package's source should not be mirrored, for copyright or similar reasons, add `RESTRICT="mirror"` to its ebuild and the sync tool skips it
 
 ## Contributing
 
-We'd love help building out gentoo-zh: open a pull request on the [GitHub repository](https://github.com/gentoo-zh/overlay), and if you find a problem, issues are welcome too.
+Contributions are welcome: open a pull request on the [GitHub repository](https://github.com/gentoo-zh/overlay), and issues are welcome too. The [contributing guide](/contributing/) walks through the workflow.
+
+## Thanks
+
+Thanks to the [CERNET united mirror](https://mirrors.cernet.edu.cn/), [Nanjing University](https://mirror.nju.edu.cn/), [Nanyang Institute of Technology](https://mirror.nyist.edu.cn/) and [HERNET](https://mirrors.ha.edu.cn/) for mirroring gentoo-zh. The mirror list was collected by [peeweep](/contributors/peeweep/) in [this announcement](https://t.me/gentoocn/56).

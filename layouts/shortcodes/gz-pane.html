@@ -1,0 +1,10 @@
+{{- /* 一种写法的内容块，由同组的 {{< gz-mode >}} 切换显示。
+
+     用 {{% gz-pane %}}（百分号）调用，里面的 Markdown 与 gz-cmd 才会照常渲染。
+     group 对应 gz-mode 的 name；name="manual" 是默认显示的那一栏，其余先 hidden，
+     脚本载入时再统一走一遍。 */ -}}
+{{- $group := .Get "group" | default "cfg" -}}
+{{- $name := .Get "name" | default "manual" -}}
+<div class="gz-pane" data-gz-pane-group="{{ $group }}" data-gz-pane="{{ $name }}"{{ if ne $name "manual" }} hidden{{ end }}>
+{{ .Inner }}
+</div>

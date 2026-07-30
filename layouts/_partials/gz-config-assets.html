@@ -1,0 +1,21 @@
+{{- /* 配置块（{{< gz-cmd >}} / {{< gz-mirror >}}）的样式与脚本。
+
+     放在站点仓库而不是主题包：这两个短代码是给 Gentoo 配置写的，不是通用表现层，
+     而且现在只有 Overlay 页在用；等 download / paste 页也用上、样式定型了再搬进
+     gentoozh-theme。项目层的 layouts/ 优先于主题，所以搬过去时删掉这里即可。
+
+     不内联：短代码的输出会经过 Goldmark，智能引号会把 CSS 里 content: "# " 的引号
+     换成弯引号，规则整条失效。走资源管线还顺带拿到指纹与缓存。
+
+     不用 .Store 去重：一个页面会被渲染多遍（搜索索引也会跑一遍短代码），页面级
+     store 的标记会被先跑的那一遍吃掉，真正输出 HTML 的那遍就什么都不写了。所以
+     每个短代码都照常引入——同一个 href / src 浏览器只取一次，脚本自身用
+     window.__gzConfig 挡住重复执行（重复绑监听器会让 sudo 按一次翻转多次）。 */ -}}
+{{- with resources.Get "gz-config.css" -}}
+<link rel="stylesheet" href="{{ (. | minify | fingerprint).RelPermalink }}">
+{{- end -}}
+{{- with resources.Get "gz-config.js" -}}
+{{- /* defer：脚本随短代码输出在正文中间，不 defer 的话后面的代码块还没解析出来，
+       querySelectorAll 拿到空集合、监听器绑不上。 */ -}}
+<script src="{{ (. | minify | fingerprint).RelPermalink }}" defer></script>
+{{- end -}}
