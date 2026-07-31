@@ -28,3 +28,7 @@ Pull together the scattered Gentoo resources around mainland China, get Gentoo u
 * Main server setup and admin: [清风](http://weibo.com/zhcj), [比尔盖子](http://weibo.com/biergaizi)
 * Docs translation: we're sticking with Zhang Le's translation platform, and a big thanks to him for all he's done for Gentoo in Chinese!
 * Forum admin: 清风 (for now), now hiring...
+
+{{< callout type="info" >}}
+**Editor's note**: the `[1]` and `[2]` in the text each pointed to a reference. This post is from 2013, and thirteen years on neither site loads any more, so the links were dropped when the site was migrated; only the markers are kept, as in the original.
+{{< /callout >}}
