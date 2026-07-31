@@ -28,6 +28,30 @@ Pull together the scattered Gentoo resources around mainland China, get Gentoo u
 * Main server setup and admin: [清风](http://weibo.com/zhcj), [比尔盖子](http://weibo.com/biergaizi)
 * Docs translation: we're sticking with Zhang Le's translation platform, and a big thanks to him for all he's done for Gentoo in Chinese!
 * Forum admin: 清风 (for now), now hiring...
+* Blog design, integration and writing: Gentoo fans, all of you
+* Everything else: see the project list below, and please pitch in!
+
+## The Gentoo Chinese Community Project List
+
+* Main site: a Chinese mirror of the official site, for translating official news, posting news from mainland China, and linking to resources at home and abroad.
+  - Registered domain in mainland China: gentoo.org.cn
+  - Server: Alibaba Cloud VPS
+  - Web server software: Nginx, gorg
+* Forum: a place to learn Gentoo and talk shop.
+* Blog: collect the good independent blogs, publish homegrown guides and tips. Written together on GitHub, synced to the main site.
+* Docs: using the translation platform on gentoo-zh.org.
+* overlay project: use the site's server to sync gentoo-zh from GitHub to GitCafe (why? you know why… not done yet).
+* Everything else: QQ groups, Weibo, IRC, mailing lists, Google Groups — whatever tool gets people talking. Dr. CaiCai's avbot, for instance, bridges QQ groups with IRC and XMPP.
+
+{{< callout type="info" >}}
+**Editor's note**: this section describes the setup as of 2013. The domain, the server and every service have changed since: the main site is [gentoozh.org](https://gentoozh.org/), the overlay lives at [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay), the forum is [forum.gentoozh.org](https://forum.gentoozh.org/), and documentation is translated on the [Gentoo Wiki](https://wiki.gentoo.org/wiki/Handbook:Main_Page/zh-cn). The old gentoo.org.cn redirects to the new domain; GitCafe and Zhang Le's translation platform are both gone.
+{{< /callout >}}
+
+## Thanks
+
+Thanks to the organizers and participants of the first two Chinese communities for everything they did to bring Gentoo into Chinese!
+
+Thanks to Zhang Le for the Chinese logo artwork and for backing the community.
 
 {{< callout type="info" >}}
 **Editor's note**: the `[1]` and `[2]` in the text each pointed to a reference. This post is from 2013, and thirteen years on neither site loads any more, so the links were dropped when the site was migrated; only the markers are kept, as in the original.
