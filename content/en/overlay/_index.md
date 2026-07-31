@@ -2,7 +2,7 @@
 title: "Overlay"
 ---
 
-An overlay is a source of software outside the official Portage tree: layer it on top and you can install packages the official repos don't carry. gentoo-zh collects the software Chinese-speaking users need day to day; it came out of gentoo-tw and gentoo-china, [when the two communities merged](https://code.google.com/archive/p/gentoo-taiwan/issues/2).
+An overlay is a source of software outside the official Portage tree: layer it on top and you can install packages the official repos don't carry. gentoo-zh collects the software Chinese-speaking users need day to day; it came out of [merging the two overlays](https://code.google.com/archive/p/gentoo-taiwan/issues/2), gentoo-tw and gentoo-china.
 
 {{< callout type="info" >}}
 **GitHub is served from CDN nodes outside mainland China and the origin server is in the US, so access from either can be slow there**: every piece of configuration below can point at a mirror instead — the git sync source, distfiles and the binary packages each have a row of mirror buttons, and clicking one rewrites the addresses in that block.

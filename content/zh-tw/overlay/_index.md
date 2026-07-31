@@ -2,7 +2,7 @@
 title: "Overlay"
 ---
 
-Overlay 是官方 Portage 樹之外的軟體來源，疊加上去就能裝到官方源裡沒有的包。gentoo-zh 收錄的是中文使用者常用的軟體，它是當年的 gentoo-tw 與 gentoo-china [兩岸社群合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)而來。
+Overlay 是官方 Portage 樹之外的軟體來源，疊加上去就能裝到官方源裡沒有的包。gentoo-zh 收錄的是中文使用者常用的軟體，它由當年 gentoo-tw 與 gentoo-china [兩岸的 overlay 合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)而來。
 
 {{< callout type="info" >}}
 **因為 GitHub 走的是境外 CDN、源站在美國，所以中國大陸訪問都可能較慢**：下面每一處配置都能換源，git 同步源、distfiles、二進位包各有一排鏡像按鈕，點一下這段配置裡的地址就跟著改。
