@@ -8,7 +8,7 @@ links:
     url: "https://posts.jinqiang.online/"
   - name: "mastodon"
     url: "https://o3o.ca/@peeweep"
-weight: 8206
+weight: 8203
 ---
 
-1794 commits
+1797 commits
