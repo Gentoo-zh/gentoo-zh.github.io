@@ -53,7 +53,10 @@ jobs:
             --gc \
             --minify \
             --baseURL "https://gentoozh.org/"
+      # 只有 master 才发。这个工作流也接受手动触发，而构建与部署在同一个 job 里，
+      # 没有这一行的话，在任何分支上点一次 workflow_dispatch 就把那个分支发到线上了。
       - name: Deploy to Cloudflare Workers
+        if: github.ref == 'refs/heads/master'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
