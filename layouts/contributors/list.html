@@ -3,7 +3,7 @@
 {{- $isTw := eq $lang "zh-tw" -}}
 
 <div class="hx:mx-auto hx:flex hextra-max-page-width">
-  {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+  {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" false) }}
   <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8">
     <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
       <br class="hx:mt-1.5 hx:text-sm" />
@@ -65,6 +65,5 @@
     </main>
   </article>
   {{/* Right-side placeholder balances the left sidebar gutter so content stays centered (matches Hextra blog/list). */}}
-  <div class="hx:max-xl:hidden hx:h-0 hx:w-64 hx:shrink-0"></div>
 </div>
 {{ end }}
