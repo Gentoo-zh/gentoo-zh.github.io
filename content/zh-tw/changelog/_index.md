@@ -11,7 +11,7 @@ slug: "changelog"
 
 ## 2026 年 7 月
 
-- 新增公告 **[gentoo-zh 二進位包服務上線](/posts/2026-07-29-binhost-launch/)**：overlay 的 194 個包有了預編譯的二進位包，每晚建置、簽名後由 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) 與南京大學鏡像分發；文中給出三步配置、驗簽為什麼要先跑 `getuto`，以及哪些包不收錄
+- 新增公告 **[gentoo-zh 二進位包服務上線](/posts/2026-07-29-binhost-launch/)**：overlay 的 194 個包有了預編譯的二進位包，每晚建置、簽名後由 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) 與南京大學鏡像分發；文中給出三步配置、驗簽為什麼要先執行 `getuto`，以及哪些包不收錄
 - [Overlay 頁](/overlay/)新增**二進位包（binhost）**一節：說明目前只有 x86-64、並非每個包都有，配置的三步與可複製的指令、地址、簽名公鑰和即時的包數量統一引到 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/)；distfiles 一節的 `GENTOO_MIRRORS` 改成同時列出鏡像與源站，並修正 git 換源範例裡殘留的舊鏡像地址
 - 新增公告 **[Overlay 軟體套件清理、改名與批次更新](/posts/2026-07-29-overlay-package-cleanup/)**：過去一個月升級 162 個包、新增 60 個、移除 38 個、改名或換分類 5 個，overlay 從 468 個包變成 490 個；文中列出改名清單、移除清單與各自的處理辦法
 - **Live ISO 下載站改用 [iso.gentoozh.org](https://iso.gentoozh.org/)**：網站服務的是 Live ISO 下載，不是 Gentoo 的 portage / distfiles 鏡像（那些在[鏡像列表](/mirrorlist/)頁），原來的 mirror 名字容易誤解；舊地址 mirror.gentoozh.org 繼續可用，書籤和已有連結不失效
