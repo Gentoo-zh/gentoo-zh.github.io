@@ -53,7 +53,7 @@ title: "關於"
 
 ### 為什麼叫 zh
 
-名字裡的 zh 來自 ISO 639，是中文這門語言的代碼，認的是語言，而不是國家或某個特定地區。而 cn 是 ISO 3166 的國家代碼，範圍反而更窄。況且 gentoo-zh 就是當年的 gentoo-tw 和 gentoo-china [兩岸社群合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)來的。archlinuxcn 其實也自稱 Arch Linux 中文社群，cn 只是歷史留下來的叫法，社群裡也有人提過換成 zh，只是體量太大改不動。
+名字裡的 zh 來自 ISO 639，是中文這門語言的代碼，認的是語言，而不是國家或某個特定地區。而 cn 是 ISO 3166 的國家代碼，範圍反而更窄。況且 gentoo-zh 就是當年的 gentoo-tw 和 gentoo-china [兩岸社群合併](https://code.google.com/archive/p/gentoo-taiwan/issues/2)來的。archlinuxcn 也自稱 Arch Linux 中文社群，cn 只是歷史留下來的叫法，社群裡也有人提過換成 zh，只是體量太大改不動。
 
 ### 英文
 
@@ -81,4 +81,4 @@ title: "關於"
 
 ## 版權聲明
 
-Logo 來自: [https://wiki.gentoo.org/wiki/Project:Artwork/Artwork#Genchu](https://wiki.gentoo.org/wiki/Project:Artwork/Artwork#Genchu)
+Logo 來自：[https://wiki.gentoo.org/wiki/Project:Artwork/Artwork#Genchu](https://wiki.gentoo.org/wiki/Project:Artwork/Artwork#Genchu)

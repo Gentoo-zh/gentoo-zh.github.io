@@ -39,7 +39,7 @@ sync-uri = @@SRC@@
 auto-sync = yes
 {{< /gz-cmd >}}
 
-然後同樣跑 `emerge --sync gentoo-zh`。
+然後同樣執行 `emerge --sync gentoo-zh`。
 
 {{% /details %}}
 
@@ -51,7 +51,7 @@ auto-sync = yes
 
 ## 接受測試關鍵字
 
-gentoo-zh 的包**只有 `~arch`（測試）關鍵字，沒有 stable 關鍵字**。已經在跑 `~amd64` 的系統跳過這步；穩定分支的系統要先放行。
+gentoo-zh 的包**只有 `~arch`（測試）關鍵字，沒有 stable 關鍵字**。已經在用 `~amd64` 的系統跳過這步；穩定分支的系統要先放行。
 
 因為 `::gentoo-zh` 這個限定只作用於本 overlay，而這裡的包全都是 `~arch`，所以直接放行整個 overlay 即可，官方源的包不受影響：
 
@@ -79,7 +79,7 @@ emerge --ask net-im/tencent-qq
 
 ### distfiles 鏡像
 
-overlay 的 distfiles 不在 `distfiles.gentoo.org` 上，`SRC_URI` 只能直連上游，慢或者取不到。哪些包的原始碼已經鏡像，見[套件列表](https://distfiles.gentoozh.org/packages)。鏡像只存 overlay 的原始碼，不能替代官方源，所以是追加而不是替換：
+overlay 的 distfiles 不在 `distfiles.gentoo.org` 上，`SRC_URI` 只能直連上游，速度慢或者下載失敗。哪些包的原始碼已經鏡像，見[套件列表](https://distfiles.gentoozh.org/packages)。鏡像只存 overlay 的原始碼，不能替代官方源，所以是追加而不是替換：
 
 {{< gz-mirror name="dist" set="dist" >}}
 
@@ -99,7 +99,7 @@ EOF
 {{< /gz-cmd >}}
 {{% /gz-pane %}}
 
-選中的排在前面、源站兜在後面：`GENTOO_MIRRORS` 是按順序嘗試的列表，前面取不到會落到後面。地址不寫 `distfiles/`，Portage 會自動補上。
+選中的排在前面、源站兜在後面：`GENTOO_MIRRORS` 是按順序嘗試的列表，前面下載失敗會落到後面。地址不寫 `distfiles/`，Portage 會自動補上。
 
 ### 二進位包（binhost）
 

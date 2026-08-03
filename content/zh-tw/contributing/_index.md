@@ -52,14 +52,14 @@ cd gentoo-zh
 本倉庫遵循官方 Gentoo ebuild 倉庫規範，寫法權威參考是 [Devmanual](https://devmanual.gentoo.org/)：
 
 1. **放對位置**：`<category>/<package>/<package>-<version>.ebuild`。`category` 取官方分類（繼承自 `::gentoo` 的 `profiles/categories`，如 `app-misc`、`dev-libs`、`net-im`），目錄名、檔名、版本號按官方命名規則。
-2. **寫 ebuild**：用現行的 **`EAPI=9`**（EAPI=8 是上一代，樹裡老包多數還是 8，但新包請直接上 9；與 8 的差異見下方摺疊）。標準兩行版權頭用範圍式年份，與官方樹一致：`# Copyright 1999-2026 Gentoo Authors` + GPL-2 宣告。填好 `DESCRIPTION`、`HOMEPAGE`、`SRC_URI`、`LICENSE`、`SLOT`、`IUSE`，並按用途分清依賴：`DEPEND`（編譯期標頭檔案 / 庫）、`RDEPEND`（執行期）、`BDEPEND`（在**建置主機**上跑的工具，如 pkgconfig、gettext）、`IDEPEND`（僅安裝階段 `pkg_*` 用到的工具）。
+2. **寫 ebuild**：用現行的 **`EAPI=9`**（EAPI=8 是上一代，樹裡老包多數還是 8，但新包請直接上 9；與 8 的差異見下方摺疊）。標準兩行版權頭用範圍式年份，與官方樹一致：`# Copyright 1999-2026 Gentoo Authors` + GPL-2 宣告。填好 `DESCRIPTION`、`HOMEPAGE`、`SRC_URI`、`LICENSE`、`SLOT`、`IUSE`，並按用途分清依賴：`DEPEND`（編譯期標頭檔案 / 庫）、`RDEPEND`（執行期）、`BDEPEND`（在**建置主機**上執行的工具，如 pkgconfig、gettext）、`IDEPEND`（僅安裝階段 `pkg_*` 用到的工具）。
 3. **KEYWORDS 只用測試關鍵字**（`~amd64`、`~arm64` 等）——**本倉庫不收 stable 關鍵字**；只支援特定架構的包用 `-* ~amd64` 這種寫法排除其餘。
 4. **寫 `metadata.xml`**：每個包都要有，宣告維護者，並給每個**區域性 USE 旗標**寫用途說明（全域旗標已在中央 `use.desc` 描述、無需重複；官方規範要求，`pkgcheck` 會查）。
 5. **生成 Manifest**：`pkgdev manifest`。本倉庫用 thin manifest（`thin-manifests = true`），`Manifest` 只記 distfile 校驗（BLAKE2B/SHA512），ebuild 完整性交給 git。
 6. **本地測試建置**：`ebuild <檔案> clean install` 或 `emerge`，並在它 `KEYWORDS` 宣告的**每個架構上都實測**——沒測過就別宣告支援。
-7. **QA 自查**：`pkgcheck scan --commits --net`（`--commits` 只查你這幾個提交改動的內容，`--net` 允許聯網檢查如 `SRC_URI` 是否還能下；CI 也會另跑 `pkgcheck`）。
+7. **QA 自查**：`pkgcheck scan --commits --net`（`--commits` 只查你這幾個提交改動的內容，`--net` 允許聯網檢查如 `SRC_URI` 是否還能下；CI 也會另外執行 `pkgcheck`）。
 8. **提交**：用 `pkgdev commit` 生成規範提交資訊（格式見下），ebuild、`metadata.xml`、`Manifest` 一起提；一個貢獻的全部提交放進**同一個 PR**，別拆成兩個。
-9. **開 PR 並盯 CI**：CI 會自動 `emerge` 該包並跑 `pkgcheck`——到 PR 的 **Checks**（或你 fork 的 **Actions**）看狀態，紅了按日誌修；PR 模板裡有一個必勾項——確認你已在本地跑過 `pkgcheck scan --commits --net`。全綠 + 勾選齊才會合併。
+9. **開 PR 並盯 CI**：CI 會自動 `emerge` 該包並執行 `pkgcheck`——到 PR 的 **Checks**（或你 fork 的 **Actions**）看狀態，紅了按日誌修；PR 模板裡有一個必勾項——確認你已在本地執行過 `pkgcheck scan --commits --net`。全綠 + 勾選齊才會合併。
 
 {{% details title="完整範例:app-misc/foo（ebuild + metadata.xml）" %}}
 
@@ -128,7 +128,7 @@ src_install() {
 </pkgmetadata>
 ```
 
-寫好這兩個檔案後，在包目錄裡把整條流程跑完：
+寫好這兩個檔案後，在包目錄裡完成整條流程：
 
 ```bash
 cd app-misc/foo
@@ -139,7 +139,7 @@ pkgdev commit                            # ④ 生成規範提交資訊(ebuild +
 git push                                 # ⑤ 推到你的 fork,再到 GitHub 開 PR
 ```
 
-⑥ 開 PR 後**盯 CI 狀態**：到 PR 頁面的 **Checks**（或你 fork 的 **Actions** 標籤）看 `emerge-on-pr` 與 `pkgcheck` 兩條流水線——紅了就點進日誌按提示修，`git push --force-with-lease` 更新分支會自動重跑；**全綠 + PR 模板勾選齊**才會合併。
+⑥ 開 PR 後**盯 CI 狀態**：到 PR 頁面的 **Checks**（或你 fork 的 **Actions** 標籤）看 `emerge-on-pr` 與 `pkgcheck` 兩條流水線——紅了就點進日誌按提示修，`git push --force-with-lease` 更新分支會自動重新執行；**全綠 + PR 模板勾選齊**才會合併。
 
 {{% /details %}}
 
