@@ -37,8 +37,44 @@ other = "HERNET (Henan)"
 [gz_src_origin]
 other = "Origin"
 
+[gz_src_gentoo_upstream]
+other = "GitHub upstream"
+
+[gz_src_tuna]
+other = "Tsinghua TUNA"
+
+[gz_src_ustc]
+other = "USTC"
+
+[gz_src_zju]
+other = "ZJU"
+
+[gz_src_bfsu]
+other = "BFSU"
+
+[gz_src_sdu]
+other = "SDU"
+
+[gz_src_hust]
+other = "HUST"
+
+[gz_src_nchc]
+other = "NCHC (Taiwan)"
+
+[gz_src_planetunix]
+other = "PlanetUnix (Hong Kong)"
+
 [gz_mode_manual]
 other = "Edit files"
 
 [gz_mode_quick]
 other = "One command"
+
+[gz_channel_label]
+other = "Channel"
+
+[gz_channel_stable]
+other = "stable (default)"
+
+[gz_channel_unstable]
+other = "unstable"

@@ -1,0 +1,6 @@
+{{- /* 与 gz-channel 配套的频道说明。用百分号短代码调用以渲染内部 Markdown。 */ -}}
+{{- $group := .Get "group" | default "bin" -}}
+{{- $name := .Get "name" | default "stable" -}}
+<div data-gz-channel-pane-group="{{ $group }}" data-gz-channel-pane="{{ $name }}"{{ if ne $name "stable" }} hidden{{ end }}>
+{{ .Inner }}
+</div>

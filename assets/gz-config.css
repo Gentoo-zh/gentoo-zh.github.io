@@ -4,9 +4,15 @@
 .gz-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 1rem 0 0.6rem; font-size: 0.85rem; }
 .gz-pick-label { color: var(--text-soft); }
 .gz-opt { border: 1px solid var(--border-soft); background: transparent; color: var(--text-soft); padding: 0.15rem 0.65rem; border-radius: 9999px; cursor: pointer; font: inherit; line-height: 1.6; }
-.gz-opt:hover { color: var(--text-strong); }
+@media (hover: hover) {
+  .gz-opt:hover { color: var(--text-strong); }
+}
+.gz-opt:focus-visible,
+.gz-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 /* 选中态不用实心紫：一排按钮里实心块太抢眼，压成淡紫底 + 紫字 + 紫边就够读出"选中"。 */
 .gz-opt[aria-pressed="true"] { background: color-mix(in oklab, var(--primary) 10%, transparent); border-color: color-mix(in oklab, var(--primary) 45%, transparent); color: var(--primary); }
+.gz-table-scroll { max-width: 100%; overflow-x: auto; }
+.gz-table-scroll > table { min-width: max-content; }
 /* 圆角与背景都由外框负责：Hextra 给 pre 定了 border-radius 12px 和自己的底色，
    套在外框里两个圆角对不上、外框的角会露出来，所以内层的 pre 清零（见 .gz-pre）。 */
 .gz-code { margin: 0.9rem 0; border: 1px solid var(--border-soft); border-radius: 0.5rem; overflow: hidden; background: rgba(0, 0, 0, 0.02); }

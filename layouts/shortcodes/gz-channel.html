@@ -1,0 +1,13 @@
+{{- /* 二进制包频道选择器。频道与路径来自 data/gz_channels.yaml，代码块通过
+       channel 参数声明要接收哪一组选择。 */ -}}
+{{- partial "gz-config-assets.html" . -}}
+{{- $name := .Get "name" | default "bin" -}}
+{{- $set := .Get "set" | default $name -}}
+{{- $channels := index hugo.Data.gz_channels $set -}}
+{{- $labelID := printf "gz-channel-label-%d" .Ordinal -}}
+<div class="gz-pick" data-gz-channel-pick="{{ $name }}" role="group" aria-labelledby="{{ $labelID }}">
+  <span class="gz-pick-label" id="{{ $labelID }}">{{ i18n "gz_channel_label" }}</span>
+  {{- range $channels }}
+  <button type="button" class="gz-opt" data-gz-channel="{{ .name }}" data-gz-channel-suffix="{{ .suffix }}" aria-pressed="{{ if .default }}true{{ else }}false{{ end }}">{{ i18n .label }}</button>
+  {{- end }}
+</div>

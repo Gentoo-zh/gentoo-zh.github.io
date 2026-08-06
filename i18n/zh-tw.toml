@@ -37,8 +37,44 @@ other = "河南省教育科研網"
 [gz_src_origin]
 other = "源站"
 
+[gz_src_gentoo_upstream]
+other = "GitHub 上游"
+
+[gz_src_tuna]
+other = "清華 TUNA"
+
+[gz_src_ustc]
+other = "中科大 USTC"
+
+[gz_src_zju]
+other = "浙大 ZJU"
+
+[gz_src_bfsu]
+other = "北外 BFSU"
+
+[gz_src_sdu]
+other = "山大 SDU"
+
+[gz_src_hust]
+other = "華科 HUST"
+
+[gz_src_nchc]
+other = "臺灣 NCHC"
+
+[gz_src_planetunix]
+other = "香港 PlanetUnix"
+
 [gz_mode_manual]
-other = "手動配置"
+other = "手動設定"
 
 [gz_mode_quick]
-other = "快速配置"
+other = "快速設定"
+
+[gz_channel_label]
+other = "頻道"
+
+[gz_channel_stable]
+other = "stable（預設）"
+
+[gz_channel_unstable]
+other = "unstable"
