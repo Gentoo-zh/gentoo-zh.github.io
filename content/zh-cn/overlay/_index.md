@@ -2,10 +2,10 @@
 title: "Overlay"
 ---
 
-Overlay 是官方 Portage 树之外的软件来源，叠加上去就能装到官方源里没有的包。gentoo-zh 收录的是中文用户常用的软件，它由当年 gentoo-tw 与 gentoo-china [两岸的 overlay 合并](https://code.google.com/archive/p/gentoo-taiwan/issues/2)而来。
+[gentoo-zh](https://github.com/gentoo-zh/overlay) 是 Gentoo 中文社区维护的 overlay，前身为 2003 年的 gentoo-tw 与 gentoo-china，收录大量中文用户常用的软件包。
 
 {{< callout type="info" >}}
-**因为 GitHub 走的是境外 CDN、源站在美国，所以中国大陆访问都可能较慢**：下面每一处配置都能换源，git 同步源、distfiles、二进制包各有一排镜像按钮，点一下这段配置里的地址就跟着改。
+Git、Distfiles 与二进制包可分别选择镜像，页面中的配置会随选择更新。
 {{< /callout >}}
 
 - **中文输入与字体**：fcitx 输入法、拼音词库、中文字体
@@ -16,20 +16,23 @@ Overlay 是官方 Portage 树之外的软件来源，叠加上去就能装到官
 
 ## 添加 overlay
 
-同步源默认是 GitHub 上游。访问慢的话换成下面任一镜像，它们是 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay) 的完整 ebuild 镜像，只含 ebuild、不含源码。
+相应镜像只提供 gentoo-zh overlay 的 ebuild 仓库 Git 同步服务，不包含软件源代码文件。
 
 {{< gz-mirror name="git" >}}
 
-需先安装 `app-eselect/eselect-repository` 与 `dev-vcs/git`。
+安装 `eselect-repository`，再使用所选镜像添加并同步 overlay：
 
 {{< gz-cmd path="shell" sudo="true" >}}
+emerge --ask app-eselect/eselect-repository
 eselect repository add gentoo-zh git @@SRC@@
-emerge --sync gentoo-zh
+emaint sync -r gentoo-zh
 {{< /gz-cmd >}}
 
-{{% details closed="true" title="不想用 eselect：手写 repos.conf" %}}
+{{% details closed="true" title="手动配置或更换镜像" %}}
 
-在 `/etc/portage/repos.conf/` 下建 `gentoo-zh.conf`：
+首次配置时，创建 `/etc/portage/repos.conf/gentoo-zh.conf`。更换 Git 镜像时，只需编辑 `/etc/portage/repos.conf/` 中包含 `[gentoo-zh]` 的配置文件。通过 `eselect-repository` 生成的配置位于 `/etc/portage/repos.conf/eselect-repo.conf`。
+
+完整配置示例：
 
 {{< gz-cmd path="/etc/portage/repos.conf/gentoo-zh.conf" >}}
 [gentoo-zh]
@@ -39,30 +42,31 @@ sync-uri = @@SRC@@
 auto-sync = yes
 {{< /gz-cmd >}}
 
-然后同样执行 `emerge --sync gentoo-zh`。
+更换镜像后，删除现有的本地仓库并重新同步：
 
-{{% /details %}}
-
-{{% details closed="true" title="已经添加过，只想换同步源" %}}
-
-改 `/etc/portage/repos.conf/` 里含 `[gentoo-zh]` 那一段的 `sync-uri`（用 eselect 添加的在 `eselect-repo.conf`），换成上面选中的地址，再 `emerge --sync gentoo-zh`。
+{{< gz-cmd path="shell" sudo="true" >}}
+rm -rf /var/db/repos/gentoo-zh
+emaint sync -r gentoo-zh
+{{< /gz-cmd >}}
 
 {{% /details %}}
 
 ## 接受测试关键字
 
-gentoo-zh 的包**只有 `~arch`（测试）关键字，没有 stable 关键字**。已经在用 `~amd64` 的系统跳过这步；稳定分支的系统要先放行。
+gentoo-zh 软件包仅提供 `~ARCH`（测试）关键字，没有 stable 关键字。已全局使用 `~amd64` 的系统可跳过此步骤；使用 stable 关键字的系统需要先接受 `~amd64`。
 
-因为 `::gentoo-zh` 这个限定只作用于本 overlay，而这里的包全都是 `~arch`，所以直接放行整个 overlay 即可，官方源的包不受影响：
+关于 `~ARCH` 的说明见 [Gentoo Wiki](https://wiki.gentoo.org/wiki//etc/portage/package.accept_keywords#.7EARCH_system-wide)。
 
-{{< gz-cmd path="shell" sudo="true" >}}
-echo "*/*::gentoo-zh ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
+`::gentoo-zh` 限定仅作用于该 overlay。由于其中的软件包均使用 `~ARCH`，可接受整个 overlay 的 `~amd64` 关键字，Gentoo 主仓库的软件包不受影响：
+
+{{< gz-cmd path="/etc/portage/package.accept_keywords/gentoo-zh" >}}
+*/*::gentoo-zh ~amd64
 {{< /gz-cmd >}}
 
-想逐个记录装了什么的，也可以一个个写，效果一样：
+也可逐个接受软件包的测试关键字：
 
-{{< gz-cmd path="shell" sudo="true" >}}
-echo "net-im/tencent-qq ~amd64" >> /etc/portage/package.accept_keywords/gentoo-zh
+{{< gz-cmd path="/etc/portage/package.accept_keywords/gentoo-zh" >}}
+net-im/tencent-qq ~amd64
 {{< /gz-cmd >}}
 
 ## 安装软件包
@@ -73,13 +77,13 @@ emerge --ask net-im/tencent-qq
 
 列出 overlay 提供的包：`eix -RO gentoo-zh`。
 
-## distfiles 镜像与二进制包
+## Distfiles 镜像与二进制包
 
-除了 ebuild，社区还为 overlay 运行了两个服务，与上面的同步互不影响，按需分别配置，两者的源也可以各选一个。
+Distfiles 与二进制包服务相互独立，可按需分别配置。
 
-### distfiles 镜像
+### Distfiles 镜像
 
-overlay 的 distfiles 不在 `distfiles.gentoo.org` 上，`SRC_URI` 只能直连上游，速度慢或者下载失败。哪些包的源码已经镜像，见[包列表](https://distfiles.gentoozh.org/packages)。镜像只存 overlay 的源码，不能替代官方源，所以是追加而不是替换：
+相应镜像只提供 gentoo-zh overlay 相关的 Distfiles，因此只应追加到现有配置。`::gentoo` 的 Distfiles 配置见[镜像列表](/mirrorlist/)。
 
 {{< gz-mirror name="dist" set="dist" >}}
 
@@ -99,17 +103,29 @@ EOF
 {{< /gz-cmd >}}
 {{% /gz-pane %}}
 
-选中的排在前面、源站兜在后面：`GENTOO_MIRRORS` 是按顺序尝试的列表，前面下载失败会落到后面。地址不写 `distfiles/`，Portage 会自动补上。
+`GENTOO_MIRRORS` 按顺序尝试各地址。所选镜像排在首位，源站位于末尾；地址末尾无需加入 `distfiles/`，Portage 会自动补充。
 
 ### 二进制包（binhost）
 
-`emerge` 优先取编好的包，省掉本地编译。目前只有 x86-64；哪些包有二进制包，见[包列表](https://distfiles.gentoozh.org/packages)。
+[gentoo-zh binhost](https://github.com/gentoo-zh/binhost) 目前提供已签名的 amd64 二进制包，分为 stable 与 unstable 两个频道。二进制包还附带 gentoo-zh 软件包运行期依赖所需的部分 `::gentoo` 软件包，不替代 [Gentoo 官方 binhost](https://wiki.gentoo.org/wiki/Gentoo_Binary_Host_Quickstart)。
+
+{{< gz-channel name="bin" >}}
+
+{{% gz-channel-pane group="bin" name="stable" %}}
+stable 使用 Gentoo 主仓库的稳定软件包，只对 `::gentoo-zh` 接受 `~amd64`，适合 Gentoo 主仓库使用 stable 关键字的系统。
+{{% /gz-channel-pane %}}
+
+{{% gz-channel-pane group="bin" name="unstable" %}}
+unstable 全局使用 `~amd64`，适合已设置 `ACCEPT_KEYWORDS="~amd64"` 的系统。
+{{% /gz-channel-pane %}}
+
+频道中的软件包数量和状态见 [gentoo-zh 软件包列表](https://distfiles.gentoozh.org/packages)，频道区别见 [gentoo-zh binhost FAQ](https://distfiles.gentoozh.org/faq#binpkg-channel)。
 
 {{< gz-mirror name="bin" set="dist" >}}
 
 {{< gz-mode name="bin" >}}
 
-先导入签名公钥。因为 Portage 的验签用的是它自己的 keyring（`/etc/portage/gnupg`），而那个目录要 `getuto` 先建出来，所以顺序不能颠倒：
+导入签名公钥：
 
 {{< gz-cmd path="shell" sudo="true" >}}
 emerge sec-keys/openpgp-keys-gentoozh
@@ -120,10 +136,12 @@ gpg --homedir /etc/portage/gnupg --batch --yes --pinentry-mode loopback \
 gpg --homedir /etc/portage/gnupg --check-trustdb
 {{< /gz-cmd >}}
 
-再添加仓库：
+`getuto` 用于建立 `/etc/portage/gnupg` 和 Portage Local Trust Key，必须在导入公钥前执行。验签以 `portage` 用户执行，因此需要预先生成 `trustdb`。
+
+添加二进制包仓库：
 
 {{% gz-pane group="bin" name="manual" %}}
-{{< gz-cmd path="/etc/portage/binrepos.conf/gentoo-zh.conf" slot="bin" suffix="/binpkgs/x86-64" >}}
+{{< gz-cmd path="/etc/portage/binrepos.conf/gentoo-zh.conf" slot="bin" channel="bin" suffix="/binpkgs/x86-64" >}}
 [gentoo-zh]
 sync-uri = @@SRC@@
 priority = 10
@@ -131,7 +149,7 @@ verify-signature = true
 location = /var/cache/binhost/gentoo-zh
 {{< /gz-cmd >}}
 
-最后打开 `getbinpkg`：
+在有合适的二进制包时自动下载并使用：
 
 {{< gz-cmd path="/etc/portage/make.conf" >}}
 FEATURES="${FEATURES} getbinpkg"
@@ -139,7 +157,7 @@ FEATURES="${FEATURES} getbinpkg"
 {{% /gz-pane %}}
 
 {{% gz-pane group="bin" name="quick" %}}
-{{< gz-cmd path="shell" sudo="true" slot="bin" suffix="/binpkgs/x86-64" >}}
+{{< gz-cmd path="shell" sudo="true" slot="bin" channel="bin" suffix="/binpkgs/x86-64" >}}
 mkdir -p /etc/portage/binrepos.conf
 tee /etc/portage/binrepos.conf/gentoo-zh.conf > /dev/null <<'EOF'
 [gentoo-zh]
@@ -155,12 +173,20 @@ EOF
 {{< /gz-cmd >}}
 {{% /gz-pane %}}
 
+如果没有合适的二进制包，Portage 会照常从源码编译。
+
+单次使用二进制包安装：
+
+{{< gz-cmd path="shell" sudo="true" >}}
+emerge --ask --getbinpkg <package>
+{{< /gz-cmd >}}
+
 {{< callout type="warning" >}}
-验签由上面的 `verify-signature = true` 提供，只作用于本源。不要用 `FEATURES=binpkg-request-signature`：它是全局的，会覆盖前者，还会要求本机 `FEATURES=buildpkg` 构建的包也带签名，而那些包默认没有签名，于是每个本地构建都会在合并时报错 `GnuPG verification failed`。
+`verify-signature = true` 只要求验证该仓库的签名。全局启用 `FEATURES="binpkg-request-signature"` 时，还需要为本机通过 `FEATURES="buildpkg"` 构建的包配置签名。
 {{< /callout >}}
 
 {{< callout type="info" >}}
-更多问题见 **[distfiles.gentoozh.org](https://distfiles.gentoozh.org/)**，包数量、同步时间与 [FAQ](https://distfiles.gentoozh.org/faq) 都在那边。`::gentoo` 的源另见[镜像列表](/mirrorlist/)。
+频道区别及公钥下载方法见 [gentoo-zh binhost FAQ](https://distfiles.gentoozh.org/faq)，高级配置参考 [Binary package guide](https://wiki.gentoo.org/wiki/Binary_package_guide)。
 {{< /callout >}}
 
 ## 注意事项
