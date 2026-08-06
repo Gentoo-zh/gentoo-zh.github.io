@@ -1,6 +1,6 @@
 {{- /* 换源器：一排按钮，点了之后同名的槽位跟着换。
 
-     用法（name 与 gz-cmd 的 slot 对应）：
+     用法（name 与 gz-cmd 的 slot 对应，set 选择 data/gz_mirrors.yaml 中的数据组）：
        {{< gz-mirror name="git" >}}              git 同步源
        {{< gz-mirror name="dist" set="dist" >}}  distfiles / 二进制包的源
 
@@ -14,6 +14,6 @@
 <div class="gz-pick" data-gz-pick="{{ $name }}">
   <span class="gz-pick-label">{{ i18n "gz_src_label" }}</span>
   {{- range $mirrors }}
-  <button type="button" class="gz-opt" data-gz-uri="{{ .uri }}"{{ with .default }} data-gz-default="{{ . }}"{{ end }}{{ if .origin }} data-gz-origin="1"{{ end }} aria-pressed="{{ if eq .uri $def.uri }}true{{ else }}false{{ end }}">{{ i18n .label }}</button>
+  <button type="button" class="gz-opt" data-gz-uri="{{ .uri | safeURL }}"{{ with .default }} data-gz-default="{{ . }}"{{ end }}{{ if .origin }} data-gz-origin="1"{{ end }} aria-pressed="{{ if eq .uri $def.uri }}true{{ else }}false{{ end }}">{{ i18n .label }}</button>
   {{- end }}
 </div>

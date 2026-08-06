@@ -19,6 +19,7 @@
     initModes();
     initSudo();
     initPickers();
+    initChannels();
     initCopy();
   }
 
@@ -93,6 +94,7 @@
       })[0];
 
       function render(chosen) {
+        active = chosen;
         each(opts, function (o) {
           o.setAttribute('aria-pressed', o === chosen ? 'true' : 'false');
         });
@@ -115,6 +117,12 @@
           }
         });
       }
+
+      document.addEventListener('gz-channelchange', function (event) {
+        if (event.detail.slot === name) render(active);
+      });
+
+      var active = opts[0];
 
       pickers.push({ name: name, opts: opts, render: render });
 
@@ -144,6 +152,57 @@
         return (o.getAttribute('data-gz-default') || '').split(' ').indexOf(lang) >= 0;
       })[0];
       p.render(hit || p.opts[0]);
+    });
+  }
+
+  /* stable / unstable 频道。频道数据只声明路径后缀；换源器仍负责完整 URI，二者
+     因此可以独立切换。 */
+  function initChannels() {
+    var pickers = [];
+
+    each(document.querySelectorAll('[data-gz-channel-pick]'), function (group) {
+      var name = group.getAttribute('data-gz-channel-pick');
+      var opts = group.querySelectorAll('[data-gz-channel]');
+      if (!opts.length) return;
+
+      function render(chosen) {
+        var channel = chosen.getAttribute('data-gz-channel');
+        var suffix = chosen.getAttribute('data-gz-channel-suffix') || '';
+        each(opts, function (option) {
+          option.setAttribute('aria-pressed', option === chosen ? 'true' : 'false');
+        });
+        each(document.querySelectorAll('[data-gz-channel-slot="' + name + '"]'), function (slot) {
+          slot.setAttribute('data-gz-suffix', suffix);
+        });
+        each(document.querySelectorAll('[data-gz-channel-pane-group="' + name + '"]'), function (pane) {
+          pane.hidden = pane.getAttribute('data-gz-channel-pane') !== channel;
+        });
+        document.dispatchEvent(new CustomEvent('gz-channelchange', {
+          detail: { slot: name }
+        }));
+      }
+
+      pickers.push({ name: name, opts: opts, render: render });
+
+      each(opts, function (button) {
+        button.addEventListener('click', function () {
+          var channel = button.getAttribute('data-gz-channel');
+          each(pickers, function (picker) {
+            if (picker.name !== name) return;
+            var match = Array.prototype.filter.call(picker.opts, function (option) {
+              return option.getAttribute('data-gz-channel') === channel;
+            })[0];
+            if (match) picker.render(match);
+          });
+        });
+      });
+    });
+
+    each(pickers, function (picker) {
+      var initial = Array.prototype.filter.call(picker.opts, function (option) {
+        return option.getAttribute('aria-pressed') === 'true';
+      })[0];
+      picker.render(initial || picker.opts[0]);
     });
   }
 
