@@ -35,7 +35,7 @@ Gentoo ebuild 仓库与 Distfiles 需要分别配置。Git、rsync 和 HTTP 镜�
 | 兰大 LZU | 西北·兰州 | `https://mirror.lzu.edu.cn/gentoo` | | |
 | 阿里云 | 全国·CDN | `https://mirrors.aliyun.com/gentoo` | | |
 | 网易 163 | 全国·CDN | `https://mirrors.163.com/gentoo` | | |
-| CERNET | 全国·就近 | `https://mirrors.cernet.edu.cn/gentoo` | | |
+| CERNET | 全国·就近 | `https://mirrors.cernet.edu.cn/gentoo` | ✓ | |
 | CICKU | 香港 | `https://hk.mirrors.cicku.me/gentoo` | | |
 | PlanetUnix | 香港 | `https://hippocamp.cn.ext.planetunix.net/pub/gentoo` | | ✓ |
 | xTom | 香港 | `https://mirror.xtom.com.hk/gentoo` | | |
@@ -81,6 +81,8 @@ emaint sync -r gentoo
 {{< /gz-cmd >}}
 
 删除现有的 Gentoo ebuild 仓库配置和本地副本，再使用所选镜像添加 Git 仓库。不同镜像的同步进度可能不同；更换 Git 镜像时，建议删除并重新添加仓库。
+
+选 CERNET 时，git 会提示 `warning: redirecting to ...`，因为 CERNET 按来源把请求转到就近的成员镜像，同步本身照常完成。
 
 手动配置或更换镜像时，编辑 `/etc/portage/repos.conf/` 中包含 `[gentoo]` 的配置文件。首次配置可创建 `/etc/portage/repos.conf/gentoo.conf`；通过 `eselect-repository` 生成的配置位于 `/etc/portage/repos.conf/eselect-repo.conf`。
 

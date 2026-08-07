@@ -6,14 +6,14 @@ Gentoo 鏡像包含以下資源：
 
 - **Gentoo ebuild 倉庫**：Portage 用於解析和建置軟體套件的 ebuild 與元資料，可透過 Git 或 rsync 同步
 - **Distfiles**：Portage 編譯軟體套件時下載的原始碼及相關檔案，由 `make.conf` 中的 `GENTOO_MIRRORS` 指定
-- **Stage 3 與官方二進位包（binhost）**：同步對應內容的 HTTP 鏡像會在 `releases/` 目錄中提供
+- **Stage 3 與官方二進位包（binhost）**：同步相應內容的 HTTP 鏡像會在 `releases/` 目錄中提供
 
-對應鏡像不提供 ebuild，需要搭配 [Gentoo Portage 鏡像](/gentoo-portage/)或 [Gentoo Portage Git 鏡像](/gentoo-portage.git/)使用。
+相應鏡像不提供 ebuild，需要搭配 [Gentoo Portage 鏡像](/gentoo-portage/)或 [Gentoo Portage Git 鏡像](/gentoo-portage.git/)使用。
 
-下面是各鏡像站的**實測彙總表**，列出每個鏡像站的 Distfiles 地址和支援的同步方式；具體設定方法見下方的設定教學。
+下面是各鏡像站的**實測彙總表**，列出每個鏡像站的 Distfiles 地址和支援的同步方式；具體配置方法見下方的配置教學。
 
 {{< callout type="info" >}}
-Gentoo ebuild 倉庫與 Distfiles 需要分別設定。Git、rsync 和 HTTP 鏡像也可能由不同節點提供。
+Gentoo ebuild 倉庫與 Distfiles 需要分別配置。Git、rsync 和 HTTP 鏡像也可能由不同節點提供。
 {{< /callout >}}
 
 {{% details closed="true" title="鏡像總覽" %}}
@@ -35,7 +35,7 @@ Gentoo ebuild 倉庫與 Distfiles 需要分別設定。Git、rsync 和 HTTP 鏡�
 | 蘭大 LZU | 西北·蘭州 | `https://mirror.lzu.edu.cn/gentoo` | | |
 | 阿里雲 | 全國·CDN | `https://mirrors.aliyun.com/gentoo` | | |
 | 網易 163 | 全國·CDN | `https://mirrors.163.com/gentoo` | | |
-| CERNET | 全國·就近 | `https://mirrors.cernet.edu.cn/gentoo` | | |
+| CERNET | 全國·就近 | `https://mirrors.cernet.edu.cn/gentoo` | ✓ | |
 | CICKU | 香港 | `https://hk.mirrors.cicku.me/gentoo` | | |
 | PlanetUnix | 香港 | `https://hippocamp.cn.ext.planetunix.net/pub/gentoo` | | ✓ |
 | xTom | 香港 | `https://mirror.xtom.com.hk/gentoo` | | |
@@ -50,7 +50,7 @@ Gentoo ebuild 倉庫與 Distfiles 需要分別設定。Git、rsync 和 HTTP 鏡�
 
 {{% /details %}}
 
-## 設定教學
+## 配置教學
 
 {{% details title="使用 Git 同步 Gentoo ebuild 倉庫" %}}
 
@@ -80,11 +80,13 @@ eselect repository add gentoo git @@SRC@@
 emaint sync -r gentoo
 {{< /gz-cmd >}}
 
-刪除現有的 Gentoo ebuild 倉庫設定和本地副本，再使用所選鏡像新增 Git 倉庫。不同鏡像的同步進度可能不同；更換 Git 鏡像時，建議刪除並重新新增倉庫。
+刪除現有的 Gentoo ebuild 倉庫配置和本地副本，再使用所選鏡像新增 Git 倉庫。不同鏡像的同步進度可能不同；更換 Git 鏡像時，建議刪除並重新增倉庫。
 
-手動設定或更換鏡像時，編輯 `/etc/portage/repos.conf/` 中包含 `[gentoo]` 的設定檔。首次設定可建立 `/etc/portage/repos.conf/gentoo.conf`；透過 `eselect-repository` 產生的設定位於 `/etc/portage/repos.conf/eselect-repo.conf`。
+選 CERNET 時，git 會提示 `warning: redirecting to ...`，因為 CERNET 按來源把請求轉到就近的成員鏡像，同步本身照常完成。
 
-完整設定範例：
+手動配置或更換鏡像時，編輯 `/etc/portage/repos.conf/` 中包含 `[gentoo]` 的配置檔案。首次配置可建立 `/etc/portage/repos.conf/gentoo.conf`；透過 `eselect-repository` 生成的配置位於 `/etc/portage/repos.conf/eselect-repo.conf`。
+
+完整配置範例：
 
 {{< gz-cmd path="/etc/portage/repos.conf/gentoo.conf" slot="gentoo-git" set="gentoo_git" >}}
 [gentoo]
@@ -101,7 +103,7 @@ rm -rf /var/db/repos/gentoo
 emaint sync -r gentoo
 {{< /gz-cmd >}}
 
-設定原理和疑難排解方法見 [Portage with Git](https://wiki.gentoo.org/wiki/Portage_with_Git)。
+配置原理和排障方法見 [Portage with Git](https://wiki.gentoo.org/wiki/Portage_with_Git)。
 
 {{% /details %}}
 
@@ -137,7 +139,7 @@ auto-sync = yes
 
 {{% /details %}}
 
-{{% details title="Distfiles 設定（GENTOO_MIRRORS）" %}}
+{{% details title="Distfiles 配置（GENTOO_MIRRORS）" %}}
 
 在 `/etc/portage/make.conf` 中填入總覽表裡的 Distfiles 地址，可填多個（Portage 按順序嘗試，前面的優先）：
 
@@ -147,17 +149,17 @@ auto-sync = yes
 GENTOO_MIRRORS="@@LIST@@"
 {{< /gz-cmd >}}
 
-設定完成後，執行 `emaint sync -r gentoo` 更新 Gentoo ebuild 倉庫。
+配置完成後，執行 `emaint sync -r gentoo` 更新 Gentoo ebuild 倉庫。
 
 {{% /details %}}
 
 {{% details title="官方二進位包（binhost）" %}}
 
-[Gentoo 官方二進位包倉庫](https://wiki.gentoo.org/wiki/Project:Binhost)提供預編譯並簽名的二進位包。較新的 Stage 3 已在 `/etc/portage/binrepos.conf/` 中預先設定該倉庫；使用鏡像時，編輯 `[gentoo]` 設定中的 `sync-uri`。
+[Gentoo 官方二進位包倉庫](https://wiki.gentoo.org/wiki/Project:Binhost)提供預編譯並簽名的二進位包。較新的 Stage 3 已在 `/etc/portage/binrepos.conf/` 中預配置該倉庫；使用鏡像時，編輯 `[gentoo]` 配置中的 `sync-uri`。
 
-以下設定使用當前的 `23.0` profile，具體路徑見 [amd64 二進位包目錄](https://distfiles-cdn-origin.gentoo.org/releases/amd64/binpackages/)和 [arm64 二進位包目錄](https://distfiles-cdn-origin.gentoo.org/releases/arm64/binpackages/)。
+以下配置使用當前的 `23.0` profile，具體路徑見 [amd64 二進位包目錄](https://distfiles-cdn-origin.gentoo.org/releases/amd64/binpackages/)和 [arm64 二進位包目錄](https://distfiles-cdn-origin.gentoo.org/releases/arm64/binpackages/)。
 
-Gentoo Binhost 專案目前支援使用 GNU 工具鏈（glibc、GCC 和 binutils）的 amd64 和 arm64。其他架構和工具鏈的二進位包僅限 Release Engineering 建置 Stage 3 所用的套件快取。
+Gentoo Binhost 專案目前支援使用 GNU 工具鏈（glibc、GCC 和 binutils）的 amd64 和 arm64。其他架構和工具鏈的二進位包僅限 Release Engineering 建置 Stage 3 所用的包快取。
 
 以下範例使用常規 amd64 的 x86-64 二進位包：
 
@@ -179,7 +181,7 @@ verify-signature = true
 ld.so --help
 {{< /gz-cmd >}}
 
-輸出中包含 `x86-64-v3 (supported, searched)` 即表示支援。可將上方設定的路徑末尾改為 `x86-64-v3`：
+輸出中包含 `x86-64-v3 (supported, searched)` 即表示支援。可將上方配置的路徑末尾改為 `x86-64-v3`：
 
 {{< gz-cmd path="/etc/portage/binrepos.conf/gentoo.conf" slot="gentoo-bin" set="gentoo_bin" suffix="/releases/amd64/binpackages/23.0/x86-64-v3" >}}
 sync-uri = @@SRC@@
@@ -193,23 +195,23 @@ FEATURES="${FEATURES} getbinpkg"
 
 如果沒有合適的二進位包，Portage 會照常從原始碼編譯。
 
-單次使用二進位包安裝：
+單次使用二進位套件安裝：
 
 {{< gz-cmd path="shell" sudo="true" >}}
 emerge --ask --getbinpkg <package>
 {{< /gz-cmd >}}
 
-根據 [Portage binpkg changes](https://www.gentoo.org/support/news-items/2026-05-03-portage-binpkg-changes.html)，新版 Portage 預設驗證遠端二進位包的簽名，並將其快取到 `location` 指定的目錄。官方 binhost 使用者不再需要啟用 `FEATURES="binpkg-request-signature"`；首次下載時，Portage 會自動執行 `getuto` 建立可信任金鑰環。
+根據 [Portage binpkg changes](https://www.gentoo.org/support/news-items/2026-05-03-portage-binpkg-changes.html)，新版 Portage 預設驗證遠端二進位包的簽名，並將其快取到 `location` 指定的目錄。官方 binhost 使用者不再需要啟用 `FEATURES="binpkg-request-signature"`；首次下載時，Portage 會自動執行 `getuto` 建立可信金鑰環。
 
-更多設定見 [Gentoo Binary Host Quickstart](https://wiki.gentoo.org/wiki/Gentoo_Binary_Host_Quickstart)、[Binary package guide](https://wiki.gentoo.org/wiki/Binary_package_guide)和 [MirrorZ Gentoo 說明](https://help.mirrorz.org/gentoo/)。
+更多配置見 [Gentoo Binary Host Quickstart](https://wiki.gentoo.org/wiki/Gentoo_Binary_Host_Quickstart)、[Binary package guide](https://wiki.gentoo.org/wiki/Binary_package_guide)和 [MirrorZ Gentoo 幫助](https://help.mirrorz.org/gentoo/)。
 
 {{% /details %}}
 
-官方完整列表見 [下載鏡像](https://www.gentoo.org/downloads/mirrors/)與 [rsync 鏡像](https://www.gentoo.org/support/rsync-mirrors/)。gentoo-zh overlay 的 Git、Distfiles 與二進位包鏡像設定見 [Overlay](/zh-tw/overlay/)。
+官方完整列表見 [下載鏡像](https://www.gentoo.org/downloads/mirrors/)與 [rsync 鏡像](https://www.gentoo.org/support/rsync-mirrors/)。gentoo-zh overlay 的 Git、Distfiles 與二進位包鏡像配置見 [Overlay](/overlay/)。
 
-## Gentoo Prefix Bootstrap 鏡像設定
+## Gentoo Prefix Bootstrap 鏡像配置
 
-執行 Bootstrap 腳本前，可以透過以下環境變數選擇鏡像：
+執行 Bootstrap 指令碼前，可以透過以下環境變數選擇鏡像：
 
 {{< gz-mirror name="gentoo-dist-prefix" set="gentoo_dist" >}}
 
@@ -218,4 +220,4 @@ export GENTOO_MIRRORS="@@SRC@@"
 export SNAPSHOT_URL="@@SRC@@/snapshots"
 {{< /gz-cmd >}}
 
-Bootstrap 完成後，如需為 Gentoo Portage 和 Distfiles 更換鏡像，只需將 `/etc` 替換為 `$EPREFIX/etc`。`GNU_URL` 的設定見 [GNU 說明](/gnu/)。
+Bootstrap 完成後，如需為 Gentoo Portage 和 Distfiles 更換鏡像，只需將 `/etc` 替換為 `$EPREFIX/etc`。`GNU_URL` 的配置見 [GNU 幫助](/gnu/)。
