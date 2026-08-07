@@ -78,3 +78,78 @@ other = "stable（預設）"
 
 [gz_channel_unstable]
 other = "unstable"
+
+[gz_cost_item]
+other = "項目"
+
+[gz_cost_spec]
+other = "配置"
+
+[gz_cost_price]
+other = "價格"
+
+[gz_cost_since]
+other = "起算日"
+
+[gz_cost_accum]
+other = "累計"
+
+[gz_cost_total]
+other = "合計"
+
+[gz_cost_per_month]
+other = "月"
+
+[gz_cost_per_year]
+other = "年"
+
+[gz_cost_once]
+other = "一次性"
+
+[gz_cost_free]
+other = "免費額度"
+
+[gz_cost_distfiles]
+other = "下載"
+
+[gz_cost_forum]
+other = "論壇"
+
+[gz_cost_matrix]
+other = "Matrix 與橋接"
+
+[gz_cost_build]
+other = "建置"
+
+[gz_cost_node]
+other = "高可用節點"
+
+[gz_cost_grafana]
+other = "監控與告警"
+
+[gz_cost_paid]
+other = "已付"
+
+[gz_cost_converted]
+other = "折合"
+
+[gz_cost_months]
+other = "個月"
+
+[gz_cost_years]
+other = "年"
+
+[gz_cost_approx]
+other = "約 "
+
+[gz_cost_mail]
+other = "郵件傳送"
+
+[gz_cost_worker]
+other = "Cloudflare Workers"
+
+[gz_cost_domain]
+other = "域名"
+
+[gz_cost_domain_tw]
+other = "域名（tw）"
