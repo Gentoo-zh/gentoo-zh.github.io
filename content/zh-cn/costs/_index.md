@@ -36,6 +36,7 @@ description: "Gentoo 中文社区各台服务器的配置、价格与累计支�
 
 - **gentoocn.org**：[Clover](/contributors/simplewrite/) 续费。
 - **gentoo.org.cn**：一位不愿具名的老社区成员续费。
+- **早前的构建机**：由[梁永祥](/contributors/liangyongxiang/)提供，2022-08-09 至 2026-04-30 在用，月付 37.30 EUR，45 个月合计 1678.50 EUR，折合约 1934.30 USD。overlay 的二进制包构建现由上表的构建服务器承担。
 - **早前的下载站**：服务器由 [peeweep](/contributors/peeweep/) 提供，现已关闭，Live ISO 与 distfiles 迁至上表的下载服务器。
 
 ## 参与方式
