@@ -2,7 +2,7 @@
 other = "LiveOS Developer"
 
 [contrib_web_admin]
-other = "Site & bridge server maintainers"
+other = "Server maintainers"
 
 [footer_contact_main]
 other = "Site contact:"
