@@ -41,9 +41,11 @@ gentoo_git:
     label: gz_src_gentoo_upstream
     default: zh-tw en
     origin: true
+  - uri: https://mirrors.cernet.edu.cn/gentoo-portage.git
+    label: gz_src_cernet
+    default: zh-cn
   - uri: https://mirrors.tuna.tsinghua.edu.cn/git/gentoo-portage.git
     label: gz_src_tuna
-    default: zh-cn
   - uri: https://mirrors.ustc.edu.cn/gentoo.git
     label: gz_src_ustc
   - uri: https://mirrors.zju.edu.cn/git/gentoo-portage.git
