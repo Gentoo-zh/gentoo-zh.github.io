@@ -36,6 +36,7 @@ The items below are not in the tables above; the people named pay for them:
 
 - **gentoocn.org**: renewed by [Clover](/contributors/simplewrite/).
 - **gentoo.org.cn**: renewed by a long-time community member who prefers not to be named.
+- **The earlier build machine**: provided by [Liang Yongxiang](/contributors/liangyongxiang/) from 2022-08-09 to 2026-04-30, at 37.30 EUR a month — 45 months, 1678.50 EUR in total, about 1934.30 USD. Binary package builds now run on the build server listed above.
 - **The earlier download site**: the server was provided by [peeweep](/contributors/peeweep/). It has been shut down, and the Live ISO and distfiles moved to the download server listed above.
 
 ## How to help
