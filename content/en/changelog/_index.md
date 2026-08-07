@@ -9,6 +9,13 @@ This page tracks the major updates to the site's content, so readers can follow 
 
 ---
 
+## August 2026
+
+- The [mirror list page](/mirrorlist/) has been rewritten: the overlay's git sync source, distfiles and binary packages, plus Gentoo's official rsync, distfiles and binhost, each come with a copy-paste configuration block. Every block can switch between mirrors and the origin, and the selected address is written into the commands as you switch. Prefix users get their own settings
+- The binary package section on the [Overlay page](/overlay/) can switch between the stable and unstable channels: each channel lists its own `binrepos.conf` and keyword settings, and the blocks support mirror switching as well as both the manual and one-command setup paths
+- New [infrastructure costs page](/costs/): the specifications, unit price, billing start date and running total for every server and service, converted to a single currency for the total. The community has no commercial sponsor, members currently cover the bills, and donations are not accepted
+- A pass over the site's Chinese copy: colloquial phrasing tightened, spacing between Chinese and Latin text and full-width punctuation made consistent
+
 ## July 2026
 
 - New announcement **[The gentoo-zh Binary Package Service Is Live](/posts/2026-07-29-binhost-launch/)**: 194 overlay packages now ship as prebuilt binary packages, built nightly, signed, and served from [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) and the Nanjing University mirror. The post covers the three setup steps, why `getuto` has to run first, and which packages are excluded
@@ -24,6 +31,9 @@ This page tracks the major updates to the site's content, so readers can follow 
 - **Site hosting moved to Cloudflare Workers**: moved from GitHub Pages to Workers static-asset hosting (free and unlimited requests, global edge nodes). See the [note in the migration post](/posts/2026-07-01-domain-migration/)
 - The [download page](/download/#live-iso) and [Overlay page](/overlay/) text has been refreshed: the download page tidies up the login credentials, the VM AVX2 note, and the mirror list; the Overlay page reorders the package categories, folds the two add methods into collapsible blocks, and adds China-based git / distfiles mirror addresses
 - The English UI site name is now unified as **Gentoo-zh Community**
+- Three announcements from 2013 and 2014 have been reverted to [microcai](/contributors/microcai/)'s original wording; the later rewrite has been dropped, and an editor's note at the end of each post explains the dead links and what has changed since
+- The [Overlay page](/overlay/) setup instructions now use copy-paste configuration blocks: you can switch between the GitHub upstream and the university mirrors, and between editing the config files by hand and running a single command
+- The ISO feedback link on the [download page](/download/#live-iso) now points to Gig-OS, where the Live ISO build repository lives
 
 ## June 2026
 

@@ -9,6 +9,13 @@ slug: "changelog"
 
 ---
 
+## 2026 年 8 月
+
+- [镜像列表页](/mirrorlist/)重写：overlay 的 git 同步源、distfiles、二进制包，以及 Gentoo 官方的 rsync、distfiles 与 binhost，各自给出可直接复制的配置块；块内可切换镜像与源站，选中的地址会同时写进命令，另补上 Prefix 用户的配置
+- [Overlay 页](/overlay/)的二进制包一节可在 stable 与 unstable 两个频道之间切换：两者的 `binrepos.conf` 与接受关键字写法分开列出，配置块同样支持换源，以及手动编辑配置文件与一条命令快速配置两种方式
+- 新增[基础设施开销页](/costs/)：列出各台服务器与服务的配置、单价、起算日与至今累计，币种不同的统一折成美元合计。社区没有商业赞助，费用目前由成员个人承担，也不接受捐款
+- 站内文案按中文写作规范审校一轮：收紧口语表达，统一中英文之间的间距与标点全角
+
 ## 2026 年 7 月
 
 - 新增公告 **[gentoo-zh 二进制包服务上线](/posts/2026-07-29-binhost-launch/)**：overlay 的 194 个包有了预编译的二进制包，每晚构建、签名后由 [distfiles.gentoozh.org](https://distfiles.gentoozh.org/) 与南京大学镜像分发；文中给出三步配置、验签为什么要先执行 `getuto`，以及哪些包不收录
@@ -24,6 +31,9 @@ slug: "changelog"
 - **官网托管迁到 Cloudflare Workers**：从 GitHub Pages 迁到 Workers 静态资源托管（免费不限量、全球边缘节点），见[迁移文的补充说明](/posts/2026-07-01-domain-migration/)
 - [下载页](/download/#live-iso)与 [Overlay 页](/overlay/)文案更新：下载页整理登录凭据、虚拟机 AVX2 提示与镜像站清单；Overlay 页重排软件包分类、把两种添加方式收进折叠块、补上国内 git / distfiles 换源地址
 - 英文界面站名统一为 **Gentoo-zh Community**
+- 三篇 2013 至 2014 年的老公告正文改回[清风](/contributors/microcai/)当年的原文，此前的改写已撤回，只在文末加编者注说明失效的链接与后续变化
+- [Overlay 页](/overlay/)的配置改用可复制的配置块：可在 GitHub 上游与各高校镜像之间换源，也可在手动编辑配置文件与一条命令快速配置之间切换
+- [下载页](/download/#live-iso)的 ISO 问题反馈入口改指 Gig-OS，因为 Live ISO 的构建仓库在那边
 
 ## 2026 年 6 月
 
