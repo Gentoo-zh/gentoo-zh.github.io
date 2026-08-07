@@ -35,7 +35,7 @@ Hextra 基于 Tailwind CSS，为文档与博客而生：
 
 ## 对终端浏览器友好（TUI）
 
-应 [@talk_something](https://t.me/talk_something) 群里 lzamora70（因为lzamora70菊苣过于抽象，多次销号，所以名字不一定更新的上）的提议，本站特意针对终端 / 文本浏览器做了一轮优化——毕竟是 Gentoo：
+应 [@talk_something](https://t.me/talk_something) 群里 lzamora70（因为 lzamora70 菊苣过于抽象，多次销号，所以名字不一定更新的上）的提议，本站特意针对终端 / 文本浏览器做了一轮优化——毕竟是 Gentoo：
 
 - 语义化的 HTML 结构与标题层级，在 [lynx](https://lynx.invisible-island.net/) / [w3m](https://w3m.sourceforge.net/) / links 等纯文本浏览器中排版清晰、链接可达；
 - 每页顶部都有跳到正文链接，可跳过导航直接阅读；

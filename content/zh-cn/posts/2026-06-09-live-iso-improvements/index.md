@@ -16,17 +16,17 @@ authors:
 中文社区定制的 KDE Plasma 6 桌面 Live ISO（[Gentoo-zh/Live-ISO](https://github.com/gentoo-zh/Live-ISO)）：
 
 - **三语言开箱即用**：引导菜单分简体 / 繁体 / 英文三档，整套 live 环境跟着所选语言走；装好的系统也沿用你在安装器里选的语言。
-- **预置中文输入法**：fcitx5 + rime，开箱即可输入，内置朙月拼音、注音、五笔86、仓颉、粤拼。
+- **预置中文输入法**：fcitx5 + rime，开箱即可输入，内置朙月拼音、注音、五笔 86、仓颉、粤拼。
 - **闭源 NVIDIA 可选**：引导菜单选 NVIDIA 项会常规加载闭源驱动（需先关 Secure Boot）；不选则用开源 nouveau。
-- **live 专用的桌面开关**：桌面放了几个仅 live 用的图标，需要时点一下即可——临时关闭自动休眠 / 锁屏（折腾或装机时不被打断）、开启免密 sudo、开启 SSH（方便远程装机或调试）。
-- **装好的系统是干净的**：上面这些 live 便利（连同默认的 SDDM 免密自动登录）都只在 live 里，安装器装机时会复位 / 清掉，装好的系统回到 KDE 正常默认：登录要密码、sudo 要授权、休眠锁屏照常。
+- **live 专用的桌面开关**：桌面放了几个仅 live 用的图标，需要时点一下即可——临时关闭自动休眠 / 锁屏（调试或装机时不被打断）、开启免密 sudo、开启 SSH（方便远程装机或调试）。
+- **装好的系统是干净的**：上面这些 live 便利（连同默认的 SDDM 免密自动登录）都只在 live 里，安装器装机时会复位 / 清除，装好的系统回到 KDE 正常默认：登录要密码、sudo 要授权、休眠锁屏照常。
 - **默认配置好的部分**：PipeWire 音频、网络开机自动连、MAKEOPTS 与 CPU 指令集按你的机器自适应。
 
 装系统推荐照 [Gentoo 官方手册](https://wiki.gentoo.org/wiki/Handbook:AMD64/zh-cn) 一步步来更稳妥；live 里也带了图形安装器（Calamares），想快速装也可以用。
 
 ## 安装器（Calamares）
 
-安装器配置 [Gentoo-zh/calamares-settings-gig](https://github.com/gentoo-zh/calamares-settings-gig)：装机后会清掉 live 专用的残留设置，并按你在 live 里选的显卡方案配置 NVIDIA。分区时根文件系统默认 btrfs，也可选 xfs / ext4 / ZFS——选 ZFS 并勾选加密就是 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引导（GRUB 读不了带原生加密的 ZFS 池，所以 ZFS 根改用 ZBM）。这套装机流程（含 ZFS 加密安装）在虚拟机上做过实机安装测试。
+安装器配置 [Gentoo-zh/calamares-settings-gig](https://github.com/gentoo-zh/calamares-settings-gig)：装机后会清除 live 专用的残留设置，并按你在 live 里选的显卡方案配置 NVIDIA。分区时根文件系统默认 btrfs，也可选 xfs / ext4 / ZFS——选 ZFS 并勾选加密就是 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引导（GRUB 读不了带原生加密的 ZFS 池，所以 ZFS 根改用 ZBM）。这套装机流程（含 ZFS 加密安装）在虚拟机上做过实机安装测试。
 
 ## Live ISO 用的 overlay
 

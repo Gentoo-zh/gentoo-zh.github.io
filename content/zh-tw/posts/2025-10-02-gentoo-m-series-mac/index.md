@@ -644,7 +644,7 @@ macOS 更新會附帶韌體更新，建議保留 macOS 分割區以便獲取最�
 
 **無法從 USB 啟動**：U-Boot 的 USB 驅動較挑剔，嘗試不同 USB、使用 USB 2.0 裝置、或經過 USB Hub。
 
-**啟動卡住或黑屏**：m1n1 / U-Boot / 核心版本不匹配。從 macOS 重跑 `curl https://alx.sh | sh` 選 `p`，並確認 chroot 中已執行 `update-m1n1`。
+**啟動卡住或黑屏**：m1n1 / U-Boot / 核心版本不匹配。從 macOS 重新執行 `curl https://alx.sh | sh` 並選 `p`，並確認 chroot 中已執行 `update-m1n1`。
 
 **加密分割區無法解鎖**：檢查 `/etc/default/grub` 的 `GRUB_CMDLINE_LINUX`、確認 LUKS UUID（`blkid /dev/nvme0n1p6`）、重新 `grub-mkconfig -o /boot/grub/grub.cfg`。
 
