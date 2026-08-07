@@ -37,6 +37,12 @@
   weight = 1
 
 [[main]]
+  name = "開銷"
+  pageRef = "/costs"
+  parent = "infra"
+  weight = 4
+
+[[main]]
   name = "Pastebin"
   pageRef = "/paste"
   parent = "infra"

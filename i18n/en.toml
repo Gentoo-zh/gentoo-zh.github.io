@@ -78,3 +78,78 @@ other = "stable (default)"
 
 [gz_channel_unstable]
 other = "unstable"
+
+[gz_cost_item]
+other = "Item"
+
+[gz_cost_spec]
+other = "Specification"
+
+[gz_cost_price]
+other = "Price"
+
+[gz_cost_since]
+other = "Billed from"
+
+[gz_cost_accum]
+other = "Spent so far"
+
+[gz_cost_total]
+other = "Total"
+
+[gz_cost_per_month]
+other = "month"
+
+[gz_cost_per_year]
+other = "year"
+
+[gz_cost_once]
+other = "one-off"
+
+[gz_cost_free]
+other = "Free tier"
+
+[gz_cost_distfiles]
+other = "Download"
+
+[gz_cost_forum]
+other = "Forum"
+
+[gz_cost_matrix]
+other = "Matrix and bridges"
+
+[gz_cost_build]
+other = "Build"
+
+[gz_cost_node]
+other = "High-availability node"
+
+[gz_cost_grafana]
+other = "Monitoring"
+
+[gz_cost_paid]
+other = "Paid"
+
+[gz_cost_converted]
+other = "Converted"
+
+[gz_cost_months]
+other = "month(s)"
+
+[gz_cost_years]
+other = "year(s)"
+
+[gz_cost_approx]
+other = "~"
+
+[gz_cost_mail]
+other = "Email sending"
+
+[gz_cost_worker]
+other = "Cloudflare Workers"
+
+[gz_cost_domain]
+other = "Domain"
+
+[gz_cost_domain_tw]
+other = "Domain (tw)"
