@@ -17,7 +17,7 @@ Gentoo 中文社区官网今天正式迁往 **gentoozh.org**。论坛（forum.ge
 
 ## 不仅仅换个域名
 
-域名迁移是最近一系列整合的收尾。社区沉寂了十多年，积下来的东西不少：Telegram、QQ 群七八个、域名三四个、官网多年没人动、gentoo-zh GitHub 组织的权限无法统一管理。群组分散导致社群割裂，交流变得十分困难。
+域名迁移是最近一系列整合的收尾。社区沉寂了十多年，积下来的问题不少：Telegram、QQ 群七八个、域名三四个、官网多年没人动、gentoo-zh GitHub 组织的权限无法统一管理。群组分散导致社群割裂，交流变得十分困难。
 
 最近把这些整理了一下：
 
@@ -34,7 +34,7 @@ Gentoo 中文社区官网今天正式迁往 **gentoozh.org**。论坛（forum.ge
 
 因为旧域名有合规方面的要求，所以架设论坛、Matrix、下载站这类服务需要走一套我们作为志愿者项目难以完成的流程。gentoozh.org 是国际域名，没有这层限制，一直在我们手里。这次 [@zakkaus](https://github.com/zakkaus) 会把域名和相关服务的管理权限分配给对应的负责人，避免权限再次丢失。
 
-域名里的 zh 来自 ISO 639，是中文这门语言的代码，认的是语言，而不是国家或某个特定地区。而 cn 是 ISO 3166 的国家代码，范围反而更窄。况且 gentoo-zh 就是当年的 gentoo-tw 和 gentoo-china [两岸社区合并](https://code.google.com/archive/p/gentoo-taiwan/issues/2)来的。archlinuxcn 其实也自称 Arch Linux 中文社区，cn 只是历史留下来的叫法，社区里也有人提过换成 zh，只是体量太大改不动。我们没有那样的历史包袱，既然要动就做到位。
+域名里的 zh 来自 ISO 639，是中文这门语言的代码，认的是语言，而不是国家或某个特定地区。而 cn 是 ISO 3166 的国家代码，范围反而更窄。况且 gentoo-zh 就是当年的 gentoo-tw 和 gentoo-china [两岸社区合并](https://code.google.com/archive/p/gentoo-taiwan/issues/2)来的。archlinuxcn 也自称 Arch Linux 中文社区，cn 只是历史留下来的叫法，社区里也有人提过换成 zh，只是体量太大改不动。我们没有那样的历史包袱，既然要动就做到位。
 
 ## 官网托管迁到 Cloudflare
 
@@ -64,7 +64,7 @@ gentoo.org.cn 由一位老师长期持有，在社区沉寂的这十多年里一
 - `https://distfiles.gentoocn.org` → `https://distfiles.gentoozh.org`
 - `https://gentoocn.org` → `https://gentoozh.org`
 
-如果发现哪里还留着旧域名没更新，欢迎到 [GitHub](https://github.com/gentoo-zh/gentoo-zh.github.io) 开 issue 或直接 PR，也可以在 Telegram、Matrix 交流群中告诉我们。
+如果发现哪里还在用旧域名，欢迎到 [GitHub](https://github.com/gentoo-zh/gentoo-zh.github.io) 开 issue 或直接 PR，也可以在 Telegram、Matrix 交流群中告诉我们。
 
 ---
 

@@ -18,7 +18,7 @@ title: "下載"
 - **硬體要求**：64 位元 x86 CPU，需支援 AVX2（約 2013 年後的處理器，更老的 CPU 無法啟動）。
 - **更新頻率**：每週自動編譯並上傳，始終是較新的系統快照；下載站只保留最近幾個版本，請以站上實際檔名（`gig-os-日期.iso`）為準。
 - **新版通知**：關注 Telegram 頻道 <https://t.me/gentoomirror>，每週建置上線時將會自動播報。
-- **問題回報**：缺陷與改進建議提交到 [Live-ISO issues](https://github.com/Gig-OS/Live-ISO/issues)；使用問題與討論見[社群論壇](https://forum.gentoozh.org/)、[Telegram 群](https://t.me/gentoo_zh)；郵件 liveos@gentoozh.org。
+- **問題反饋**：缺陷與改進建議提交到 [Live-ISO issues](https://github.com/Gig-OS/Live-ISO/issues)；使用問題與討論見[社群論壇](https://forum.gentoozh.org/)、[Telegram 群](https://t.me/gentoo_zh)；郵件 liveos@gentoozh.org。
 
 {{< callout type="warning" >}}
 **需要在虛擬機器裡執行？** 鏡像按 `x86-64-v3` 編譯，必須要有 AVX2。而 **VirtualBox 通常無法傳遞 AVX2，因此鏡像無法啟動**——建議換用 **KVM（`-cpu host`）、原生 Hyper-V 或 VMware**；具體是否支援 AVX2 以 guest 裡 `grep -o avx2 /proc/cpuinfo` 為準。
@@ -28,7 +28,7 @@ title: "下載"
 
 - **三語言支援** — GRUB 選單可以選擇 簡體 / 正體 / English，桌面語言、Firefox 語言、相關的輸入法將會跟隨切換。
 - **多種啟動方式** — 除常規啟動外，還有載入到記憶體執行啟動項（將整盤載入記憶體後執行，可以移除 隨身碟，執行速度更快），以及安全顯示卡模式啟動項。
-- **中文輸入法 fcitx5 + rime** — 預設朙月拼音；**右鍵系統匣輸入法圖示，選擇方案** 可切換 注音 / 五筆86 / 倉頡 / 粵拼 等。
+- **中文輸入法 fcitx5 + rime** — 預設朙月拼音；**右鍵系統匣輸入法圖示，選擇方案** 可切換注音 / 五筆 86 / 倉頡 / 粵拼等。
 - **開源 / 閉源顯示卡** — 預設 nouveau 隨插即用；新卡（RTX 20/30/40/50）想要硬體加速請選擇閉源 NVIDIA 啟動項，**需提前在 UEFI 中關閉 Secure Boot**（因為驅動未簽名，無法載入）。如果仍然無法正常顯示，請使用安全顯示卡模式啟動項。
 - **圖形安裝器（可選）** — 桌面雙擊安裝系統圖標可啟動 Calamares 圖形安裝器（跟隨所選語言），安裝完成後將會自動清理 live 殘留（開機自動登入等）；希望手動安裝、深入瞭解系統，推薦按照官方手冊逐步操作（見下方說明）。
 - **ZFS 根 + 原生加密 + ZBM 引導（進階）** — 安裝器分割區頁檔案系統可選 **ZFS**；勾選加密選項即啟用 **ZFS 原生加密**（aes-256-gcm、密碼解鎖），並由 **ZFSBootMenu** 原生引導（因為 GRUB 無法讀取帶新特性 / 原生加密的 ZFS 池，所以 ZFS 根改用 ZBM）。預設檔案系統為 btrfs，在分割區頁面可選擇 xfs / ext4 / ZFS 檔案系統。

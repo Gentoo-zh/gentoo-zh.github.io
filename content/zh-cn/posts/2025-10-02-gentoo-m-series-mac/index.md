@@ -644,7 +644,7 @@ macOS 更新会附带固件更新，建议保留 macOS 分区以便获取最新�
 
 **无法从 USB 启动**：U-Boot 的 USB 驱动较挑剔，尝试不同 USB、使用 USB 2.0 设备、或经过 USB Hub。
 
-**启动卡住或黑屏**：m1n1 / U-Boot / 内核版本不匹配。从 macOS 重跑 `curl https://alx.sh | sh` 选 `p`，并确认 chroot 中已执行 `update-m1n1`。
+**启动卡住或黑屏**：m1n1 / U-Boot / 内核版本不匹配。从 macOS 重新执行 `curl https://alx.sh | sh` 并选 `p`，并确认 chroot 中已执行 `update-m1n1`。
 
 **加密分区无法解锁**：检查 `/etc/default/grub` 的 `GRUB_CMDLINE_LINUX`、确认 LUKS UUID（`blkid /dev/nvme0n1p6`）、重新 `grub-mkconfig -o /boot/grub/grub.cfg`。
 
