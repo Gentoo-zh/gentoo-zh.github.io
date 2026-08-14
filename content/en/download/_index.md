@@ -2,46 +2,32 @@
 title: "Download"
 ---
 
-Before you install Gentoo, prepare your installation media. For newcomers we recommend the Live ISO built by the Gentoo-zh Community; if you'd rather use the official media, pick the nearest mirror from the list below.
+Installing Gentoo requires installation media. The Gentoo-zh Community maintains two amd64 images, listed below; for the official media, pick the nearest mirror from the list further down.
 
 {{< callout type="info" >}}
 **Apple Silicon Macs (M1 / M2)** can't use the standard amd64 images listed on this page — see [Installing Gentoo Linux on an Apple Silicon Mac](/posts/2025-10-02-gentoo-m-series-mac/).
 {{< /callout >}}
 
-## Gentoo-zh Community Live ISO {#live-iso}
+## Gentoo-zh Community images {#live-iso}
 
-A **KDE Plasma 6 desktop Live ISO** put together by the Gentoo-zh Community — three languages to pick from (Simplified / Traditional / English) and Chinese input methods (fcitx5 + rime) by default. A good starting point for newcomers who want to try a Chinese Gentoo desktop.
+Both images are rebuilt weekly. Downloads, checksums and every mirror directory live on the download site:
 
-- **Download site**: <https://iso.gentoozh.org/> (served from Cloudflare R2 — global edge, no bandwidth limits)
-- **Repo**: <https://github.com/Gig-OS/Live-ISO> (build scripts and customizations)
-- **Login credentials**: user {{< copy "live" >}} / password {{< copy "live" >}} / root password {{< copy "live" >}}
-- **Hardware requirements**: a 64-bit x86 CPU with AVX2 support (roughly post-2013 processors; older CPUs can't boot).
-- **Update cadence**: recompiled and uploaded automatically every week, so it's always a fairly recent snapshot of the system; the download site only keeps the last few releases, so go by the actual filename on the site (`gig-os-DATE.iso`).
-- **New-release alerts**: follow the Telegram channel <https://t.me/gentoomirror> for an automatic announcement whenever a weekly build goes live.
-- **Feedback**: bugs and suggestions at [Live-ISO issues](https://github.com/Gig-OS/Live-ISO/issues); usage questions on the [community forum](https://forum.gentoozh.org/) or [Telegram group](https://t.me/gentoo_zh); email liveos@gentoozh.org.
+{{< cards cols="2" >}}
+  {{< card link="https://iso.gentoozh.org/en/#panel-desktop" title="Gig-OS desktop image" icon="desktop-computer" subtitle="A KDE Plasma 6 desktop with the Chinese environment and input methods already set up. Run it live or install it to disk with the graphical installer. Needs a CPU with AVX2." >}}
+  {{< card link="https://iso.gentoozh.org/en/#panel-minimal" title="CJK minimal image" icon="terminal" subtitle="A third-party amd64 minimal installation medium, built by Catalyst from the official Release Engineering specs. The kernel carries the cjktty patch, so the console displays CJK text, and ZFS is supported." >}}
+{{< /cards >}}
 
-{{< callout type="warning" >}}
-**Running in a VM?** The image is built for `x86-64-v3` and needs AVX2. **VirtualBox usually can't pass AVX2 through, so the image won't boot** — use **KVM (`-cpu host`), native Hyper-V, or VMware** instead, and confirm with `grep -o avx2 /proc/cpuinfo` inside the guest.
-{{< /callout >}}
+{{< hextra/hero-button text="Go to the download site" link="https://iso.gentoozh.org/en/#mirrors" style="margin-top:1.25rem;margin-bottom:.5rem" >}}
 
-{{% details title="What's in this Live ISO (click to expand)" %}}
-
-- **Boots in three languages** — pick Simplified / Traditional / English from the GRUB menu, and the desktop, Firefox, and input method all switch along with it.
-- **Multiple boot modes** — besides the normal boot, there's "copy to RAM" (loads the whole disk into memory and runs from there, so you can pull the USB stick and it runs faster) and a "safe graphics mode" fallback, all available in three languages.
-- **Chinese input methods: fcitx5 + rime** — Luna Pinyin (朙月拼音) by default; **right-click the input-method tray icon -> "Schema"** to switch to Zhuyin / Wubi86 / Cangjie / Cantonese Pinyin, and more.
-- **Open-source / proprietary GPU drivers** — nouveau works plug-and-play by default; for newer cards (RTX 20/30/40/50) that need hardware acceleration, pick the "proprietary NVIDIA" boot entry, but **disable Secure Boot in UEFI first** (the driver is unsigned and won't load otherwise). For stubborn cards that won't light up, fall back to "safe graphics mode".
-- **Graphical installer (optional)** — double-clicking the "Install System" icon launches the Calamares graphical installer (it follows your chosen language) and clears up the live leftovers (boot-time autologin, etc.) after installing; for a proper install where you actually get to know the system, the official handbook is still the recommended route (see the notes below).
-- **ZFS root + native encryption + ZBM boot (advanced)** — on the installer's partitioning page you can choose **ZFS** as the filesystem; tick "Encrypt" to enable **ZFS native encryption** (aes-256-gcm, passphrase-unlocked), booted by **ZFSBootMenu** (GRUB can't read ZFS pools that use newer features / native encryption, so a ZFS root uses ZBM instead). The default filesystem is btrfs; xfs / ext4 / ZFS are all selectable on the partitioning page.
-- **CPU_FLAGS_X86** — once the system is installed, these compile flags are generated automatically from your CPU.
-
-For the full feature list and configuration notes, see the **[mirror site's "About" page](https://iso.gentoozh.org/about.html)**.
-
-{{% /details %}}
+- **Gig-OS login credentials**: user {{< copy "live" >}} / password {{< copy "live" >}} / root password {{< copy "live" >}}
+- **Repositories**: [Gig-OS/Live-ISO](https://github.com/Gig-OS/Live-ISO) · [gentoo-zh/gentoo-cjk-livecd](https://github.com/gentoo-zh/gentoo-cjk-livecd)
+- **New-release alerts**: the Telegram channel [@gentoomirror](https://t.me/gentoomirror) announces every weekly build
 
 ## Mirrors
 
 Every node below carries official installation media for amd64 / x86 / arm64 and other architectures. Pick the nearest one by region for a faster download:
 
+{{% gz-table %}}
 | Mirror | Region | Download URL (releases/) |
 | --- | --- | --- |
 | Tsinghua TUNA | North China · Beijing | <https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/> |
@@ -67,6 +53,7 @@ Every node below carries official installation media for amd64 / x86 / arm64 and
 | Freedif | Singapore | <https://mirror.freedif.org/gentoo/releases/> |
 | CICKU | Singapore | <https://sg.mirrors.cicku.me/gentoo/releases/> |
 | PlanetUnix | Singapore | <https://enceladus.sg.ext.planetunix.net/pub/gentoo/releases/> |
+{{% /gz-table %}}
 
 {{% details title="Official media and architectures" %}}
 

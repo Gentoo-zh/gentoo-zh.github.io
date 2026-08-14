@@ -30,3 +30,7 @@
 /* 手动配置 / 快速配置 的切换：跟换源器同一套 chip 样式，紧跟在标题下面。 */
 .gz-mode-pick { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.8rem 0; }
 .gz-pane[hidden] { display: none; }
+
+/* Hextra 的卡片把内容包在 mt-auto 里，内容贴卡片底部。同一行卡片等高、
+   简介行数不同时，标题就不在同一水平线上，所以清掉这条外边距改为顶对齐。 */
+.hextra-card > .hx\:mt-auto { margin-top: 0; }

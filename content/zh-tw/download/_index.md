@@ -2,46 +2,32 @@
 title: "下載"
 ---
 
-在安裝 Gentoo 之前請先把安裝媒體準備好。建議新手使用由我們中文社群客製的 Live ISO；希望使用官方媒體的，請從下面的鏡像站中就近選擇一個。
+安裝 Gentoo 前需要準備安裝媒體。中文社群維護兩個 amd64 鏡像，見下一節；使用官方媒體請從下面的鏡像站就近選擇。
 
 {{< callout type="info" >}}
 **Apple Silicon Mac（M1 / M2）** 不適用本頁列出的標準 amd64 鏡像，請看 [在 Apple Silicon Mac 上安裝 Gentoo Linux](/posts/2025-10-02-gentoo-m-series-mac/)。
 {{< /callout >}}
 
-## 中文社群 Live ISO {#live-iso}
+## 中文社群鏡像 {#live-iso}
 
-中文社群客製的 **KDE Plasma 6 桌面 Live ISO**——預設帶有三語言可選（簡 / 正體 / 英）、中文輸入法（fcitx5 + rime），適合新手體驗中文 Gentoo 桌面。
+兩個鏡像都是每週自動建置，下載、校驗和與各鏡像目錄都在下載站：
 
-- **下載**：<https://iso.gentoozh.org/>（下載節點由 Cloudflare R2 提供，全球邊緣節點、不限流量）
-- **倉庫**：<https://github.com/Gig-OS/Live-ISO>（包含建置指令碼與相關客製）
-- **登入憑據**：使用者 {{< copy "live" >}} / 密碼 {{< copy "live" >}} / root 密碼 {{< copy "live" >}}
-- **硬體要求**：64 位元 x86 CPU，需支援 AVX2（約 2013 年後的處理器，更老的 CPU 無法啟動）。
-- **更新頻率**：每週自動編譯並上傳，始終是較新的系統快照；下載站只保留最近幾個版本，請以站上實際檔名（`gig-os-日期.iso`）為準。
-- **新版通知**：關注 Telegram 頻道 <https://t.me/gentoomirror>，每週建置上線時將會自動播報。
-- **問題反饋**：缺陷與改進建議提交到 [Live-ISO issues](https://github.com/Gig-OS/Live-ISO/issues)；使用問題與討論見[社群論壇](https://forum.gentoozh.org/)、[Telegram 群](https://t.me/gentoo_zh)；郵件 liveos@gentoozh.org。
+{{< cards cols="2" >}}
+  {{< card link="https://iso.gentoozh.org/zh-tw/#panel-desktop" title="Gig-OS 桌面鏡像" icon="desktop-computer" subtitle="KDE Plasma 6 桌面，預置中文環境與輸入法，可直接試用，也可用圖形安裝器安裝到硬碟。需要支援 AVX2 的處理器。" >}}
+  {{< card link="https://iso.gentoozh.org/zh-tw/#panel-minimal" title="CJK 最小安裝鏡像" icon="terminal" subtitle="第三方 amd64 最小安裝媒體，用 Catalyst 按官方 Release Engineering 的 spec 建置。核心帶 cjktty 修補，控制台能顯示中日韓文字，並支援 ZFS。" >}}
+{{< /cards >}}
 
-{{< callout type="warning" >}}
-**需要在虛擬機器裡執行？** 鏡像按 `x86-64-v3` 編譯，必須要有 AVX2。而 **VirtualBox 通常無法傳遞 AVX2，因此鏡像無法啟動**——建議換用 **KVM（`-cpu host`）、原生 Hyper-V 或 VMware**；具體是否支援 AVX2 以 guest 裡 `grep -o avx2 /proc/cpuinfo` 為準。
-{{< /callout >}}
+{{< hextra/hero-button text="前往下載站" link="https://iso.gentoozh.org/zh-tw/#mirrors" style="margin-top:1.25rem;margin-bottom:.5rem" >}}
 
-{{% details title="這個 Live ISO 有什麼（點開看更多）" %}}
-
-- **三語言支援** — GRUB 選單可以選擇 簡體 / 正體 / English，桌面語言、Firefox 語言、相關的輸入法將會跟隨切換。
-- **多種啟動方式** — 除常規啟動外，還有載入到記憶體執行啟動項（將整盤載入記憶體後執行，可以移除 隨身碟，執行速度更快），以及安全顯示卡模式啟動項。
-- **中文輸入法 fcitx5 + rime** — 預設朙月拼音；**右鍵系統匣輸入法圖示，選擇方案** 可切換注音 / 五筆 86 / 倉頡 / 粵拼等。
-- **開源 / 閉源顯示卡** — 預設 nouveau 隨插即用；新卡（RTX 20/30/40/50）想要硬體加速請選擇閉源 NVIDIA 啟動項，**需提前在 UEFI 中關閉 Secure Boot**（因為驅動未簽名，無法載入）。如果仍然無法正常顯示，請使用安全顯示卡模式啟動項。
-- **圖形安裝器（可選）** — 桌面雙擊安裝系統圖標可啟動 Calamares 圖形安裝器（跟隨所選語言），安裝完成後將會自動清理 live 殘留（開機自動登入等）；希望手動安裝、深入瞭解系統，推薦按照官方手冊逐步操作（見下方說明）。
-- **ZFS 根 + 原生加密 + ZBM 引導（進階）** — 安裝器分割區頁檔案系統可選 **ZFS**；勾選加密選項即啟用 **ZFS 原生加密**（aes-256-gcm、密碼解鎖），並由 **ZFSBootMenu** 原生引導（因為 GRUB 無法讀取帶新特性 / 原生加密的 ZFS 池，所以 ZFS 根改用 ZBM）。預設檔案系統為 btrfs，在分割區頁面可選擇 xfs / ext4 / ZFS 檔案系統。
-- **CPU_FLAGS_X86** — 裝好系統後，這項編譯參數將按你的 CPU 自動生成。
-
-完整功能與配置說明見 **[鏡像站的使用說明頁](https://iso.gentoozh.org/about.html)**。
-
-{{% /details %}}
+- **Gig-OS 登入憑據**：使用者 {{< copy "live" >}} / 密碼 {{< copy "live" >}} / root 密碼 {{< copy "live" >}}
+- **專案倉庫**：[Gig-OS/Live-ISO](https://github.com/Gig-OS/Live-ISO) · [gentoo-zh/gentoo-cjk-livecd](https://github.com/gentoo-zh/gentoo-cjk-livecd)
+- **新版通知**：Telegram 頻道 [@gentoomirror](https://t.me/gentoomirror)，每週建置上線時自動播報
 
 ## 鏡像站 {#鏡像源}
 
 下面節點均提供 amd64 / x86 / arm64 等架構的官方安裝媒體。按地區就近選擇，下載更快：
 
+{{% gz-table %}}
 | 鏡像 | 地區 | 下載地址（releases/） |
 | --- | --- | --- |
 | 清華 TUNA | 華北·北京 | <https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/> |
@@ -67,6 +53,7 @@ title: "下載"
 | Freedif | 新加坡 | <https://mirror.freedif.org/gentoo/releases/> |
 | CICKU | 新加坡 | <https://sg.mirrors.cicku.me/gentoo/releases/> |
 | PlanetUnix | 新加坡 | <https://enceladus.sg.ext.planetunix.net/pub/gentoo/releases/> |
+{{% /gz-table %}}
 
 {{% details title="官方媒體與架構" %}}
 
