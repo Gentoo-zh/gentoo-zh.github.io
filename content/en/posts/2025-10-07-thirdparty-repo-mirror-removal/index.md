@@ -34,4 +34,4 @@ eselect repository enable gentoo-zh
 
 Then `emerge --sync gentoo-zh` as usual.
 
-Adding gentoo-zh for the first time? You're not affected — just enable it normally from the [Overlay page](/overlay/). If connecting straight to GitHub from mainland China is slow for you, use the [mainland China git mirror](/overlay/#mirrors-for-mainland-china).
+Adding gentoo-zh for the first time? You're not affected — just enable it normally from the [Overlay page](/overlay/). If connecting straight to GitHub from mainland China is slow for you, use the [mainland China git mirror](/overlay/#distfiles-mirrors).

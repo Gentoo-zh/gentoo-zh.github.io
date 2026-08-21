@@ -20,7 +20,7 @@ authors:
 ---
 
 {{< callout type="info" >}}
-倉庫現在的正式網址是 **[`Gentoo-zh/overlay`](https://github.com/gentoo-zh/overlay)**；切換請用新網址，改名的來龍去脈見下面的[社群投票、改名](#rename-to-overlay)一步。
+倉庫現在的正式地址是 **[`Gentoo-zh/overlay`](https://github.com/gentoo-zh/overlay)**；切換請用新地址，改名的來龍去脈見下面的[社群投票、改名](#rename-to-overlay)一步。
 {{< /callout >}}
 
 gentoo-zh overlay 的正式維護倉庫遷移到了 GitHub 組織倉庫：
@@ -46,13 +46,13 @@ gentoo-zh overlay 的正式維護倉庫遷移到了 GitHub 組織倉庫：
 - 保留原倉庫 Git URL 的 redirect
 - 保留原有 commit SHA
 
-遷移完成後，造訪 `microcai/gentoo-zh` 會轉址到 `gentoo-zh/gentoo-zh`。舊的 Git remote URL 繼續可用；建議使用者和貢獻者在方便時更新到新 URL。
+遷移完成後，訪問 `microcai/gentoo-zh` 會跳轉到 `gentoo-zh/gentoo-zh`。舊的 Git remote URL 繼續可用；建議使用者和貢獻者在方便時更新到新 URL。
 
-為避免破壞使用者現有設定，遷移完成後舊路徑 `microcai/gentoo-zh` 保持空置。GitHub 的舊網址轉址依賴舊路徑未被重新佔用；如果該路徑被同名倉庫或同名 fork 佔用，舊 URL 將不再轉址到新倉庫，仍在使用舊 URL 的使用者會受到影響。原 owner 不在 `microcai` 帳號下重新建立或 fork 名為 `gentoo-zh` 的倉庫；如需保留個人 fork，應避免使用會佔用舊路徑的同名倉庫。
+為避免破壞使用者現有配置，遷移完成後舊路徑 `microcai/gentoo-zh` 保持空置。GitHub 的舊地址跳轉依賴舊路徑未被重新佔用；如果該路徑被同名倉庫或同名 fork 佔用，舊 URL 將不再跳轉到新倉庫，仍在使用舊 URL 的使用者會受到影響。原 owner 不在 `microcai` 帳號下重新建立或 fork 名為 `gentoo-zh` 的倉庫；如需保留個人 fork，應避免使用會佔用舊路徑的同名倉庫。
 
 ## 使用者切換操作
 
-gentoo-zh 已在 Gentoo 官方倉庫列表裡（網址已是新的 overlay），直接重新啟用即可：
+gentoo-zh 已在 Gentoo 官方倉庫列表裡（地址已是新的 overlay），直接重新啟用即可：
 
 ```bash
 sudo eselect repository remove gentoo-zh
@@ -60,7 +60,7 @@ sudo eselect repository enable gentoo-zh
 sudo emaint sync -r gentoo-zh
 ```
 
-或在 `/etc/portage/repos.conf/` 下編輯含 `[gentoo-zh]` 段的那個設定檔（用 eselect 加的在 `eselect-repo.conf`，手動加的可能是 `gentoo-zh.conf` 或你自己取的名字），把 `sync-uri` 改成新網址：
+或在 `/etc/portage/repos.conf/` 下編輯含 `[gentoo-zh]` 段的那個配置檔案（用 eselect 加的在 `eselect-repo.conf`，手動加的可能是 `gentoo-zh.conf` 或你自己起的名字），把 `sync-uri` 改成新地址：
 
 ```ini
 [gentoo-zh]
@@ -106,7 +106,7 @@ git checkout -b topic/name
 1. 刪除現有 `gentoo-zh/gentoo-zh`
 2. 確認 `gentoo-zh/gentoo-zh` 名稱已釋放
 3. 確認 `gentoo-zh` 組織 owner 已準備接受 transfer
-4. 確認原 owner 知悉遷移完成後不再佔用 `microcai/gentoo-zh` 舊路徑，不在 `microcai` 帳號下重新建立或 fork 名為 `gentoo-zh` 的倉庫，以免破壞舊 URL 到新倉庫的轉址
+4. 確認原 owner 知悉遷移完成後不再佔用 `microcai/gentoo-zh` 舊路徑，不在 `microcai` 帳號下重新建立或 fork 名為 `gentoo-zh` 的倉庫，以免破壞舊 URL 到新倉庫的跳轉
 
 ### 2. 原 owner 發起 repository transfer
 
@@ -132,7 +132,7 @@ gentoo-zh
 
 `gentoo-zh` 組織 owner 接受 GitHub transfer 邀請。
 
-接受完成後，倉庫網址變為：
+接受完成後，倉庫地址變為：
 
 ```text
 https://github.com/gentoo-zh/gentoo-zh
@@ -148,14 +148,14 @@ https://github.com/gentoo-zh/gentoo-zh
 - pull requests 已遷移
 - stars 和 watchers 已保留
 - fork network 已保留
-- 舊網址 `https://github.com/microcai/gentoo-zh` 轉址到新網址
-- `git clone https://github.com/microcai/gentoo-zh.git` 轉址到新倉庫
+- 舊地址 `https://github.com/microcai/gentoo-zh` 跳轉到新地址
+- `git clone https://github.com/microcai/gentoo-zh.git` 跳轉到新倉庫
 - `git clone https://github.com/gentoo-zh/gentoo-zh.git` 正常工作
 - `microcai/gentoo-zh` 舊路徑未被重新建立為倉庫或同名 fork
 
-### 5. 確認改名不破壞轉址（301 單跳）
+### 5. 確認改名不破壞跳轉（301 單跳）
 
-改名前先確認 GitHub 的 301 轉址在 transfer 加 rename 之後仍然可靠：網頁和 git 都會保留。這裡拿同樣經歷過 transfer 加 rename 的 Homebrew 實測：[`mxcl/homebrew`](https://github.com/mxcl/homebrew)（最初）和 [`Homebrew/homebrew`](https://github.com/Homebrew/homebrew)（中間名）都是一跳 301 直達最終的 [`Homebrew/legacy-homebrew`](https://github.com/Homebrew/legacy-homebrew)，不是二次跳轉；`git ls-remote` 也照常工作。自己也能測：
+改名前先確認 GitHub 的 301 跳轉在 transfer 加 rename 之後仍然可靠：網頁和 git 都會保留。這裡拿同樣經歷過 transfer 加 rename 的 Homebrew 實測：[`mxcl/homebrew`](https://github.com/mxcl/homebrew)（最初）和 [`Homebrew/homebrew`](https://github.com/Homebrew/homebrew)（中間名）都是一跳 301 直達最終的 [`Homebrew/legacy-homebrew`](https://github.com/Homebrew/legacy-homebrew)，不是二次跳轉；`git ls-remote` 也照常工作。自己也能測：
 
 ```bash
 UA="Mozilla/5.0"
@@ -165,7 +165,7 @@ curl -sIL -A "$UA" https://github.com/Homebrew/homebrew | grep -iE '^HTTP/|^loca
 
 ![以 Homebrew 實測 GitHub 的 301 單跳：mxcl/homebrew 與 Homebrew/homebrew 都一跳直達 Homebrew/legacy-homebrew，git ls-remote 正常](/img/gentoo-zh-overlay-301-homebrew.png)
 
-所以把 `gentoo-zh/gentoo-zh` 改名為 `gentoo-zh/overlay` 之後，`microcai/gentoo-zh` 和 `gentoo-zh/gentoo-zh` 兩個舊網址同樣會一跳直達 `gentoo-zh/overlay`（網頁和 git 都是），配過舊網址的使用者不會斷。
+所以把 `gentoo-zh/gentoo-zh` 改名為 `gentoo-zh/overlay` 之後，`microcai/gentoo-zh` 和 `gentoo-zh/gentoo-zh` 兩個舊地址同樣會一跳直達 `gentoo-zh/overlay`（網頁和 git 都是），配過舊地址的使用者不會斷。
 
 ### 6. 社群投票，最終定名 gentoo-zh/overlay {#rename-to-overlay}
 
@@ -181,7 +181,7 @@ Settings -> General -> Repository name -> overlay
 
 ### 8. 更新倉庫內維護入口（[PR #10744](https://github.com/gentoo-zh/overlay/pull/10744)）
 
-改名後在一個 PR 裡把倉庫內所有指向舊網址的入口統一更新到 `gentoo-zh/overlay`，共 7 個檔案：
+改名後在一個 PR 裡把倉庫內所有指向舊地址的入口統一更新到 `gentoo-zh/overlay`，共 7 個檔案：
 
 - `.github/workflows/nvchecker.yml`：倉庫名判斷從 `'Gentoo-zh/gentoo-zh'` 改為 `'gentoo-zh/overlay'`
 - `repo.xml`：更新 source、homepage 與 owner email
@@ -190,7 +190,7 @@ Settings -> General -> Repository name -> overlay
 - `MIGRATION.md`：新增
 - `metadata/news/2026-07-05-repo-moved-to-overlay/`：新增 repository news（見第 9 步）
 
-ebuild 註釋中指向原倉庫 issue 的歷史連結保留不變。舊 issue 連結會自動轉址，不需要批次替換歷史 issue URL。
+ebuild 註釋中指向原倉庫 issue 的歷史連結保留不變。舊 issue 連結會自動跳轉，不需要批次替換歷史 issue URL。
 
 這幾處改動的具體內容（點開展開）：
 
@@ -422,9 +422,9 @@ auto-sync = yes
 
 ## 收尾與確認
 
-overlay 內部後設資料、README 與安裝說明在 [PR #10744](https://github.com/gentoo-zh/overlay/pull/10744) 更新（第 8 步）；Gentoo 官方 registry 在 [api-gentoo-org#829](https://github.com/gentoo/api-gentoo-org/pull/829) 合併（第 10 步）。
+overlay 內部元資料、README 與安裝說明在 [PR #10744](https://github.com/gentoo-zh/overlay/pull/10744) 更新（第 8 步）；Gentoo 官方 registry 在 [api-gentoo-org#829](https://github.com/gentoo/api-gentoo-org/pull/829) 合併（第 10 步）。
 
-模擬使用者實操了一遍：從 Gentoo 官方倉庫列表直接 `enable` gentoo-zh，`emerge --sync` 會從新的 overlay 網址拉取（看最後一行）：
+模擬使用者實操了一遍：從 Gentoo 官方倉庫列表直接 `enable` gentoo-zh，`emerge --sync` 會從新的 overlay 地址拉取（看最後一行）：
 
 ```console
 $ sudo eselect repository remove gentoo-zh
@@ -439,7 +439,7 @@ $ sudo emaint sync -r gentoo-zh
 /usr/sbin/git clone --depth 1 https://github.com/gentoo-zh/overlay.git .
 ```
 
-301 轉址確認：改名後 `microcai/gentoo-zh` 和 `gentoo-zh/gentoo-zh` 兩個舊網址都一跳 301 直達 `gentoo-zh/overlay`（網頁和 git 都是），老使用者不受影響。實測輸出：
+301 跳轉確認：改名後 `microcai/gentoo-zh` 和 `gentoo-zh/gentoo-zh` 兩個舊地址都一跳 301 直達 `gentoo-zh/overlay`（網頁和 git 都是），老使用者不受影響。實測輸出：
 
 ```console
 $ UA="Mozilla/5.0"
@@ -470,4 +470,4 @@ cat /var/db/repos/gentoo-zh/metadata/news/2026-07-05-repo-moved-to-overlay/*.zh.
 
 ## 補記：官網側進度（zakkaus）
 
-官網[貢獻者牆](/contributors/)的自動統計（`update-contributors.py`）與相關頁面說明已指向 `Gentoo-zh/overlay`，每月 1 日將會自動更新。遷移生效後，[Overlay 頁](/overlay/)與[貢獻指南](/contributing/)裡 fork、issue 等教學連結也已全部更新到新倉庫；官網、Telegram、Matrix、[論壇](https://forum.gentoozh.org/)等社群各處凡是提到 overlay 倉庫的地方，也都改成了新網址。舊的 `microcai/gentoo-zh` 個人倉庫會 301 到新倉庫，本地設定過舊網址的建議在方便時更新到新 URL。
+官網[貢獻者牆](/contributors/)的自動統計（`update-contributors.py`）與相關頁面說明已指向 `Gentoo-zh/overlay`，每月 1 日將會自動更新。遷移生效後，[Overlay 頁](/overlay/)與[貢獻指南](/contributing/)裡 fork、issue 等教學連結也已全部更新到新倉庫；官網、Telegram、Matrix、[論壇](https://forum.gentoozh.org/)等社群各處凡是提到 overlay 倉庫的地方，也都改成了新地址。舊的 `microcai/gentoo-zh` 個人倉庫會 301 到新倉庫，本地配置過舊地址的建議在方便時更新到新 URL。

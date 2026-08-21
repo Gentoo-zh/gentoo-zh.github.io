@@ -67,7 +67,10 @@
          遇到单独一行 EOF 再恢复。 */ -}}
   {{- $st := newScratch -}}
   <pre class="gz-pre">{{- range $i, $line := $lines -}}
-{{- if $i }}{{ printf "\n" | safeHTML }}{{ end -}}
+{{- /* 换行用实体，不用真换行：这个块可能嵌在 {{%% gz-pane %%}} 里再走一次 markdown，
+         内容里的空行会截断 HTML 块，把后半段包进 <p>，生成 EOF</pre></p> 这种非法嵌套。
+         实体在 <pre> 里照样渲染成换行，textContent 也仍是换行，复制不受影响。 */ -}}
+{{- if $i }}{{ "&#10;" | safeHTML }}{{ end -}}
 {{- $here := $st.Get "here" -}}
 {{- if $here -}}
 {{- if eq (trim $line " ") "EOF" }}{{ $st.Set "here" false }}{{ end -}}

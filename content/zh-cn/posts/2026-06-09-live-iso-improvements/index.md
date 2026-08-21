@@ -13,9 +13,9 @@ authors:
 
 ## Live ISO
 
-中文社区定制的 KDE Plasma 6 桌面 Live ISO（[Gentoo-zh/Live-ISO](https://github.com/gentoo-zh/Live-ISO)）：
+中文社区定制的 KDE Plasma 6 桌面 Live ISO（[Gig-OS/Live-ISO](https://github.com/Gig-OS/Live-ISO)）：
 
-- **三语言开箱即用**：引导菜单分简体 / 繁体 / 英文三档，整套 live 环境跟着所选语言走；装好的系统也沿用你在安装器里选的语言。
+- **三语言开箱即用**：引导菜单分简体 / 正体 / 英文三档，整套 live 环境跟着所选语言走；装好的系统也沿用你在安装器里选的语言。
 - **预置中文输入法**：fcitx5 + rime，开箱即可输入，内置朙月拼音、注音、五笔 86、仓颉、粤拼。
 - **闭源 NVIDIA 可选**：引导菜单选 NVIDIA 项会常规加载闭源驱动（需先关 Secure Boot）；不选则用开源 nouveau。
 - **live 专用的桌面开关**：桌面放了几个仅 live 用的图标，需要时点一下即可——临时关闭自动休眠 / 锁屏（调试或装机时不被打断）、开启免密 sudo、开启 SSH（方便远程装机或调试）。
@@ -26,7 +26,7 @@ authors:
 
 ## 安装器（Calamares）
 
-安装器配置 [Gentoo-zh/calamares-settings-gig](https://github.com/gentoo-zh/calamares-settings-gig)：装机后会清除 live 专用的残留设置，并按你在 live 里选的显卡方案配置 NVIDIA。分区时根文件系统默认 btrfs，也可选 xfs / ext4 / ZFS——选 ZFS 并勾选加密就是 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引导（GRUB 读不了带原生加密的 ZFS 池，所以 ZFS 根改用 ZBM）。这套装机流程（含 ZFS 加密安装）在虚拟机上做过实机安装测试。
+安装器配置 [Gig-OS/calamares-settings-gig](https://github.com/Gig-OS/calamares-settings-gig)：装机后会清除 live 专用的残留设置，并按你在 live 里选的显卡方案配置 NVIDIA。分区时根文件系统默认 btrfs，也可选 xfs / ext4 / ZFS——选 ZFS 并勾选加密就是 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引导（GRUB 读不了带原生加密的 ZFS 池，所以 ZFS 根改用 ZBM）。这套装机流程（含 ZFS 加密安装）在虚拟机上做过实机安装测试。
 
 ## Live ISO 用的 overlay
 

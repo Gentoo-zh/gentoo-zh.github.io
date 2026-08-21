@@ -8,7 +8,7 @@ Gentoo mirrors carry several resources:
 - **Distfiles**: package source files downloaded by Portage, selected with `GENTOO_MIRRORS` in `make.conf`.
 - **Stage 3 and the official binary package host**: available under `releases/` on HTTP mirrors that synchronize them.
 
-These mirrors do not provide ebuilds. Use them together with the [Gentoo Portage mirror](/gentoo-portage/) or [Gentoo Portage Git mirror](/gentoo-portage.git/).
+These mirrors do not provide ebuilds. Pair them with an rsync or Git sync source for the Gentoo ebuild repository; see the setup instructions below.
 
 Below is a **tested summary table** listing each mirror's distfiles URL and the sync methods it supports; the per-method config is in the collapsible tutorials further down.
 
@@ -218,4 +218,4 @@ export GENTOO_MIRRORS="@@SRC@@"
 export SNAPSHOT_URL="@@SRC@@/snapshots"
 {{< /gz-cmd >}}
 
-After Bootstrap completes, replace `/etc` with `$EPREFIX/etc` when changing Gentoo Portage and Distfiles mirrors. See [GNU help](/en/gnu/) for `GNU_URL` configuration.
+After Bootstrap completes, replace `/etc` with `$EPREFIX/etc` when changing Gentoo Portage and Distfiles mirrors. `GNU_URL` points at a mirror of the GNU software; take the address from the GNU help page of the mirror you use.

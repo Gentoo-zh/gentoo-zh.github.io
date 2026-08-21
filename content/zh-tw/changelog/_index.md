@@ -13,6 +13,7 @@ slug: "changelog"
 
 - [鏡像列表頁](/mirrorlist/)重寫：overlay 的 git 同步源、distfiles、二進位包，以及 Gentoo 官方的 rsync、distfiles 與 binhost，各自給出可直接複製的配置塊；塊內可切換鏡像與源站，選中的地址會同時寫進指令，另補上 Prefix 使用者的配置
 - [Overlay 頁](/overlay/)的二進位包一節可在 stable 與 unstable 兩個頻道之間切換：兩者的 `binrepos.conf` 與接受關鍵字寫法分開列出，配置塊同樣支援換源，以及手動編輯配置檔案與一條指令快速配置兩種方式
+- [下載頁](/download/)改成兩個鏡像的卡片入口：Gig-OS 桌面鏡像與 CJK 最小安裝鏡像，配置細節、校驗和與各鏡像目錄都引到 [iso.gentoozh.org](https://iso.gentoozh.org/)
 - 新增[基礎設施開銷頁](/costs/)：列出各臺伺服器與服務的配置、單價、起算日與至今累計，幣種不同的統一折成美元合計。社群沒有商業贊助，費用目前由成員個人承擔，也不接受捐款
 - 站內文案按中文寫作規範審校一輪：收緊口語表達，統一中英文之間的間距與標點全形
 
@@ -41,7 +42,7 @@ slug: "changelog"
 - 新增公告 **[中文社群近期更新：Live ISO、官網、下載站與測速](/posts/2026-06-09-live-iso-improvements/)**：客製 KDE Live ISO、Calamares 安裝器、自動建置流水線、官網 Hextra 遷移與英文國際化、下載站與測速站的整體進展
 - 新增公告 **[Python 3.14 成為預設版本](/posts/2026-06-01-python-314-default/)**（2026-06-01）：Gentoo 系統預設 Python 從 3.13 換成 3.14，手動控制升級節奏或遇到 USE / 依賴報錯的用法說明
 - 新增轉載文章 **[Gentoo Linux with ZFS](/posts/2026-06-18-gentoo-linux-with-zfs/)**（原作者 [Locez](https://github.com/locez)，經授權按 CC BY-NC-SA 4.0 轉載）：在雙 NVMe 鏡像上安裝 ZFS 根 + ZFS 原生加密的實錄；本站補充了 SLOG 配置勘誤、分割區要點，以及各安裝步驟對應的官方中文手冊連結
-- Live ISO 圖形安裝器支援 **ZFS 根檔案系統**：可把 ZFS 裝成根，勾選加密即 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引導（btrfs / ext4 / xfs / ZFS 均可在分割區頁選）。[下載頁](/download/#live-iso)與[使用說明](https://iso.gentoozh.org/about.html)已補充說明
+- Live ISO 圖形安裝器支援 **ZFS 根檔案系統**：可把 ZFS 裝成根，勾選加密即 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引導（btrfs / ext4 / xfs / ZFS 均可在分割區頁選）。[下載頁](/download/#live-iso)與[使用說明](https://iso.gentoozh.org/zh-tw/about.html)已補充說明
 - 下載站上雲：Live ISO 下載遷到 **Cloudflare R2**（[r2.gentoozh.org](https://r2.gentoozh.org/)，零出口流量、全球邊緣），落地頁 [mirror.gentoozh.org](https://iso.gentoozh.org/) 改成 **Cloudflare Worker**（邊緣即時讀 R2，列出最新鏡像 + 全部歷史版本）；測速改用 [Cloudflare 官方測速](https://speed.cloudflare.com/)；自建的美國下載 / 測速伺服器隨之下線
 - 公共頁面新增英文（English）國際化：關於、下載、鏡像列表、貢獻指南等公共頁面可在簡體 / 正體 / 英文之間切換，方便用 gentoo-zh overlay 的海外使用者。技術文章不一定都有英文，目前只做了公共頁面；英文借翻譯軟體初譯、再經 AI 校對，難免有錯漏，歡迎到 [GitHub](https://github.com/gentoo-zh/gentoo-zh.github.io) 指正
 

@@ -5,7 +5,7 @@ title: "Overlay"
 [gentoo-zh](https://github.com/gentoo-zh/overlay) 是 Gentoo 中文社群維護的 overlay，前身為 2003 年的 gentoo-tw 與 gentoo-china，收錄大量中文使用者常用的軟體套件。
 
 {{< callout type="info" >}}
-Git、Distfiles 與二進位包可分別選擇鏡像，頁面中的設定會隨選擇更新。
+Git、Distfiles 與二進位包可分別選擇鏡像，頁面中的配置會隨選擇更新。
 {{< /callout >}}
 
 - **中文輸入與字型**：fcitx 輸入法、拼音詞庫、中文字型
@@ -16,7 +16,7 @@ Git、Distfiles 與二進位包可分別選擇鏡像，頁面中的設定會隨�
 
 ## 新增 overlay
 
-對應鏡像只提供 gentoo-zh overlay 的 ebuild 倉庫 Git 同步服務，不包含軟體原始碼檔案。
+相應鏡像只提供 gentoo-zh overlay 的 ebuild 倉庫 Git 同步服務，不包含軟體原始碼檔案。
 
 {{< gz-mirror name="git" >}}
 
@@ -28,11 +28,11 @@ eselect repository add gentoo-zh git @@SRC@@
 emaint sync -r gentoo-zh
 {{< /gz-cmd >}}
 
-{{% details closed="true" title="手動設定或更換鏡像" %}}
+{{% details closed="true" title="手動配置或更換鏡像" %}}
 
-首次設定時，建立 `/etc/portage/repos.conf/gentoo-zh.conf`。更換 Git 鏡像時，只需編輯 `/etc/portage/repos.conf/` 中包含 `[gentoo-zh]` 的設定檔。透過 `eselect-repository` 產生的設定位於 `/etc/portage/repos.conf/eselect-repo.conf`。
+首次配置時，建立 `/etc/portage/repos.conf/gentoo-zh.conf`。更換 Git 鏡像時，只需編輯 `/etc/portage/repos.conf/` 中包含 `[gentoo-zh]` 的配置檔案。透過 `eselect-repository` 生成的配置位於 `/etc/portage/repos.conf/eselect-repo.conf`。
 
-完整設定範例：
+完整配置範例：
 
 {{< gz-cmd path="/etc/portage/repos.conf/gentoo-zh.conf" >}}
 [gentoo-zh]
@@ -75,15 +75,15 @@ net-im/tencent-qq ~amd64
 emerge --ask net-im/tencent-qq
 {{< /gz-cmd >}}
 
-列出 overlay 提供的軟體套件：`eix -RO gentoo-zh`。
+列出 overlay 提供的包：`eix -RO gentoo-zh`。
 
 ## Distfiles 鏡像與二進位包
 
-Distfiles 與二進位包服務相互獨立，可按需分別設定。
+Distfiles 與二進位包服務相互獨立，可按需分別配置。
 
 ### Distfiles 鏡像
 
-對應鏡像只提供 gentoo-zh overlay 相關的 Distfiles，因此只應附加到現有設定。`::gentoo` 的 Distfiles 設定見[鏡像列表](/zh-tw/mirrorlist/)。
+相應鏡像只提供 gentoo-zh overlay 相關的 Distfiles，因此只應追加到現有配置。`::gentoo` 的 Distfiles 配置見[鏡像列表](/mirrorlist/)。
 
 {{< gz-mirror name="dist" set="dist" >}}
 
@@ -136,7 +136,7 @@ gpg --homedir /etc/portage/gnupg --batch --yes --pinentry-mode loopback \
 gpg --homedir /etc/portage/gnupg --check-trustdb
 {{< /gz-cmd >}}
 
-`getuto` 用於建立 `/etc/portage/gnupg` 和 Portage Local Trust Key，必須在匯入公鑰前執行。簽章驗證以 `portage` 使用者執行，因此需要預先產生 `trustdb`。
+`getuto` 用於建立 `/etc/portage/gnupg` 和 Portage Local Trust Key，必須在匯入公鑰前執行。驗簽以 `portage` 使用者執行，因此需要預先生成 `trustdb`。
 
 新增二進位包倉庫：
 
@@ -175,18 +175,18 @@ EOF
 
 如果沒有合適的二進位包，Portage 會照常從原始碼編譯。
 
-單次使用二進位包安裝：
+單次使用二進位套件安裝：
 
 {{< gz-cmd path="shell" sudo="true" >}}
 emerge --ask --getbinpkg <package>
 {{< /gz-cmd >}}
 
 {{< callout type="warning" >}}
-`verify-signature = true` 只要求驗證該倉庫的簽名。全域啟用 `FEATURES="binpkg-request-signature"` 時，還需要為本機透過 `FEATURES="buildpkg"` 建置的二進位包設定簽名。
+`verify-signature = true` 只要求驗證該倉庫的簽名。全域啟用 `FEATURES="binpkg-request-signature"` 時，還需要為本機透過 `FEATURES="buildpkg"` 建置的包配置簽名。
 {{< /callout >}}
 
 {{< callout type="info" >}}
-頻道差異及公鑰下載方法見 [gentoo-zh binhost FAQ](https://distfiles.gentoozh.org/faq)，進階設定參考 [Binary package guide](https://wiki.gentoo.org/wiki/Binary_package_guide)。
+頻道區別及公鑰下載方法見 [gentoo-zh binhost FAQ](https://distfiles.gentoozh.org/faq)，高階配置參考 [Binary package guide](https://wiki.gentoo.org/wiki/Binary_package_guide)。
 {{< /callout >}}
 
 ## 注意事項

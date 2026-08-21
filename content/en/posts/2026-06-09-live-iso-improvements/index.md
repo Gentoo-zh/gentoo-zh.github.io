@@ -13,7 +13,7 @@ A roundup of what the community has worked on recently, project by project. Each
 
 ## Live ISO
 
-The Chinese community's custom KDE Plasma 6 desktop Live ISO ([Gentoo-zh/Live-ISO](https://github.com/gentoo-zh/Live-ISO)):
+The Chinese community's custom KDE Plasma 6 desktop Live ISO ([Gig-OS/Live-ISO](https://github.com/Gig-OS/Live-ISO)):
 
 - **Three languages out of the box**: the boot menu offers Simplified / Traditional / English, and the whole live environment follows your choice; the installed system also keeps whatever language you picked in the installer.
 - **Chinese input methods preinstalled**: fcitx5 + rime, ready to type out of the box, with Luna Pinyin, Zhuyin, Wubi86, Cangjie, and Cantonese Pinyin built in.
@@ -26,7 +26,7 @@ For actually installing a system, following the [Gentoo Handbook](https://wiki.g
 
 ## The installer (Calamares)
 
-The installer config lives in [Gentoo-zh/calamares-settings-gig](https://github.com/gentoo-zh/calamares-settings-gig): after an install it clears out the live-only leftover settings and configures NVIDIA according to the GPU option you chose in the live session. On the partitioning step the root filesystem defaults to btrfs, with xfs / ext4 / ZFS also available — pick ZFS and tick encrypt and you get ZFS native encryption (aes-256-gcm), booted by ZFSBootMenu (GRUB can't read a natively-encrypted ZFS pool, so a ZFS root uses ZBM instead). The install flow, including the encrypted-ZFS path, has been tested with real installs in a VM.
+The installer config lives in [Gig-OS/calamares-settings-gig](https://github.com/Gig-OS/calamares-settings-gig): after an install it clears out the live-only leftover settings and configures NVIDIA according to the GPU option you chose in the live session. On the partitioning step the root filesystem defaults to btrfs, with xfs / ext4 / ZFS also available — pick ZFS and tick encrypt and you get ZFS native encryption (aes-256-gcm), booted by ZFSBootMenu (GRUB can't read a natively-encrypted ZFS pool, so a ZFS root uses ZBM instead). The install flow, including the encrypted-ZFS path, has been tested with real installs in a VM.
 
 ## The overlay the Live ISO uses
 
