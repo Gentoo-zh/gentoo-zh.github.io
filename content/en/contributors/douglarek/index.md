@@ -8,7 +8,7 @@ links:
     url: "https://lingchao.xin"
   - name: "mastodon"
     url: "https://mastodon.social/@douglarek"
-weight: 9756
+weight: 9754
 ---
 
-244 commits
+246 commits
