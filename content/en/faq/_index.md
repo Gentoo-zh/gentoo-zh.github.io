@@ -21,7 +21,7 @@ An overlay is an extra package source layered on top of the official Portage tre
 
 {{% details closed="true" title="Downloading or syncing is too slow. What can I do?" %}}
 
-When a direct connection to GitHub / the official distfiles is slow, point the overlay sync source and distfiles at a mirror inside mainland China (Chongqing University, Nanjing University, and others — all tested and working). For the exact addresses, see the [Overlay page](/overlay/) and the [mirror list](/mirrorlist/).
+When a direct connection to GitHub or the official distfiles is slow, point the overlay sync source and distfiles at an education-network mirror: CERNET, Nanjing University, Nanyang Institute of Technology, or the Henan Education and Research Network. For the addresses and test results, see the [Overlay page](/overlay/) and the [mirror list](/mirrorlist/).
 
 {{% /details %}}
 

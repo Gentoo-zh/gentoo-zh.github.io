@@ -3,13 +3,13 @@ title: "常見問題"
 description: "Gentoo 中文社群新手常見問題：從哪開始、Overlay 與官方源的關係、鏡像加速、去哪提問、如何貢獻。"
 ---
 
-新手最常問的幾個問題
+新手最常提出的問題。
 
 {{% details closed="true" title="我是新手，該從哪開始？用官方 Gentoo 還是社群 Live ISO？" %}}
 
-- **想從零裝一套、徹底搞懂**：照 [Gentoo 官方 Handbook（中文）](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/zh-cn) 一步步裝。
-- **想快速上手、少花時間配置**：用社群客製的 [KDE 桌面 Live ISO](/download/#live-iso)，開箱即用、自帶中文環境。
-- 裝好系統後再 [新增 gentoo-zh Overlay](/overlay/)，就能裝到官方源裡沒有的中文 / CJK 等軟體套件。
+- **想完整安裝一遍、理解每個步驟**：照 [Gentoo 官方 Handbook（中文）](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/zh-cn) 逐步安裝。
+- **想盡快可用、少花時間配置**：用社群客製的 [KDE 桌面 Live ISO](/download/#live-iso)，開箱即用，自帶中文環境。
+- 裝好系統後再[新增 gentoo-zh Overlay](/overlay/)，即可安裝官方源沒有的中文與 CJK 軟體套件。
 
 {{% /details %}}
 
@@ -21,18 +21,18 @@ Overlay 是疊加在官方 Portage 樹之上的額外軟體來源，官方源沒
 
 {{% details closed="true" title="下載或同步太慢怎麼辦？" %}}
 
-直連 GitHub / 官方 distfiles 慢時，把 Overlay 同步源和 distfiles 換成中國內陸鏡像（重慶大學、南京大學等，均已實測可用）。具體地址見 [Overlay 頁](/overlay/) 與 [鏡像列表](/mirrorlist/)。
+直連 GitHub 與官方 distfiles 慢時，把 Overlay 同步源與 distfiles 換成教育網鏡像：CERNET、南京大學、南陽理工學院、河南省教育科研網。具體地址與實測結果見 [Overlay 頁](/overlay/)與[鏡像列表](/mirrorlist/)。
 
 {{% /details %}}
 
 {{% details closed="true" title="遇到問題去哪問？" %}}
 
-我們提供多種交流渠道（Telegram、Matrix、IRC 等），都列在 [關於頁面](/about/) 裡，可以按自己的喜好選擇。Overlay 的 Bug 直接到 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay/issues) 提 issue。
+交流渠道（Telegram、Matrix、IRC 等）列在[關於頁面](/about/)，按需選擇。Overlay 的缺陷請到 [gentoo-zh/overlay](https://github.com/gentoo-zh/overlay/issues) 提交 issue。
 
 {{% /details %}}
 
 {{% details closed="true" title="如何為社群貢獻？" %}}
 
-給 Overlay 提包 / 修 Bug、給網站寫文章補翻譯，請參考 [貢獻指南](/contributing/) 。
+為 Overlay 提交軟體套件或修復缺陷、為網站撰寫文章或補充翻譯，流程見[貢獻指南](/contributing/)。
 
 {{% /details %}}
