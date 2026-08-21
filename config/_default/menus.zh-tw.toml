@@ -1,27 +1,27 @@
 # 頂欄：主條目平鋪，次級條目收進「更多 ▾」原生下拉（可展開收起）
 [[main]]
   name = "Overlay"
-  pageRef = "/overlay"
+  pageRef = "/overlay/"
   weight = 10
 
 [[main]]
   name = "下載"
-  pageRef = "/download"
+  pageRef = "/download/"
   weight = 20
 
 [[main]]
   name = "鏡像列表"
-  pageRef = "/mirrorlist"
+  pageRef = "/mirrorlist/"
   weight = 30
 
 [[main]]
   name = "文章"
-  pageRef = "/posts"
+  pageRef = "/posts/"
   weight = 40
 
 [[main]]
   name = "關於"
-  pageRef = "/about"
+  pageRef = "/about/"
   weight = 60
 
 # 基礎設施 ▾（社群自建服務）
@@ -38,13 +38,13 @@
 
 [[main]]
   name = "開銷"
-  pageRef = "/costs"
+  pageRef = "/costs/"
   parent = "infra"
   weight = 4
 
 [[main]]
   name = "Pastebin"
-  pageRef = "/paste"
+  pageRef = "/paste/"
   parent = "infra"
   weight = 2
 
@@ -62,25 +62,25 @@
 
 [[main]]
   name = "貢獻指南"
-  pageRef = "/contributing"
+  pageRef = "/contributing/"
   parent = "more"
   weight = 1
 
 [[main]]
   name = "常見問題"
-  pageRef = "/faq"
+  pageRef = "/faq/"
   parent = "more"
   weight = 2
 
 [[main]]
   name = "貢獻者"
-  pageRef = "/contributors"
+  pageRef = "/contributors/"
   parent = "more"
   weight = 3
 
 [[main]]
   name = "更新記錄"
-  pageRef = "/changelog"
+  pageRef = "/changelog/"
   parent = "more"
   weight = 4
 

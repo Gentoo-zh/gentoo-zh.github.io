@@ -1,27 +1,27 @@
 # Top bar: primary items inline, secondary items collapsed under "More ▾".
 [[main]]
   name = "Overlay"
-  pageRef = "/overlay"
+  pageRef = "/overlay/"
   weight = 10
 
 [[main]]
   name = "Download"
-  pageRef = "/download"
+  pageRef = "/download/"
   weight = 20
 
 [[main]]
   name = "Mirrors"
-  pageRef = "/mirrorlist"
+  pageRef = "/mirrorlist/"
   weight = 30
 
 [[main]]
   name = "Posts"
-  pageRef = "/posts"
+  pageRef = "/posts/"
   weight = 40
 
 [[main]]
   name = "About"
-  pageRef = "/about"
+  pageRef = "/about/"
   weight = 60
 
 # Infrastructure ▾ (community-run services)
@@ -38,13 +38,13 @@
 
 [[main]]
   name = "Costs"
-  pageRef = "/costs"
+  pageRef = "/costs/"
   parent = "infra"
   weight = 4
 
 [[main]]
   name = "Pastebin"
-  pageRef = "/paste"
+  pageRef = "/paste/"
   parent = "infra"
   weight = 2
 
@@ -62,25 +62,25 @@
 
 [[main]]
   name = "Contributing"
-  pageRef = "/contributing"
+  pageRef = "/contributing/"
   parent = "more"
   weight = 1
 
 [[main]]
   name = "FAQ"
-  pageRef = "/faq"
+  pageRef = "/faq/"
   parent = "more"
   weight = 2
 
 [[main]]
   name = "Contributors"
-  pageRef = "/contributors"
+  pageRef = "/contributors/"
   parent = "more"
   weight = 3
 
 [[main]]
   name = "Changelog"
-  pageRef = "/changelog"
+  pageRef = "/changelog/"
   parent = "more"
   weight = 4
 
