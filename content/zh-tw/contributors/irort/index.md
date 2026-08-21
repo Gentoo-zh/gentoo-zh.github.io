@@ -3,7 +3,7 @@ title: "irort"
 description: irort — Gentoo 中文社群 gentoo-zh 貢獻者
 tags: ['Overlay 貢獻者']
 externalUrl: "https://github.com/irort"
-weight: 9797
+weight: 9794
 ---
 
-203 次提交
+206 次提交
