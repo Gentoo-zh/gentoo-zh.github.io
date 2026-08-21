@@ -318,7 +318,10 @@ def download_and_convert_avatar(login, avatar_url, dry_run=False):
             tmp_out = first_dir / f".avatar_{size_name}.{login}.tmp"
             try:
                 run_command(
+                    # -blend_alpha：GitHub 頭像可能帶透明通道，深色頁面會直接透出背景，
+                    # 線條深的圖示因此看不見。合成到白底，與其餘頭像一致。
                     ['cwebp', '-quiet', '-q', '90',
+                     '-blend_alpha', '0xFFFFFF',
                      '-resize', str(size), str(size),
                      str(temp_avatar), '-o', str(tmp_out)],
                     check=True,
