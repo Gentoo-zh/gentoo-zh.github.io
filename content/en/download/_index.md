@@ -17,7 +17,7 @@ Both images are rebuilt weekly. Downloads, checksums and every mirror directory 
   {{< card link="https://iso.gentoozh.org/en/#panel-minimal" title="CJK minimal image" icon="terminal" subtitle="A third-party amd64 minimal installation medium, built by Catalyst from the official Release Engineering specs. The kernel carries the cjktty patch, so the console displays CJK text, and ZFS is supported." >}}
 {{< /cards >}}
 
-{{< hextra/hero-button text="Go to the download site" link="https://iso.gentoozh.org/en/#mirrors" style="margin-top:1.25rem;margin-bottom:.5rem" >}}
+{{< hextra/hero-button text="Go to the download site" link="https://iso.gentoozh.org/en/" style="margin-top:1.25rem;margin-bottom:.5rem" >}}
 
 - **Gig-OS login credentials**: user {{< copy "live" >}} / password {{< copy "live" >}} / root password {{< copy "live" >}}
 - **Repositories**: [Gig-OS/Live-ISO](https://github.com/Gig-OS/Live-ISO) · [gentoo-zh/gentoo-cjk-livecd](https://github.com/gentoo-zh/gentoo-cjk-livecd)

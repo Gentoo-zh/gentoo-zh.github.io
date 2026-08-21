@@ -8,7 +8,7 @@ Gentoo 镜像包含以下资源：
 - **Distfiles**：Portage 编译软件包时下载的源代码及相关文件，由 `make.conf` 中的 `GENTOO_MIRRORS` 指定
 - **Stage 3 与官方二进制包（binhost）**：同步相应内容的 HTTP 镜像会在 `releases/` 目录中提供
 
-相应镜像不提供 ebuild，需要搭配 [Gentoo Portage 镜像](/gentoo-portage/)或 [Gentoo Portage Git 镜像](/gentoo-portage.git/)使用。
+相应镜像不提供 ebuild，需要搭配 Gentoo ebuild 仓库的 rsync 或 Git 同步源使用，配置见下方的[配置教程](#配置教程)。
 
 下面是各镜像站的**实测汇总表**，列出每个镜像站的 Distfiles 地址和支持的同步方式；具体配置方法见下方的配置教程。
 
@@ -220,4 +220,4 @@ export GENTOO_MIRRORS="@@SRC@@"
 export SNAPSHOT_URL="@@SRC@@/snapshots"
 {{< /gz-cmd >}}
 
-Bootstrap 完成后，如需为 Gentoo Portage 和 Distfiles 更换镜像，只需将 `/etc` 替换为 `$EPREFIX/etc`。`GNU_URL` 的配置见 [GNU 帮助](/gnu/)。
+Bootstrap 完成后，如需为 Gentoo Portage 和 Distfiles 更换镜像，只需将 `/etc` 替换为 `$EPREFIX/etc`。`GNU_URL` 指向 GNU 软件的镜像，地址见所用镜像站的 GNU 帮助页。

@@ -64,7 +64,7 @@ Gentoo 中文社群論壇已正式啟用，地址：**[forum.gentoozh.org](https
 ├── 接入與帳戶
 │   ├── IPv4 / IPv6 雙棧
 │   ├── 靜態保留 IP（Reserved IP）
-│   └── 雲控制檯 2FA
+│   └── 雲控制台 2FA
 ├── 監控與自愈（雙活異地）
 │   ├── 兩套 Prometheus / Grafana / Alertmanager 叢集互監去重（跨故障域）
 │   ├── 主機指標 + 網站可用性撥測 + SSL 證書到期監控

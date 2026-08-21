@@ -13,6 +13,7 @@ This page tracks the major updates to the site's content, so readers can follow 
 
 - The [mirror list page](/mirrorlist/) has been rewritten: the overlay's git sync source, distfiles and binary packages, plus Gentoo's official rsync, distfiles and binhost, each come with a copy-paste configuration block. Every block can switch between mirrors and the origin, and the selected address is written into the commands as you switch. Prefix users get their own settings
 - The binary package section on the [Overlay page](/overlay/) can switch between the stable and unstable channels: each channel lists its own `binrepos.conf` and keyword settings, and the blocks support mirror switching as well as both the manual and one-command setup paths
+- The [download page](/download/) now leads with two image cards — the Gig-OS desktop image and the CJK minimal image — with the setup details, checksums and mirror directories all pointing at [iso.gentoozh.org](https://iso.gentoozh.org/)
 - New [infrastructure costs page](/costs/): the specifications, unit price, billing start date and running total for every server and service, converted to a single currency for the total. The community has no commercial sponsor, members currently cover the bills, and donations are not accepted
 - A pass over the site's Chinese copy: colloquial phrasing tightened, spacing between Chinese and Latin text and full-width punctuation made consistent
 

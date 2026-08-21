@@ -34,4 +34,4 @@ eselect repository enable gentoo-zh
 
 之后照常 `emerge --sync gentoo-zh`。
 
-新添加 gentoo-zh 的用户不受影响，按 [Overlay 页面](/overlay/) 正常启用即可。国内直连 GitHub 较慢时，可以使用 [国内 git 镜像](/overlay/#国内镜像加速)。
+新添加 gentoo-zh 的用户不受影响，按 [Overlay 页面](/overlay/) 正常启用即可。国内直连 GitHub 较慢时，可以使用 [国内 git 镜像](/overlay/#distfiles-镜像)。

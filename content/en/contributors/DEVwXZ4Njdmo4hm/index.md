@@ -5,7 +5,6 @@ tags: ['Overlay contributor']
 externalUrl: "https://github.com/DEVwXZ4Njdmo4hm"
 links:
   - name: "blog"
-    url: "https://Not available."
 weight: 9984
 ---
 

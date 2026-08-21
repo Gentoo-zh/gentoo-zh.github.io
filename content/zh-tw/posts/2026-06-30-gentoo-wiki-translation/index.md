@@ -1,6 +1,6 @@
 ---
 title: "如何參與 Gentoo Wiki 的翻譯工作"
-description: "面向中文譯者的 Gentoo Wiki 翻譯入門：前置要求、賬號與翻譯權限申請、翻譯介面用法，以及翻譯規範與中文排版約定。"
+description: "面向中文譯者的 Gentoo Wiki 翻譯入門：前置要求、帳號與翻譯權限申請、翻譯介面用法，以及翻譯規範與中文排版約定。"
 date: 2026-06-30
 tags: ["wiki", "翻譯", "貢獻"]
 authors:
@@ -18,16 +18,16 @@ authors:
 ## 前置要求
 
 - 擁有基礎的 Linux 知識
-- 基本掌握 Gentoo 系統和 Portage 包管理的使用
+- 基本掌握 Gentoo 系統和 Portage 套件管理的使用
 - 良好的英語基礎和語言習慣，並熟悉大部分計算機專業詞彙
 
 如果你自覺滿足以上要求，哪怕不能滿足個別要求，只要你有相當的耐心，那就大膽開工。
 
 ## 準備工作
 
-首先需要註冊 Gentoo Wiki 賬號：[Special:CreateAccount](https://wiki.gentoo.org/index.php?title=Special:CreateAccount)。
+首先需要註冊 Gentoo Wiki 帳號：[Special:CreateAccount](https://wiki.gentoo.org/index.php?title=Special:CreateAccount)。
 
-註冊完成後，進入下方連結留言，為自己的賬號申請翻譯權限：[Gentoo Wiki:Translator account requests](https://wiki.gentoo.org/wiki/Gentoo_Wiki:Translator_account_requests)。
+註冊完成後，進入下方連結留言，為自己的帳號申請翻譯權限：[Gentoo Wiki:Translator account requests](https://wiki.gentoo.org/wiki/Gentoo_Wiki:Translator_account_requests)。
 
 在等待透過申請期間，可以透過空空前輩的[翻譯歷史](https://wiki.gentoo.org/index.php?title=Special:Contributions/%E7%A9%BA%E7%A9%BA&offset=&limit=500&target=%E7%A9%BA%E7%A9%BA)來學習。
 
@@ -72,7 +72,7 @@ authors:
 - 編寫時，請注意不光說怎麼樣，還要回答為什麼？解釋遠勝單純的指導。
 - 不要加入個人評論，後者應該放到討論頁面，一般不要用第一人稱。
 - 不要說現在、當前等等，請給出具體的時間。
-- 編輯內容時，保持和頁面其它內容的一致性，用一樣的人稱描述。
+- 編輯內容時，保持和頁面其他內容的一致性，用一樣的人稱描述。
 - 在多個選項間提供選擇時，不要感性地建議一個或另一個，請客觀地描述每一個選擇的優點和缺點，讓使用者自行選擇。
 - 翻譯頁面時，請儘量避免使用第二人稱代詞“你”或“您”。確實需要使用第二人稱代詞時，如果頁面中現存的翻譯已使用其中的一種，請與其保持一致；如果使用了多種，請考慮統一為其中的一種；如果頁面中沒有使用，則可以自行決定使用哪一種，但請確保在翻譯中保持一致。
 
@@ -105,11 +105,11 @@ authors:
 
 Gentoo 理事會於 2024 年 4 月通過了 [AI 政策](https://wiki.gentoo.org/wiki/Project:Council/AI_policy)：
 
-> 嚴禁向 Gentoo 提交任何借助自然語言處理人工智慧工具創建的內容。如果此類工具的使用不涉及版權、倫理或品質問題，則可以重新考慮此禁令。
+> 嚴禁向 Gentoo 提交任何藉助自然語言處理人工智慧工具建立的內容。如果此類工具的使用不涉及版權、倫理或品質問題，則可以重新考慮此禁令。
 
 機器翻譯與大語言模型同屬此類工具，因此請勿用 AI 代為翻譯後直接提交，譯文須由你本人完成。這既是政策要求，也關乎 wiki 品質：AI 譯文常常看似通順，實則用詞不精準、容易出現歧義，因而需要大量人工複核，反而增加工作量。
 
-借助詞典、術語庫、智慧工具幫助理解是可以的，但最終的句子請自己斟酌、自己落筆。
+藉助詞典、術語庫、智慧工具幫助理解是可以的，但最終的句子請自己斟酌、自己落筆。
 
 ## 擴展閱讀
 

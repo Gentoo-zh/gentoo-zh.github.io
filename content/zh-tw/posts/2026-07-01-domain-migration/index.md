@@ -13,7 +13,7 @@ authors:
     link: https://github.com/simpleWrite
 ---
 
-Gentoo 中文社群官網今天正式遷往 **gentoozh.org**。論壇（forum.gentoozh.org）也已搭好，預計於 7 月 5 日前後上線。舊地址（gentoo.org.cn、gentoocn.org）全部 301 永久跳轉，書籤和已有連結不會失效，但建議儘快更新。
+Gentoo 中文社群官網今天正式遷往 **gentoozh.org**。論壇（forum.gentoozh.org）也已搭好，隨後於 7 月 12 日[正式啟用](/posts/2026-07-12-forum-launch/)。舊地址（gentoo.org.cn、gentoocn.org）全部 301 永久跳轉，書籤和已有連結不會失效，但建議儘快更新。
 
 ## 不僅僅換個域名
 

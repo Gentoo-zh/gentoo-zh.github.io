@@ -13,6 +13,7 @@ slug: "changelog"
 
 - [镜像列表页](/mirrorlist/)重写：overlay 的 git 同步源、distfiles、二进制包，以及 Gentoo 官方的 rsync、distfiles 与 binhost，各自给出可直接复制的配置块；块内可切换镜像与源站，选中的地址会同时写进命令，另补上 Prefix 用户的配置
 - [Overlay 页](/overlay/)的二进制包一节可在 stable 与 unstable 两个频道之间切换：两者的 `binrepos.conf` 与接受关键字写法分开列出，配置块同样支持换源，以及手动编辑配置文件与一条命令快速配置两种方式
+- [下载页](/download/)改成两个镜像的卡片入口：Gig-OS 桌面镜像与 CJK 最小安装镜像，配置细节、校验和与各镜像目录都引到 [iso.gentoozh.org](https://iso.gentoozh.org/)
 - 新增[基础设施开销页](/costs/)：列出各台服务器与服务的配置、单价、起算日与至今累计，币种不同的统一折成美元合计。社区没有商业赞助，费用目前由成员个人承担，也不接受捐款
 - 站内文案按中文写作规范审校一轮：收紧口语表达，统一中英文之间的间距与标点全角
 
@@ -43,7 +44,7 @@ slug: "changelog"
 - 新增转载文章 **[Gentoo Linux with ZFS](/posts/2026-06-18-gentoo-linux-with-zfs/)**（原作者 [Locez](https://github.com/locez)，经授权按 CC BY-NC-SA 4.0 转载）：在双 NVMe 镜像上安装 ZFS 根 + ZFS 原生加密的实录；本站补充了 SLOG 配置勘误、分区要点，以及各安装步骤对应的官方中文手册链接
 - Live ISO 图形安装器支持 **ZFS 根文件系统**：可把 ZFS 装成根，勾选加密即 ZFS 原生加密（aes-256-gcm）、由 ZFSBootMenu 引导（btrfs / ext4 / xfs / ZFS 均可在分区页选）。[下载页](/download/#live-iso)与[使用说明](https://iso.gentoozh.org/about.html)已补充说明
 - 下载站上云：Live ISO 下载迁到 **Cloudflare R2**（[r2.gentoozh.org](https://r2.gentoozh.org/)，零出口流量、全球边缘），落地页 [mirror.gentoozh.org](https://iso.gentoozh.org/) 改成 **Cloudflare Worker**（边缘即时读 R2，列出最新镜像 + 全部历史版本）；测速改用 [Cloudflare 官方测速](https://speed.cloudflare.com/)；自建的美国下载 / 测速服务器随之下线
-- 公共页面新增英文（English）国际化：关于、下载、镜像列表、贡献指南等公共页面可在简体 / 正體 / 英文之间切换，方便用 gentoo-zh overlay 的海外用户。技术文章不一定都有英文，目前只做了公共页面；英文借翻译软件初译、再经 AI 校对，难免有错漏，欢迎到 [GitHub](https://github.com/gentoo-zh/gentoo-zh.github.io) 指正
+- 公共页面新增英文（English）国际化：关于、下载、镜像列表、贡献指南等公共页面可在简体 / 正体 / 英文之间切换，方便用 gentoo-zh overlay 的海外用户。技术文章不一定都有英文，目前只做了公共页面；英文借翻译软件初译、再经 AI 校对，难免有错漏，欢迎到 [GitHub](https://github.com/gentoo-zh/gentoo-zh.github.io) 指正
 
 ## 2026 年 5 月
 
