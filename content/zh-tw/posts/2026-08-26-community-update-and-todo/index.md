@@ -43,6 +43,8 @@ authors:
 
 現在幾乎是我們的基礎設施最完善的一次，當然在貢獻流程方面和貢獻的渠道還有很多阻礙。
 
+因為這幾項推進得都比較快，後面我可能會稍微放緩速度，讓更多人可以參與進來；非必要也不會再開太多新服務。
+
 例如十一年前關於中文本地化的[討論](https://wiki.gentoo.org/wiki/Help_talk:Translating#About_Chinese_Localization)，今天才得到[回覆和更新](https://wiki.gentoo.org/wiki/Help_talk:Translating#Chinese_Localization_Today)，並且伴隨不少小問題，之後我會補充到[翻譯指南](/posts/2026-06-30-gentoo-wiki-translation/)的文章裡。
 
 ## 流程的缺失
