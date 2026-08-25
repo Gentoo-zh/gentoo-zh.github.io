@@ -2,7 +2,6 @@
 title: "社群論壇正式啟用"
 description: "Gentoo 中文社群論壇 forum.gentoozh.org 正式上線：版塊劃分、簡繁自動切換、中文搜尋與訊息橋接，附伺服器安全配置和版主招募。"
 date: 2026-07-12
-featured: true
 tags: ["announcement"]
 authors:
   - name: Zakk（排版/上架/校驗/撰寫）

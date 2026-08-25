@@ -2,6 +2,7 @@
 title: "What we have done recently, and what is still open"
 description: "What the community has built over the past few months across the website, chat platforms, the overlay and its distribution, documentation and translation — and the contribution paths that are still missing."
 date: 2026-08-26
+featured: true
 tags: ["community", "overlay", "wiki"]
 authors:
   - name: Zakk

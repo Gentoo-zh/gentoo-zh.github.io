@@ -2,7 +2,6 @@
 title: "Moving the Community's Main Domain to gentoozh.org"
 description: "Moving the Community's Main Domain to gentoozh.org"
 date: 2026-07-01
-featured: true
 tags: ["announcement"]
 authors:
   - name: Zakk

@@ -303,6 +303,7 @@ convert_one() {
     -e 's|在中國大陸建議使用南京大學鏡像，下載會更快，源站是 <https://distfiles\.gentoozh\.org/binpkgs/x86-64>（位於美國）。|這裡填的是源站（位於美國）；在中國大陸可改用南京大學鏡像 <https://mirror.nju.edu.cn/gentoo-zh/binpkgs/x86-64>，下載會更快。|g' \
     -e 's|南京大學取不到時會落到源站。|源站取不到時會落到南京大學鏡像。|g' \
     -e 's|https://iso\.gentoozh\.org/#|https://iso.gentoozh.org/zh-tw/#|g' \
+    -e 's|https://iso\.gentoozh\.org/"|https://iso.gentoozh.org/zh-tw/"|g' \
     -e 's|https://iso\.gentoozh\.org/about|https://iso.gentoozh.org/zh-tw/about|g' \
     -e 's|由 distfiles.gentoozh.org 與南京大學鏡像分發|由 distfiles.gentoozh.org 與南京大學鏡像分發|g' \
     "$TARGET_FILE"

@@ -2,7 +2,6 @@
 title: "The Community Forum Is Now Live"
 description: "The Gentoo Chinese community forum at forum.gentoozh.org is now live: boards by topic, automatic Simplified/Traditional switching, Chinese search and message bridging, plus the server security setup and a call for moderators."
 date: 2026-07-12
-featured: true
 tags: ["announcement"]
 authors:
   - name: Zakk (layout, deploy, QA & writing)

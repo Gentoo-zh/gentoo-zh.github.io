@@ -2,7 +2,6 @@
 title: "gentoo-zh Repository Migration: Announcement and Execution Record"
 description: "The canonical maintenance repository for the gentoo-zh overlay has moved to a GitHub organization repo."
 date: 2026-07-02
-featured: true
 tags: ["announcement", "overlay"]
 authors:
   - name: Zakk (revised)

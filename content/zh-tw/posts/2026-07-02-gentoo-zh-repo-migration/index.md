@@ -2,7 +2,6 @@
 title: "gentoo-zh 倉庫遷移公告與執行記錄"
 description: "gentoo-zh overlay 的正式維護倉庫遷移到 GitHub 組織倉庫"
 date: 2026-07-02
-featured: true
 tags: ["announcement", "overlay"]
 authors:
   - name: Zakk（修訂/更新）
