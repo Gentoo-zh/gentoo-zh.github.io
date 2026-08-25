@@ -2,7 +2,6 @@
 title: "社区论坛正式启用"
 description: "Gentoo 中文社区论坛 forum.gentoozh.org 正式上线：版块划分、简繁自动切换、中文搜索与消息桥接，附服务器安全配置和版主招募。"
 date: 2026-07-12
-featured: true
 tags: ["announcement"]
 authors:
   - name: Zakk（排版/上架/校验/撰写）

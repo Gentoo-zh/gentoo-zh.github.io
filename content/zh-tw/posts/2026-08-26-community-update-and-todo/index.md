@@ -2,6 +2,7 @@
 title: "成果總結和最近狀況的更新和一些待辦"
 description: "最近幾個月社群在網站、交流平臺、Overlay 與分發、文件與翻譯上做了哪些事，以及貢獻流程上仍然缺失的指引與下一步計劃。"
 date: 2026-08-26
+featured: true
 tags: ["community", "overlay", "wiki"]
 authors:
   - name: Zakk

@@ -2,6 +2,7 @@
 title: "成果总结和最近状况的更新和一些待办"
 description: "最近几个月社区在网站、交流平台、Overlay 与分发、文档与翻译上做了哪些事，以及贡献流程上仍然缺失的指引与下一步计划。"
 date: 2026-08-26
+featured: true
 tags: ["community", "overlay", "wiki"]
 authors:
   - name: Zakk
