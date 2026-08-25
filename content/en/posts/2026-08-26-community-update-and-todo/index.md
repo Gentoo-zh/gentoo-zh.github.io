@@ -47,6 +47,8 @@ Gentoo-zh, which qingfeng founded years ago, and the vision on the front page of
 
 This is close to the best shape our infrastructure has ever been in. The contribution process and the channels for contributing are another matter, and there is still a lot in the way.
 
+All of this moved fairly fast, so I may slow down a little from here on, to leave more room for other people to take part; and unless there is a real need, I will not be standing up many more new services.
+
 For example, a [discussion](https://wiki.gentoo.org/wiki/Help_talk:Translating#About_Chinese_Localization) about Chinese localisation opened eleven years ago only got [an answer and an update](https://wiki.gentoo.org/wiki/Help_talk:Translating#Chinese_Localization_Today) today, and it came with a number of small problems along the way. I will add those to the [translation guide](/posts/2026-06-30-gentoo-wiki-translation/) later.
 
 ## What the process is missing
