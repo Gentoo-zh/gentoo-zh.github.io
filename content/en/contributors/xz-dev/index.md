@@ -14,7 +14,7 @@ links:
     url: "https://gitlab.com/xz-dev"
   - name: "generic"
     url: "https://codeberg.org/xz-dev"
-weight: 9854
+weight: 9847
 ---
 
-146 commits
+153 commits
